@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Nexus | Discover. Stay. Explore — All in One Place</title>
+  <meta name="description" content="Travel Nexus solves fragmented travel planning by uniting verified boutique stays, authentic regional dining, local guides, and AI-powered custom itineraries." />
+  <meta name="theme-color" content="#FAF8F5" />
+  <script>
+    (function() {
+      try {
+        var s = localStorage.getItem('travelnexus_theme');
+        if (s === 'dark' || (!s && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (s === 'emerald') {
+          document.documentElement.setAttribute('data-theme', 'emerald');
+        }
+      } catch (e) {}
+    })();
+
+    // Graceful Image Fallback with Terracotta/Teal Palette and Location Pin
+    window.handleImageError = function(img, title, subtitle) {
+      if (!img || img.__fallbackApplied) return;
+      img.__fallbackApplied = true;
+      img.onerror = null;
+
+      var cleanTitle = (title || 'Travel Nexus').replace(/[&<>"']/g, function(c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c];
+      });
+      var cleanSub = (subtitle || 'Incredible India Heritage').replace(/[&<>"']/g, function(c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c];
+      });
+
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520">' +
+        '<defs>' +
+          '<linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">' +
+            '<stop offset="0%" stop-color="#1B4944" />' +
+            '<stop offset="50%" stop-color="#143632" />' +
+            '<stop offset="100%" stop-color="#0E2320" />' +
+          '</linearGradient>' +
+          '<radialGradient id="glow" cx="50%" cy="40%" r="55%">' +
+            '<stop offset="0%" stop-color="#C85A32" stop-opacity="0.3" />' +
+            '<stop offset="100%" stop-color="#C85A32" stop-opacity="0" />' +
+          '</radialGradient>' +
+        '</defs>' +
+        '<rect width="100%" height="100%" fill="url(#g)" />' +
+        '<rect width="100%" height="100%" fill="url(#glow)" />' +
+        '<g transform="translate(400, 200)">' +
+          '<circle r="36" fill="#C85A32" opacity="0.2" />' +
+          '<circle r="26" fill="#C85A32" />' +
+          '<path d="M0 -13 C-7 -13 -12 -8 -12 0 C-12 10 0 22 0 22 C0 22 12 10 12 0 C12 -8 7 -13 0 -13 Z" fill="#FAF8F5" />' +
+          '<circle cx="0" cy="-2" r="3.5" fill="#C85A32" />' +
+        '</g>' +
+        '<text x="400" y="275" text-anchor="middle" font-family="Plus Jakarta Sans, -apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#D4A373">TRAVEL NEXUS</text>' +
+        '<text x="400" y="320" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="24" font-weight="700" fill="#FAF8F5">' + cleanTitle + '</text>' +
+        '<text x="400" y="352" text-anchor="middle" font-family="Plus Jakarta Sans, -apple-system, sans-serif" font-size="14" fill="#A8B2B0">' + cleanSub + '</text>' +
+      '</svg>';
+
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      img.style.objectFit = 'cover';
+    };
+  </script>
+
+  <!-- High-Performance Preconnect & Resource Hints for Instant Execution -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+  <link rel="preload" as="image" href="images/india/himalayas.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Leaflet & MarkerCluster Stylesheets -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       OFFICIAL TOURISM AUTHORITY UTILITY BAR & THEME AMBIANCE SELECTOR
+       ======================================================================== -->
+  <div class="tourism-top-bar" id="tourismTopBar">
+    <div class="container tourism-top-bar-inner">
+      <div class="tourism-badge-strip">
+        <span class="tourism-flag-badge">🇮🇳 Incredible India</span>
+        <span class="tourism-top-text">Official Domestic Hospitality & Tourism Portal</span>
+        <span class="tourism-bullet">•</span>
+        <span class="tourism-highlight">Zero-Commission Direct Host Rates</span>
+        <span class="tourism-bullet">•</span>
+        <span class="tourism-highlight">100% Verified Boutique Stays & Guides</span>
+      </div>
+      <div class="tourism-top-actions">
+        <span class="tourism-helpline" title="Official Incredible India Tourist Helpline">📞 24x7 Tourist Helpline: 1363</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       STICKY GLASSMORPHIC NAVBAR
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <!-- Logo -->
+        <a href="#home" class="brand-logo" data-route="#home">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>Travel Nexus</span>
+          <span class="brand-tag">Boutique</span>
+        </a>
+
+        <!-- Navigation Links (One Clean Horizontal Line) -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active" data-route="#home">Home</a></li>
+          <li><a href="#destinations" class="nav-link" data-route="#destinations">Destination</a></li>
+          <li class="nav-item-states"><a href="#states" class="nav-link" data-route="#states">States & UTs</a></li>
+          <li><a href="#stays" class="nav-link" data-route="#stays">Hotels & Stay</a></li>
+          <li class="nav-item-dining"><a href="#dining" class="nav-link" data-route="#dining">Local Cuisine</a></li>
+          <li class="nav-item-host"><a href="#become-host" class="nav-link" data-route="#become-host">Become a Host</a></li>
+          <li><a href="#planner" class="nav-link" data-route="#planner">AI Trip Planner</a></li>
+          <li class="nav-item-more" id="navMoreItem">
+            <button type="button" class="nav-link nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-label="More navigation options">
+              More <span class="nav-caret">▾</span>
+            </button>
+            <ul class="nav-dropdown-menu" id="navMoreMenu" role="menu" aria-label="More navigation links">
+              <!-- Dynamically shown when responsive collapse kicks in on medium desktop screens -->
+              <li class="nav-dropdown-collapse nav-collapse-host"><a href="#become-host" class="nav-dropdown-link" data-route="#become-host">🤝 Become a Host</a></li>
+              <li class="nav-dropdown-collapse nav-collapse-dining"><a href="#dining" class="nav-dropdown-link" data-route="#dining">🍛 Local Cuisine</a></li>
+              <li class="nav-dropdown-collapse nav-collapse-states"><a href="#states" class="nav-dropdown-link" data-route="#states">🏛️ States & UTs</a></li>
+              <li class="nav-dropdown-divider" id="navDropdownDivider"></li>
+
+              <!-- Standard Dropdown links -->
+              <li><a href="#evisa" class="nav-dropdown-link" data-route="#evisa">🇮🇳 India e-Visa</a></li>
+              <li><a href="#about" class="nav-dropdown-link" data-route="#about">🌿 Sustainability</a></li>
+              <li><a href="#contact" class="nav-dropdown-link" data-route="#contact">💬 Contact Support</a></li>
+
+              <!-- Dropdown Ambiance Theme Row -->
+              <li class="nav-dropdown-divider"></li>
+              <li class="nav-dropdown-theme-row">
+                <span class="nav-dropdown-theme-label">Ambiance Theme</span>
+                <div class="nav-dropdown-theme-buttons" role="group" aria-label="Dropdown Ambiance Theme">
+                  <button type="button" class="nav-theme-btn active" data-theme-val="light" title="Daylight Ivory">☀️ Ivory</button>
+                  <button type="button" class="nav-theme-btn" data-theme-val="dark" title="Midnight Obsidian">🌙 Midnight</button>
+                  <button type="button" class="nav-theme-btn" data-theme-val="emerald" title="Emerald Sanctuary">🌿 Sanctuary</button>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Mobile Drawer Auth Slot (Hidden on desktop) -->
+          <li class="nav-item-mobile-auth" id="mobileNavAuthSlot">
+            <div class="nav-auth-group">
+              <a href="#login" class="nav-auth-btn nav-btn-signin" data-route="#login" onclick="window.authManager && window.authManager.openLogin ? window.authManager.openLogin(event) : null">
+                Sign In
+              </a>
+              <a href="#login" class="nav-auth-btn nav-btn-signup" data-route="#login" onclick="window.authManager && window.authManager.openRegister ? window.authManager.openRegister(event) : null">
+                Sign Up
+              </a>
+            </div>
+          </li>
+          <!-- Mobile Theme Switcher Row (Hidden on desktop) -->
+          <li class="nav-item-mobile-theme">
+            <div class="mobile-theme-label">Ambiance Theme</div>
+            <div class="mobile-theme-buttons">
+              <button type="button" class="mobile-theme-btn active" data-theme-val="light">☀️ Ivory</button>
+              <button type="button" class="mobile-theme-btn" data-theme-val="dark">🌙 Midnight</button>
+              <button type="button" class="mobile-theme-btn" data-theme-val="emerald">🌿 Sanctuary</button>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Action Items (Right Aligned, Single Row & Responsive) -->
+        <div class="nav-actions">
+          <!-- Ambiance / Theme Switcher Pill -->
+          <div class="theme-switcher-pill" id="navbarThemeSwitcher" role="group" aria-label="Tourism Ambiance Theme">
+            <button type="button" class="theme-btn active" data-theme-val="light" title="Daylight Ivory Luxury Mode">
+              <span class="theme-icon">☀️</span>
+              <span class="theme-label">Ivory</span>
+            </button>
+            <button type="button" class="theme-btn" data-theme-val="dark" title="Midnight Obsidian Luxe Mode">
+              <span class="theme-icon">🌙</span>
+              <span class="theme-label">Midnight</span>
+            </button>
+            <button type="button" class="theme-btn" data-theme-val="emerald" title="Emerald Eco-Sanctuary Mode">
+              <span class="theme-icon">🌿</span>
+              <span class="theme-label">Sanctuary</span>
+            </button>
+          </div>
+
+          <!-- Currency Reference Selector -->
+          <div class="currency-selector-wrapper" title="Currency reference for international travelers (Charges in INR ₹)">
+            <select id="currencySelector" class="currency-select" aria-label="Display Currency">
+              <option value="INR" selected>₹ INR</option>
+              <option value="USD">$ USD</option>
+              <option value="EUR">€ EUR</option>
+              <option value="GBP">£ GBP</option>
+            </select>
+          </div>
+
+          <!-- Wishlist Toggle -->
+          <button class="btn-wishlist-toggle" id="wishlistToggleBtn" aria-label="Open Saved Wishlist" title="Saved Trips & Stays">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="wishlist-count-badge" id="wishlistCountBadge">0</span>
+          </button>
+
+          <!-- Auth Buttons Container (Sign In & Sign Up visible on right) -->
+          <div id="navAuthContainer" class="nav-auth-slot">
+            <div class="nav-auth-group">
+              <a href="#login" class="nav-auth-btn nav-btn-signin" data-route="#login" onclick="window.authManager && window.authManager.openLogin ? window.authManager.openLogin(event) : null">
+                Sign In
+              </a>
+              <a href="#login" class="nav-auth-btn nav-btn-signup" data-route="#login" onclick="window.authManager && window.authManager.openRegister ? window.authManager.openRegister(event) : null">
+                Sign Up
+              </a>
+            </div>
+          </div>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="nav-mobile-toggle" id="navMobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN CONTENT VIEWS (ROUTED VIA HASH)
+       ======================================================================== -->
+  <main id="mainContent">
+
+    <!-- ======================================================================
+         VIEW 1: HOME PAGE
+         ====================================================================== -->
+    <div id="view-home" class="view-section active">
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-bg-media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1920&q=85" alt="Taj Mahal at sunrise" class="hero-bg-img" />
+          <div class="hero-scrim"></div>
+        </div>
+        <div class="hero-content">
+          <span class="hero-tag">✦ Official Domestic Indian Hospitality & Tourism Portal</span>
+          <h1 class="hero-wordmark">Travel Nexus</h1>
+          <div class="hero-wordmark-sub">Incredible India · Handcrafted Journeys</div>
+
+          <!-- Floating Interactive Search Bar -->
+          <div class="search-bar-wrapper">
+            <div class="search-field">
+              <label class="search-label">Destination</label>
+              <input type="text" id="heroDestInput" class="search-input" placeholder="Where in India? (e.g. Hampi, Manali, Munnar, Udaipur)" />
+            </div>
+
+            <div class="search-field">
+              <label class="search-label">Check-In</label>
+              <input type="date" class="search-input" value="2026-10-15" />
+            </div>
+
+            <div class="search-field">
+              <label class="search-label">Check-Out</label>
+              <input type="date" class="search-input" value="2026-10-20" />
+            </div>
+
+            <div class="search-field" id="searchGuestField">
+              <label class="search-label">Guests</label>
+              <div class="search-input" id="guestCountDisplay" style="cursor: pointer; padding-top: 2px;">2 Guests</div>
+              <!-- Guests Popover -->
+              <div class="guest-popover" id="guestPopover">
+                <div class="guest-row">
+                  <div>
+                    <div class="guest-title">Adults</div>
+                    <div class="guest-subtitle">Ages 13 or above</div>
+                  </div>
+                  <div class="stepper-control">
+                    <button class="stepper-btn" id="adultDec">-</button>
+                    <span class="stepper-val" id="adultCountVal">2</span>
+                    <button class="stepper-btn" id="adultInc">+</button>
+                  </div>
+                </div>
+                <div class="guest-row">
+                  <div>
+                    <div class="guest-title">Children</div>
+                    <div class="guest-subtitle">Ages 2–12</div>
+                  </div>
+                  <div class="stepper-control">
+                    <button class="stepper-btn" id="childDec">-</button>
+                    <span class="stepper-val" id="childCountVal">0</span>
+                    <button class="stepper-btn" id="childInc">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary search-cta-btn" id="heroSearchBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Explore Stays</span>
+            </button>
+          </div>
+
+          <!-- Hero Trust Bar -->
+          <div class="hero-trust-bar">
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>500+ Verified Boutique Stays</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>0% Commission Direct Rate</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <span>24/7 Domestic Concierge</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>Sustainable Tourism Charter</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+              <span>Bespoke AI Architecture</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Destinations Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Curated Sanctuaries</span>
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">
+              Handpicked havens celebrating natural wonders, preserved traditions, and warm local hospitality.
+            </p>
+          </div>
+
+          <div class="destinations-grid" id="popularDestinationsGrid">
+            <!-- Rendered dynamically by filters.js -->
+          </div>
+
+          <div style="text-align: center; margin-top: var(--space-3xl);">
+            <a href="#destinations" class="btn btn-outline" data-route="#destinations">
+              View All 20 Curated Destinations →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SCROLL-TRIGGERED STICKY REGIONAL REVEAL STACK
+           ==================================================================== -->
+      <section class="scroll-stack-section" id="scrollStackSection" aria-label="Regional Travel Showcase">
+        <div class="scroll-stack-intro container">
+          <span class="section-tag">Cinematic Corridors</span>
+          <h2 class="section-title">Journey Across India's Landscapes</h2>
+          <p class="section-subtitle">
+            Scroll to traverse five iconic regions—where snowbound mountain ridges give way to palm-fringed Arabian shores, royal desert citadels, and tranquil backwaters.
+          </p>
+        </div>
+
+        <div class="scroll-stack-container" id="scrollStackContainer">
+          <!-- Panel 1: Mountains (Base Panel) -->
+          <div class="stack-panel-track" data-panel-index="0" data-slide-dir="none">
+            <div class="stack-panel-sticky is-active">
+              <div class="stack-panel-media">
+                <img src="images/india/himalayas.jpg" alt="Snowbound Himalayan mountain passes and deodar trails" fetchpriority="high" decoding="async" />
+                <div class="stack-panel-scrim"></div>
+              </div>
+              <div class="stack-panel-caption">
+                <span class="stack-panel-badge">Region 01 · Northern Heights</span>
+                <h3 class="stack-panel-title">The Himalayas</h3>
+                <p class="stack-panel-desc">Snowbound ridges, sacred deodar trails, and celestial high-altitude monasteries.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Coast (Slides from Right) -->
+          <div class="stack-panel-track" data-panel-index="1" data-slide-dir="right">
+            <div class="stack-panel-sticky">
+              <div class="stack-panel-media">
+                <img src="images/india/goa.jpg" alt="Golden palm shores and turquoise waves along the Konkan coast" loading="lazy" decoding="async" />
+                <div class="stack-panel-scrim"></div>
+              </div>
+              <div class="stack-panel-caption">
+                <span class="stack-panel-badge">Region 02 · Arabian Coast</span>
+                <h3 class="stack-panel-title">Goa & Konkan Shores</h3>
+                <p class="stack-panel-desc">Swaying coconut shores, pastel Portuguese manors, and fiery coastal curries.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Heritage / Royal (Slides from Left) -->
+          <div class="stack-panel-track" data-panel-index="2" data-slide-dir="left">
+            <div class="stack-panel-sticky">
+              <div class="stack-panel-media">
+                <img src="images/india/rajasthan.jpg" alt="Sunlit Rajputana citadels and marble lakeside palaces" loading="lazy" decoding="async" />
+                <div class="stack-panel-scrim"></div>
+              </div>
+              <div class="stack-panel-caption">
+                <span class="stack-panel-badge">Region 03 · Royal Citadels</span>
+                <h3 class="stack-panel-title">Royal Rajasthan</h3>
+                <p class="stack-panel-desc">Sunlit royal citadels, lakeside marble palaces, and desert artisan quarters.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 4: Desert (Slides from Right) -->
+          <div class="stack-panel-track" data-panel-index="3" data-slide-dir="right">
+            <div class="stack-panel-sticky">
+              <div class="stack-panel-media">
+                <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1280&q=75" alt="Wind-carved golden dunes in Thar Desert" loading="lazy" decoding="async" />
+                <div class="stack-panel-scrim"></div>
+              </div>
+              <div class="stack-panel-caption">
+                <span class="stack-panel-badge">Region 04 · The Great Thar</span>
+                <h3 class="stack-panel-title">Thar Desert & Jaisalmer</h3>
+                <p class="stack-panel-desc">Sweeping wind-carved ochre dunes, starlit desert encampments, and folk melody nights.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 5: Backwaters (Slides from Left) -->
+          <div class="stack-panel-track" data-panel-index="4" data-slide-dir="left">
+            <div class="stack-panel-sticky">
+              <div class="stack-panel-media">
+                <img src="images/india/kerala.jpg" alt="Serene palm-fringed canoe canals in Kerala backwaters" loading="lazy" decoding="async" />
+                <div class="stack-panel-scrim"></div>
+              </div>
+              <div class="stack-panel-caption">
+                <span class="stack-panel-badge">Region 05 · Tropical Waterways</span>
+                <h3 class="stack-panel-title">Kerala Backwaters</h3>
+                <p class="stack-panel-desc">Misty tea carpets, serene palm-fringed canoe canals, and Ayurvedic spice groves.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           EXPLORE INDIA VISUAL DASHBOARD SECTION
+           ==================================================================== -->
+      <section class="section explore-india-section" id="exploreIndiaSection">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Grand Regional Showcase</span>
+            <h2 class="section-title">Explore India</h2>
+            <p class="section-subtitle">
+              From snowbound Himalayan ridges to sun-drenched coastal lagoons, lost empires, and river islands—immerse yourself in six iconic travel corridors.
+            </p>
+          </div>
+
+          <div class="explore-india-grid" id="exploreIndiaGrid">
+            <!-- Dynamically populated with auto-synced counts by filters.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section class="section" style="background-color: var(--bg-cream-alt);">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">The Travel Nexus Advantage</span>
+            <h2 class="section-title">Why Conscious Travelers Choose Us</h2>
+            <p class="section-subtitle">
+              Traditional mega-aggregators squeeze small businesses and fragment your vacation. We bring everything into one thoughtful ecosystem.
+            </p>
+          </div>
+
+          <div class="pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"></path>
+                </svg>
+              </div>
+              <h3>AI Trip Architect</h3>
+              <p>Generate balanced, realistic day-by-day itineraries with morning, afternoon, and evening recommendations tailored to your exact pace and budget.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+              </div>
+              <h3>Verified Local Stays</h3>
+              <p>Every homestay, heritage haveli, and alpine chalet is personally inspected for cleanliness, aesthetic character, and host authenticity.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <h3>Hidden Culinary Gems</h3>
+              <p>Discover family-run hearth kitchens, fresh seafood shacks, and forgotten royal recipes that corporate algorithms overlook.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 14 14"></polyline>
+                </svg>
+              </div>
+              <h3>24/7 On-Call Concierge</h3>
+              <p>Direct assistance from real regional hosts and our digital concierge NestBot whenever you need travel advice or emergency changes.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <h3>100% Sustainable</h3>
+              <p>Zero commission on verified rural homestays. 92% of booking revenue stays in the local village economy, preserving indigenous heritage.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Stays Preview Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Handpicked Lodgings</span>
+            <h2 class="section-title">Featured Boutique Stays</h2>
+            <p class="section-subtitle">
+              Wake up to misty Himalayan sunrises, fragrant spice plantations, or historic Rajput havelis.
+            </p>
+          </div>
+
+          <div class="stays-grid" id="featuredStaysHomeGrid">
+            <!-- Rendered dynamically by filters.js -->
+          </div>
+
+          <div style="text-align: center; margin-top: var(--space-3xl);">
+            <a href="#stays" class="btn btn-secondary" data-route="#stays">
+              Explore All Stays & Filter by Price →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Local Flavors Teaser Section -->
+      <section class="section" style="background-color: #FAF4ED;">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Authentic Gastronomy</span>
+            <h2 class="section-title">Four Regional Dining Worlds</h2>
+            <p class="section-subtitle">
+              Skip commercial tourist traps. Dine directly at generational hearth kitchens, seaside net-fisherman shacks, and royal banquet halls.
+            </p>
+          </div>
+
+          <div class="pillars-grid" id="homeCulinaryPreviewGrid">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+
+          <div style="text-align: center; margin-top: var(--space-3xl);">
+            <a href="#dining" class="btn btn-primary" data-route="#dining">
+              View All Dining Experiences & Menus →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Carousel Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Traveler Experiences</span>
+            <h2 class="section-title">Loved by Mindful Wanderers</h2>
+            <p class="section-subtitle">
+              Hear what happens when travel planning becomes effortless and authentic.
+            </p>
+          </div>
+
+          <div id="testimonialsContainer">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Section -->
+      <section class="section" style="background: linear-gradient(135deg, var(--secondary-teal) 0%, var(--secondary-teal-dark) 100%); color: white;">
+        <div class="container container-narrow" style="text-align: center;">
+          <span class="badge badge-gold" style="margin-bottom: 12px;">Conscious Travel Dispatch</span>
+          <h2 style="color: white; margin-bottom: 8px;">Secret Itineraries & Private Host Invitations</h2>
+          <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: var(--space-xl); max-width: 580px; margin-left: auto; margin-right: auto;">
+            Join 45,000+ conscious travelers. We send one monthly curation of newly verified rural retreats, seasonal culinary events, and off-grid guides.
+          </p>
+
+          <form id="homeNewsletterForm" style="display: flex; gap: 8px; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
+            <input type="email" required placeholder="Enter your email address" class="form-input" style="flex: 1; min-width: 260px; border-radius: var(--radius-full); padding: 14px 20px; background: white;" />
+            <button type="submit" class="btn btn-gold" style="border-radius: var(--radius-full); padding: 14px 28px;">
+              Join Community
+            </button>
+          </form>
+          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 10px;">
+            Zero spam. Unsubscribe anytime with one click.
+          </div>
+        </div>
+      </section>
+
+    </div><!-- End View 1 -->
+
+
+    <!-- ======================================================================
+         VIEW 2: DESTINATIONS GALLERY
+         ====================================================================== -->
+    <div id="view-destinations" class="view-section">
+      <section class="section">
+        <div class="container">
+          <div class="destinations-hero-banner">
+            <span class="badge badge-gold" style="margin-bottom: 8px;">Curated Indian Escapes</span>
+            <h1>Explore Extraordinary Regions of India</h1>
+            <p>From sacred cedar shrines in Himachal to royal citadels in Rajasthan and tranquil palm backwaters in Kerala, discover sanctuaries vetted for authenticity.</p>
+          </div>
+
+          <!-- Interactive Leaflet Map Container -->
+          <div class="destinations-map-card" style="margin-bottom: var(--space-xl);">
+            <div class="dest-map-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-terracotta, #C85A32); letter-spacing: 0.05em;">Interactive Geographic Explorer</span>
+                <h3 style="font-size: 1.25rem; margin: 2px 0 0;">Pan & Explore Curated Sanctuaries</h3>
+              </div>
+              <div style="display: flex; gap: 14px; font-size: 0.85rem; color: var(--text-muted); align-items: center;">
+                <span>📍 Terracotta Pins: Flagship Places</span>
+                <span>•</span>
+                <span>🟣 Clusters: Regional Clusters</span>
+              </div>
+            </div>
+            <div id="destinationsMap" style="height: 380px; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-light); z-index: 1;"></div>
+          </div>
+
+          <!-- Interactive Filter & Search Bar -->
+          <div class="filter-bar">
+            <div class="filter-categories">
+              <button class="filter-cat-btn active" data-cat="all">All Regions</button>
+              <button class="filter-cat-btn" data-cat="mountains">Mountains & Peaks</button>
+              <button class="filter-cat-btn" data-cat="beaches">Coastal & Island</button>
+              <button class="filter-cat-btn" data-cat="heritage">Royal Heritage</button>
+              <button class="filter-cat-btn" data-cat="rural">Rural & Offbeat</button>
+            </div>
+
+            <div class="search-box-inline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="destSearchInput" placeholder="Search destination or sights..." />
+            </div>
+          </div>
+
+          <!-- Destinations Cards Grid -->
+          <div class="destinations-grid" id="destinationsGalleryGrid">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+    </div><!-- End View 2 -->
+
+
+    <!-- ======================================================================
+         VIEW 3: HOTELS & STAYS
+         ====================================================================== -->
+    <div id="view-stays" class="view-section">
+      <section class="section">
+        <div class="container">
+          <div class="section-header" style="text-align: left; max-width: 100%; margin-bottom: var(--space-xl);">
+            <span class="section-tag">Verified Boutique Stays</span>
+            <h1 style="font-size: 2.4rem; margin-bottom: 4px;">Authentic Accommodations</h1>
+            <p class="section-subtitle">Every stay is directly hosted by verified local guardians, with zero corporate middlemen.</p>
+          <div id="experienceBundlesContainer" style="margin-bottom: var(--space-3xl);"></div>
+
+          <div class="stays-layout">
+            <!-- Sticky Sidebar Filters -->
+            <aside class="stays-sidebar">
+              <div class="filter-group">
+                <div class="filter-title">
+                  <span>Search Stays</span>
+                </div>
+                <input type="text" id="staySearchInput" class="form-input" placeholder="Keyword, city, host..." style="width: 100%;" />
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-title">
+                  <span>Max Price / Night</span>
+                  <span id="stayPriceValue" style="color: var(--primary-terracotta); font-weight: 700;">₹40,000</span>
+                </div>
+                <div class="range-slider-wrapper">
+                  <input type="range" id="stayPriceSlider" class="range-slider" min="3000" max="40000" step="1000" value="40000" />
+                  <div class="range-labels">
+                    <span>₹3,000</span>
+                    <span>₹20,000</span>
+                    <span>₹40,000+</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-title">
+                  <span>Property Type</span>
+                </div>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-type-filter" value="homestay" />
+                  <span>Heritage Homestay</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-type-filter" value="hotel" />
+                  <span>Boutique Hotel / Haveli</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-type-filter" value="chalet" />
+                  <span>Alpine Chalet</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-type-filter" value="villa" />
+                  <span>Clifftop Villa</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-type-filter" value="resort" />
+                  <span>Eco Bamboo Resort</span>
+                </label>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-title">
+                  <span>Amenities</span>
+                </div>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-amenity-filter" value="WiFi" />
+                  <span>High-Speed WiFi</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-amenity-filter" value="Breakfast" />
+                  <span>Farm Breakfast Included</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-amenity-filter" value="Pool" />
+                  <span>Swimming Pool</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-amenity-filter" value="View" />
+                  <span>Mountain / Sea View</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-amenity-filter" value="Fireplace" />
+                  <span>Fireplace / Wood Stove</span>
+                </label>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-title">
+                  <span>Cancellation Policy</span>
+                </div>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-cancel-filter" value="flexible" />
+                  <span>Flexible (24h Full Refund)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-cancel-filter" value="moderate" />
+                  <span>Moderate (5 Days Full Refund)</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="stay-cancel-filter" value="strict" />
+                  <span>Strict (50% Refund)</span>
+                </label>
+              </div>
+
+              <button id="resetStayFiltersBtn" class="btn btn-outline btn-sm" style="width: 100%;">
+                Reset All Filters
+              </button>
+            </aside>
+
+            <!-- Stays Grid Column -->
+            <div class="stays-main-col">
+              <div class="stays-top-bar">
+                <div class="stays-count-text">
+                  Showing <strong id="staysCountNumber">9</strong> verified sanctuaries
+                </div>
+
+                <div class="sort-select-wrapper">
+                  <label for="staySortSelect">Sort by:</label>
+                  <select id="staySortSelect" class="sort-select">
+                    <option value="recommended">Recommended Curations</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Traveler Rating</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="stays-grid" id="staysListingGrid">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div><!-- End View 3 -->
+
+
+    <!-- ======================================================================
+         VIEW 4: LOCAL CUISINE & DINING
+         ====================================================================== -->
+    <div id="view-dining" class="view-section">
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Generational Flavors</span>
+            <h1 class="section-title">Thematic Culinary Experiences</h1>
+            <p class="section-subtitle">
+              Food is the heart of culture. We celebrate four distinctive dining worlds created with heirloom techniques, farm-fresh ingredients, and unforgettable ambiance.
+            </p>
+          </div>
+
+          <div id="culinaryThemesContainer">
+            <!-- Populated dynamically by app.js with 4 themed sections -->
+          </div>
+        </div>
+      </section>
+    </div><!-- End View 4 -->
+
+
+    <!-- ======================================================================
+         VIEW 5: AI ITINERARY PLANNER
+         ====================================================================== -->
+    <div id="view-planner" class="view-section">
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">AI Travel Architect</span>
+            <h1 class="section-title">Design Your Tailored Itinerary</h1>
+            <p class="section-subtitle">
+              Tell our AI where and how you want to travel. We’ll generate a balanced, realistic schedule with authentic sights, local dining, and exact daily costs.
+            </p>
+          </div>
+
+          <!-- Interactive Planner Form Card -->
+          <div class="planner-card">
+            <form id="aiPlannerForm">
+              <div class="planner-form-grid">
+                <!-- Destination -->
+                <div class="form-field">
+                  <label class="form-label" for="plannerDestSelect">Destination</label>
+                  <select id="plannerDestSelect" class="form-select">
+                    <option value="dest-manali" selected>Manali & Solang Valley, Himachal</option>
+                    <option value="dest-leh-ladakh">Leh-Ladakh & Nubra Valley</option>
+                    <option value="dest-udaipur">Udaipur & Lake Pichola, Rajasthan</option>
+                    <option value="dest-jaipur">Jaipur & Amer Fort, Rajasthan</option>
+                    <option value="dest-goa">Goa & Fontainhas Coast</option>
+                    <option value="dest-munnar">Munnar & Western Ghats, Kerala</option>
+                    <option value="dest-hampi">Hampi & Vijayanagara, Karnataka</option>
+                    <option value="dest-darjeeling">Darjeeling & Kanchenjunga</option>
+                    <option value="dest-spiti">Spiti Valley & Kaza, Himachal</option>
+                    <option value="dest-andaman">Havelock & Andaman Islands</option>
+                  </select>
+                </div>
+
+                <!-- Number of Days -->
+                <div class="form-field">
+                  <label class="form-label">Duration</label>
+                  <div class="chips-selector">
+                    <button type="button" class="chip-choice planner-day-chip selected" data-days="3">3 Days</button>
+                    <button type="button" class="chip-choice planner-day-chip" data-days="5">5 Days</button>
+                    <button type="button" class="chip-choice planner-day-chip" data-days="7">7 Days</button>
+                    <button type="button" class="chip-choice planner-day-chip" data-days="10">10 Days</button>
+                  </div>
+                </div>
+
+                <!-- Budget Tier -->
+                <div class="form-field">
+                  <label class="form-label" for="plannerBudgetSelect">Budget Tier</label>
+                  <select id="plannerBudgetSelect" class="form-select">
+                    <option value="backpacker">Budget / Mindful Explorer (₹4,000–₹7,000/day)</option>
+                    <option value="boutique" selected>Comfort Boutique (₹9,000–₹14,000/day)</option>
+                    <option value="luxury">Royal Luxury Sanctuary (₹18,000–₹28,000/day)</option>
+                  </select>
+                </div>
+
+                <!-- Travel Pace -->
+                <div class="form-field">
+                  <label class="form-label" for="plannerPaceSelect">Travel Pace</label>
+                  <select id="plannerPaceSelect" class="form-select">
+                    <option value="relaxed">Slow & Immersive (1-2 sights/day)</option>
+                    <option value="balanced" selected>Balanced Discovery (2-3 sights/day)</option>
+                    <option value="fast">High-Energy Explorer (Full days)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Interests Multi-select -->
+              <div class="form-field" style="margin-bottom: var(--space-xl);">
+                <label class="form-label">Core Travel Interests (Select all that call to you)</label>
+                <div class="chips-selector">
+                  <button type="button" class="chip-choice planner-interest-chip selected" data-interest="culture">🏛️ Culture & Heritage</button>
+                  <button type="button" class="chip-choice planner-interest-chip selected" data-interest="food">🍲 Epicurean / Foodie</button>
+                  <button type="button" class="chip-choice planner-interest-chip" data-interest="nature">🌲 Eco & Nature Trails</button>
+                  <button type="button" class="chip-choice planner-interest-chip" data-interest="adventure">🧗 Active Adventure</button>
+                  <button type="button" class="chip-choice planner-interest-chip" data-interest="wellness">🧘 Wellness & Relaxation</button>
+                </div>
+              </div>
+
+              <div style="text-align: center;">
+                <button type="submit" id="generateItineraryBtn" class="btn btn-primary btn-lg">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  Generate My Dream Itinerary
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Generated Itinerary Result Container -->
+          <div class="itinerary-output" id="itineraryOutput">
+            <!-- Populated dynamically by planner.js -->
+          </div>
+        </div>
+      </section>
+    </div><!-- End View 5 -->
+
+
+    <!-- ======================================================================
+         VIEW 6: ABOUT & SUSTAINABILITY
+         ====================================================================== -->
+    <div id="view-about" class="view-section">
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Conscious Tourism</span>
+            <h1 class="section-title">Bridging Mindful Travelers & Local Heritage</h1>
+            <p class="section-subtitle">
+              Mass tourism extracts wealth from local communities while exhausting travelers with fragmented apps. Travel Nexus was born to rewrite that script.
+            </p>
+          </div>
+
+          <!-- Animated Stats Milestone Banner -->
+          <div class="stats-banner">
+            <div class="stats-grid">
+              <div class="stat-item">
+                <h3 data-target-count="500" data-suffix="+">500+</h3>
+                <p>Verified Local Stays</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-target-count="50" data-suffix="+">50+</h3>
+                <p>Rural Villages Empowered</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-target-count="10000" data-suffix="+">10,000+</h3>
+                <p>Happy Conscious Travelers</p>
+              </div>
+              <div class="stat-item">
+                <h3 data-target-count="10" data-prefix="₹" data-suffix=" Cr+">₹10 Cr+</h3>
+                <p>Infused Directly into Communities</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Pillars of Sustainable Hospitality -->
+          <div class="sustainability-pillars">
+            <div class="sust-card">
+              <h3>1. Zero Host Commissions</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body);">Traditional aggregators take up to 25–30% of host earnings. We charge 0% commission to verified rural homestays and family kitchens, ensuring host families retain full fruits of their work.</p>
+            </div>
+            <div class="sust-card">
+              <h3>2. Heritage Preservation</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body);">From Kyoto machiya woodworkers to Oaxacan clay potters, every booking funds master apprentice programs that keep centuries-old ancestral crafts alive for the next generation.</p>
+            </div>
+            <div class="sust-card">
+              <h3>3. Anti-Overtourism</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body);">Our AI planner intentionally disperses traveler footprints, recommending off-peak hours and secluded countryside hamlets rather than funneling crowds into fragile city centers.</p>
+            </div>
+            <div class="sust-card">
+              <h3>4. Environmental Stewardship</h3>
+              <p style="font-size: 0.9rem; color: var(--text-body);">100% of our featured chalets, homestays, and farm kitchens follow zero single-use plastic mandates, solar energy assistance, and organic composting standards.</p>
+            </div>
+          </div>
+
+          <!-- Host Spotlight Feature -->
+          <div class="host-spotlight">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Local host Keiko in Kyoto garden" />
+            <div>
+              <span class="badge badge-terracotta" style="margin-bottom: 8px;">Host Spotlight</span>
+              <h2 style="font-size: 1.85rem; margin-bottom: 6px;">"Travelers don't just stay in our machiya; they become part of our family story."</h2>
+              <p style="font-size: 1rem; color: var(--text-dark); margin-bottom: var(--space-md); line-height: 1.6;">
+                "For four generations, my ancestors ran a silk weaving studio in Gion. When modern hotels crowded out our street, big corporate booking sites demanded impossible fees. Travel Nexus connected us with respectful global travelers who cherish our wooden tatami rooms and join us for morning matcha. It kept our family home alive."
+              </p>
+              <div style="font-weight: 700; color: var(--text-dark);">Keiko & Haruto</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Custodians of The Gion Machiya Sanctuary, Kyoto</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div><!-- End View 6 -->
+
+
+    <!-- ======================================================================
+         VIEW 7: CONTACT & SUPPORT
+         ====================================================================== -->
+    <div id="view-contact" class="view-section">
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag">Traveler Support</span>
+            <h1 class="section-title">We’re Here for Your Journey</h1>
+            <p class="section-subtitle">
+              Have questions about booking a stay, organizing a local guide, or joining as a host? Reach out to our human concierge team.
+            </p>
+          </div>
+
+          <div class="contact-layout">
+            <!-- Contact Form Card -->
+            <div class="contact-card">
+              <h3 style="font-size: 1.35rem; margin-bottom: var(--space-sm);">Send Us a Message</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-lg);">
+                Our average response time is under 2 hours.
+              </p>
+
+              <form id="contactForm" class="contact-form">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+                  <div class="form-field">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" required placeholder="Elena Rostova" class="form-input" />
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" required placeholder="elena@example.com" class="form-input" />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label">Subject</label>
+                  <select class="form-select">
+                    <option value="booking">Booking Assistance / Inquiry</option>
+                    <option value="host">Join Travel Nexus as a Local Host</option>
+                    <option value="custom">Custom AI Itinerary Consultation</option>
+                    <option value="press">Press & Partnerships</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-label">Your Message</label>
+                  <textarea rows="4" required placeholder="Tell us how we can help plan your next conscious trip..." class="form-input" style="resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="padding: 14px;">
+                  Send Inquiry
+                </button>
+              </form>
+            </div>
+
+            <!-- Regional Hubs & Interactive Map Preview -->
+            <div>
+              <div class="contact-card" style="margin-bottom: var(--space-xl);">
+                <h3 style="font-size: 1.25rem; margin-bottom: var(--space-md);">Traveler Concierge Desks</h3>
+                <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.9rem;">
+                  <div>
+                    <strong>North & Himalayan Concierge Hub:</strong><br />
+                    <span style="color: var(--text-muted);">Old Manali & New Delhi · conciergenorth@travelnexus.com</span>
+                  </div>
+                  <div>
+                    <strong>South & Coastal Concierge Hub:</strong><br />
+                    <span style="color: var(--text-muted);">Fort Kochi & Fontainhas, Goa · conciergesouth@travelnexus.com</span>
+                  </div>
+                  <div>
+                    <strong>Emergency 24/7 Hotline:</strong><br />
+                    <span style="color: var(--primary-terracotta); font-weight: 700;">+91 (800) 420-NEXUS / +91 11 2345 0192</span>
+                  </div>
+                </div>
+
+                <!-- Interactive Community Map Preview -->
+                <div class="mock-map-box">
+                  <div class="map-pin" style="top: 25%; left: 45%;" onclick="window.modalManager.openDestinationModal('dest-manali')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary-terracotta)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path></svg>
+                    <span class="pin-label">Manali</span>
+                  </div>
+                  <div class="map-pin" style="top: 45%; left: 35%;" onclick="window.modalManager.openDestinationModal('dest-udaipur')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-gold-dark)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path></svg>
+                    <span class="pin-label">Udaipur</span>
+                  </div>
+                  <div class="map-pin" style="top: 65%; left: 40%;" onclick="window.modalManager.openDestinationModal('dest-goa')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--secondary-teal)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path></svg>
+                    <span class="pin-label">Goa</span>
+                  </div>
+                  <div class="map-pin" style="top: 80%; left: 48%;" onclick="window.modalManager.openDestinationModal('dest-munnar')">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary-terracotta)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path></svg>
+                    <span class="pin-label">Munnar</span>
+                  </div>
+                  <div style="position: absolute; bottom: 12px; font-size: 0.75rem; color: var(--text-muted); background: rgba(255,255,255,0.85); padding: 4px 10px; border-radius: var(--radius-full);">
+                    Tap any regional hub pin to explore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Accordion -->
+          <div style="margin-top: var(--space-4xl);">
+            <div class="section-header">
+              <span class="section-tag">Frequently Asked Questions</span>
+              <h2 class="section-title">Everything You Need to Know</h2>
+            </div>
+
+            <div class="faq-accordion" id="faqAccordionContainer" style="max-width: 840px; margin: 0 auto;">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div><!-- End View 7 -->
+
+    <!-- ======================================================================
+         VIEW 8: ALL 36 INDIAN STATES & UNION TERRITORIES DIRECTORY
+         ====================================================================== -->
+    <div id="view-states" class="view-section"></div>
+
+    <!-- ======================================================================
+         VIEW 9: STATE OPEN HERITAGE DETAIL & TOP 10 PLACES
+         ====================================================================== -->
+    <div id="view-state-detail" class="view-section"></div>
+
+    <!-- ======================================================================
+         VIEW 10: BECOME A HOST / LISTING ONBOARDING
+         ====================================================================== -->
+    <div id="view-become-host" class="view-section"></div>
+
+    <!-- ======================================================================
+         VIEW 11: USER AUTHENTICATION (SIGN IN & REGISTER)
+         ====================================================================== -->
+    <div id="view-login" class="view-section"></div>
+
+    <!-- ======================================================================
+         VIEW 12: USER ACCOUNT DASHBOARD
+         ====================================================================== -->
+    <div id="view-account" class="view-section"></div>
+
+    <!-- ======================================================================
+         VIEW 13: ADMIN MODERATION DASHBOARD (ROLE-PROTECTED)
+         ====================================================================== -->
+    <div id="view-admin" class="view-section"></div>
+
+    <!-- ======================================================================
+         VIEW 14: INDIA E-VISA ELIGIBILITY & OFFICIAL PORTAL DIRECTORY
+         ====================================================================== -->
+    <div id="view-evisa" class="view-section">
+      <section class="section">
+        <div class="container" style="max-width: 860px;">
+          <div class="section-header">
+            <span class="section-tag">Government of India Guidelines</span>
+            <h1 class="section-title">India e-Visa Eligibility & Advisory</h1>
+            <p class="section-subtitle">
+              Plan your domestic Indian journey with confidence. Check requirements, validity types, and access the official Ministry of Home Affairs portal directly.
+            </p>
+          </div>
+
+          <div class="evisa-checker-card" style="background: white; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); margin-bottom: 30px;">
+            <div class="form-group" style="margin-bottom: 24px;">
+              <label class="form-label" for="evisaCountrySelect" style="font-weight: 700;">Select Your Passport Issuing Country / Region</label>
+              <select id="evisaCountrySelect" class="form-control" onchange="window.handleVisaCountryChange(this.value)" style="font-size: 1rem; padding: 12px;">
+                <option value="US">🇺🇸 United States of America</option>
+                <option value="GB">🇬🇧 United Kingdom</option>
+                <option value="DE">🇩🇪 Germany</option>
+                <option value="FR">🇫🇷 France</option>
+                <option value="AU">🇦🇺 Australia</option>
+                <option value="CA">🇨🇦 Canada</option>
+                <option value="SG">🇸🇬 Singapore</option>
+                <option value="AE">🇦🇪 United Arab Emirates</option>
+                <option value="JP">🇯🇵 Japan</option>
+                <option value="NL">🇳🇱 Netherlands</option>
+                <option value="IT">🇮🇹 Italy</option>
+                <option value="ES">🇪🇸 Spain</option>
+                <option value="SE">🇸🇪 Sweden</option>
+                <option value="CH">🇨🇭 Switzerland</option>
+                <option value="NZ">🇳🇿 New Zealand</option>
+                <option value="MY">🇲🇾 Malaysia</option>
+                <option value="OTHER">🌍 Other Eligible Countries (165+ Nations)</option>
+              </select>
+            </div>
+
+            <div id="evisaStatusOutput" class="evisa-status-box" style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: var(--radius-md); padding: 24px; margin-bottom: 24px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span style="font-size: 1.5rem;">✅</span>
+                <div>
+                  <strong style="color: #166534; font-size: 1.1rem;" id="evisaCountryTitle">Eligible for India e-Tourist Visa</strong>
+                  <div style="font-size: 0.85rem; color: #15803D;">Standard processing turnaround: 72 hours (3 business days)</div>
+                </div>
+              </div>
+
+              <div class="evisa-types-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 18px;">
+                <div style="background: white; border: 1px solid #BBF7D0; border-radius: var(--radius-sm); padding: 14px;">
+                  <strong style="display: block; color: var(--text-dark); margin-bottom: 4px;">30-Day e-Tourist Visa</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 6px;">Double entry valid for 30 days from date of first arrival in India.</p>
+                  <span class="badge badge-teal" style="font-size: 0.72rem;">Jul–Mar: $25 / Apr–Jun: $10</span>
+                </div>
+                <div style="background: white; border: 1px solid #BBF7D0; border-radius: var(--radius-sm); padding: 14px;">
+                  <strong style="display: block; color: var(--text-dark); margin-bottom: 4px;">1-Year e-Tourist Visa</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 6px;">Multiple entries, max continuous stay of 90-180 days per visit.</p>
+                  <span class="badge badge-gold" style="font-size: 0.72rem;">Fee: ~$40 USD</span>
+                </div>
+                <div style="background: white; border: 1px solid #BBF7D0; border-radius: var(--radius-sm); padding: 14px;">
+                  <strong style="display: block; color: var(--text-dark); margin-bottom: 4px;">5-Year e-Tourist Visa</strong>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 6px;">Multiple entries across five full calendar years for frequent travelers.</p>
+                  <span class="badge badge-teal" style="font-size: 0.72rem;">Fee: ~$80 USD</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- MANDATORY CHECKLIST -->
+            <div style="margin-bottom: 24px;">
+              <h3 style="font-size: 1.05rem; margin-bottom: 12px;">Mandatory Application Documents</h3>
+              <ul style="display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: var(--text-dark);">
+                <li>✓ Passport must have at least 6 months validity from arrival date and 2 blank pages.</li>
+                <li>✓ Clear digital scan of passport biographical page (PDF or JPG format).</li>
+                <li>✓ Recent passport photo (square, plain white background, front-facing).</li>
+                <li>✓ Return flight ticket or onward domestic journey itinerary.</li>
+              </ul>
+            </div>
+
+            <!-- SECURITY FRAUD WARNING BANNER -->
+            <div style="background: #FEF3C7; border: 1px solid #FCD34D; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 28px;">
+              <div style="display: flex; gap: 12px;">
+                <span style="font-size: 1.4rem;">⚠️</span>
+                <div>
+                  <strong style="color: #92400E; font-size: 0.95rem;">Official Advisory: Avoid Unofficial Agency Scams</strong>
+                  <p style="color: #78350F; font-size: 0.82rem; margin: 4px 0 0; line-height: 1.4;">
+                    Dozens of clone websites charge travelers $150–$300 for basic form submissions. The Government of India only operates one official website at <strong>indianvisaonline.gov.in</strong>. Travel Nexus does not charge any visa processing fee and directs you straight to the authentic portal.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- OFFICIAL CTA -->
+            <div style="text-align: center;">
+              <a href="https://indianvisaonline.gov.in/evisa/tvoa.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="display: inline-flex; align-items: center; gap: 8px;">
+                <span>Apply on Official Govt of India Portal</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Story -->
+        <div class="footer-brand">
+          <div class="flex items-center gap-xs" style="margin-bottom: 12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-terracotta-light)" stroke-width="2.2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            <h3 style="margin-bottom: 0;">Travel Nexus</h3>
+          </div>
+          <p>
+            The conscious tourism & hospitality platform uniting boutique homestays, authentic regional cuisine, local guides, and AI itinerary architecture into one seamless home.
+          </p>
+          <div style="margin-top: 16px; font-size: 0.8rem; color: var(--accent-gold-light);">
+            ✦ 100% Carbon-Neutral Digital Platform
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="footer-col">
+          <h4>Explore Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#destinations" class="footer-link" data-route="#destinations">Curated Destinations</a></li>
+            <li><a href="#stays" class="footer-link" data-route="#stays">Verified Boutique Stays</a></li>
+            <li><a href="#dining" class="footer-link" data-route="#dining">Themed Culinary Dining</a></li>
+            <li><a href="#planner" class="footer-link" data-route="#planner">AI Itinerary Architect</a></li>
+            <li><a href="#about" class="footer-link" data-route="#about">Our Sustainability Pledge</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Culinary Journeys -->
+        <div class="footer-col">
+          <h4>Culinary Worlds</h4>
+          <ul class="footer-links">
+            <li><a href="#dining" class="footer-link" data-route="#dining">Rustic Village Kitchen</a></li>
+            <li><a href="#dining" class="footer-link" data-route="#dining">Coastal Catch Shack</a></li>
+            <li><a href="#dining" class="footer-link" data-route="#dining">Heritage Fine Dine</a></li>
+            <li><a href="#dining" class="footer-link" data-route="#dining">Street Food Trail Bazaar</a></li>
+            <li><a href="#contact" class="footer-link" data-route="#contact">Become a Food Partner</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter & Apps -->
+        <div class="footer-col">
+          <h4>Stay Connected</h4>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 8px;">
+            Receive secret retreat releases and local chef recipes directly in your inbox.
+          </p>
+          <form id="footerNewsletterForm" class="footer-newsletter-form">
+            <input type="email" required placeholder="Enter your email" class="footer-input" />
+            <button type="submit" class="btn btn-primary btn-sm" style="padding: 10px 18px;">
+              Subscribe
+            </button>
+          </form>
+          <div style="margin-top: 18px; display: flex; gap: 10px;">
+            <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 12px; font-size: 0.72rem; color: rgba(255,255,255,0.85);">
+              📱 iOS App Available
+            </div>
+            <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 12px; font-size: 0.72rem; color: rgba(255,255,255,0.85);">
+              🤖 Android App Available
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          © 2026 Travel Nexus Hospitality Inc. · Official Domestic Tourism Ecosystem Partner · 0% Host Commission Charter
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+          <a href="#about" data-route="#about" class="footer-link">Privacy Policy</a>
+          <a href="#about" data-route="#about" class="footer-link">Terms of Service</a>
+          <a href="#about" data-route="#about" class="footer-link">Host Standards</a>
+          <a href="#contact" data-route="#contact" class="footer-link">Support Desk</a>
+          <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; color: var(--accent-gold); border: 1px solid rgba(212, 163, 115, 0.4); padding: 2px 8px; border-radius: var(--radius-full);">
+            🇮🇳 Certified Tourism Partner
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================================================
+       MODALS & SLIDE-OVER DRAWERS
+       ======================================================================== -->
+
+  <!-- 1. Stay Booking & Detail Modal -->
+  <div class="modal-overlay" id="stayBookingModal" role="dialog" aria-modal="true" aria-labelledby="stayModalTitle">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="window.modalManager.closeAllModals()" aria-label="Close dialog">✕</button>
+      <div id="stayModalBody">
+        <!-- Rendered by modals.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Table Reservation Modal -->
+  <div class="modal-overlay" id="tableReservationModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <button class="modal-close-btn" onclick="window.modalManager.closeAllModals()" aria-label="Close dialog">✕</button>
+      <div id="tableModalBody">
+        <!-- Rendered by modals.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Destination Detail Deep Dive Modal -->
+  <div class="modal-overlay" id="destinationDetailModal" role="dialog" aria-modal="true">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <button class="modal-close-btn" onclick="window.modalManager.closeAllModals()" aria-label="Close dialog">✕</button>
+      <div id="destModalBody">
+        <!-- Rendered by modals.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Wishlist Slide-Over Drawer -->
+  <div class="wishlist-drawer" id="wishlistDrawer" aria-label="Saved Wishlist Drawer">
+    <div class="wishlist-header">
+      <div class="flex items-center gap-xs">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--primary-terracotta)">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        <h3 style="font-size: 1.15rem; margin-bottom: 0;">Your Saved Journeys</h3>
+      </div>
+      <button class="modal-close-btn" id="closeWishlistDrawerBtn" style="position: static;" aria-label="Close drawer">✕</button>
+    </div>
+    <div class="wishlist-body" id="wishlistDrawerBody">
+      <!-- Rendered by modals.js -->
+    </div>
+    <div style="padding: var(--space-md); border-top: 1px solid var(--border-light);">
+      <a href="#planner" class="btn btn-primary" style="width: 100%; padding: 12px;" onclick="window.wishlistManager.close();" data-route="#planner">
+        Build AI Plan with Saved Items
+      </a>
+    </div>
+  </div>
+
+  <!-- 5. Floating Live Concierge Chat Widget ("Nexus AI") -->
+  <div class="chat-widget-wrapper">
+    <!-- Chat Trigger Button -->
+    <div class="chat-trigger-btn" id="chatTriggerBtn" title="Chat with Nexus AI Concierge">
+      <span class="chat-badge-dot"></span>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </div>
+
+    <!-- Chat Window Container -->
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">NA</div>
+          <div>
+            <h4>Nexus AI Concierge</h4>
+            <div class="chat-status">
+              <span class="chat-live-pulse-dot"></span>
+              Real-Time · 24/7 Domestic Guide
+            </div>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button id="chatTtsToggleBtn" class="chat-tool-btn" title="Toggle Real-Time Voice Narration (TTS)" aria-label="Toggle Voice Narration">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </button>
+          <button id="chatExportBtn" class="chat-tool-btn" title="Export Itinerary (Markdown)" aria-label="Export Itinerary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
+          <button id="chatClearBtn" class="chat-tool-btn" title="Clear Chat History" aria-label="Clear Chat History">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+          </button>
+          <button id="chatCloseBtn" class="chat-tool-btn chat-close-tool-btn" title="Close Chat" aria-label="Close chat">✕</button>
+        </div>
+      </div>
+
+      <!-- Quick Category Filter Strip -->
+      <div class="chat-category-strip" id="chatCategoryStrip">
+        <button class="chat-cat-tab active" data-cat="all">✨ All</button>
+        <button class="chat-cat-tab" data-cat="weather">🌤️ Weather</button>
+        <button class="chat-cat-tab" data-cat="stays">🏨 Stays</button>
+        <button class="chat-cat-tab" data-cat="food">🍲 Food</button>
+        <button class="chat-cat-tab" data-cat="currency">💱 Currency</button>
+        <button class="chat-cat-tab" data-cat="trains">🚆 Trains</button>
+      </div>
+
+      <!-- Messages Stream -->
+      <div class="chat-messages" id="chatMessages">
+        <!-- Rendered by chat.js -->
+      </div>
+
+      <!-- Quick Action Prompt Chips (Filtered dynamically by category) -->
+      <div class="chat-chips" id="chatChipsContainer">
+        <!-- Populated dynamically by chat.js -->
+      </div>
+
+      <!-- Chat Input Field with Real-Time Speech-to-Text Microphone -->
+      <div class="chat-input-row">
+        <button id="chatMicBtn" class="chat-mic-btn" title="Voice Input (Speech-to-Text)" aria-label="Voice Input">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="23"></line>
+            <line x1="8" y1="23" x2="16" y2="23"></line>
+          </svg>
+        </button>
+        <input type="text" id="chatInput" class="chat-input" placeholder="Ask live weather, stays, food, currency..." />
+        <button id="chatSendBtn" class="chat-send-btn" aria-label="Send message">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================================
+       SCRIPTS & DEPENDENCIES
+       ======================================================================== -->
+  <!-- Leaflet & MarkerCluster JS -->
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <!-- Travel Nexus Data & Curated Content -->
+  <script defer src="js/data.js"></script>
+  <script defer src="js/states-data.js"></script>
+
+  <!-- Feature Controllers -->
+  <script defer src="js/map.js"></script>
+  <script defer src="js/filters.js"></script>
+  <script defer src="js/planner.js"></script>
+  <script defer src="js/modals.js"></script>
+  <script defer src="js/states.js"></script>
+  <script defer src="js/host.js"></script>
+  <script defer src="js/firebase-service.js"></script>
+  <script defer src="js/auth.js"></script>
+  <script defer src="js/admin.js"></script>
+  <script defer src="js/router.js"></script>
+  <script defer src="js/chat.js"></script>
+  <script defer src="js/scroll-reveal.js"></script>
+  <script defer src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(err => {
+          console.debug('Service Worker registration skipped:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

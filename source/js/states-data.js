@@ -1,0 +1,2130 @@
+/**
+ * Travel Nexus - Authentic Indian States & Union Territories
+ * Complete data model for all 36 States and Union Territories of India.
+ * Includes flagship deep-dives for Karnataka, Kerala, Rajasthan, Himachal Pradesh, and Goa
+ * with authentic top-10 destination card shapes and coordinates.
+ */
+
+const STATES_DATA = [
+  {
+    "name": "Karnataka",
+    "slug": "karnataka",
+    "type": "State",
+    "capital": "Bengaluru",
+    "bannerImage": "images/india/karnataka/banner.jpg",
+    "description": "From the majestic stone boulder ruins of Vijayanagara to the misty coffee plantations of Kodagu and pristine Arabian Sea beaches, Karnataka is a kaleidoscope of royal heritage, biodiverse rainforests, and vibrant coastal culture.",
+    "iconicSite": {
+      "name": "Hampi Stone Chariot & Vijayanagara Complex",
+      "image": "images/india/karnataka/iconic.jpg",
+      "description": "Carved from monolithic granite blocks in the 16th century inside the sacred Vittala temple complex, the chariot represents Garuda facing the sanctum. An immortal symbol of Dravidian architecture amidst the surreal boulder-strewn landscape along the Tungabhadra River.",
+      "period": "14th – 16th Century CE",
+      "location": "Hampi, Vijayanagara District"
+    },
+    "places": [
+      {
+        "id": "ka-hampi",
+        "name": "Hampi & Vijayanagara",
+        "region": "Karnataka, India",
+        "category": "heritage",
+        "tagline": "Granite boulder marvels, riverside stone temples, and glorious royal ruins",
+        "image": "images/india/karnataka/hampi.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.96,
+        "reviewsCount": 520,
+        "startingPrice": 2800,
+        "alt": "Vittala Temple stone chariot standing against blue sky in Hampi",
+        "topAttractions": [
+          "Stone Chariot at Vittala Temple",
+          "Virupaksha Riverside Sanctuary",
+          "Sunset at Matanga Hill"
+        ],
+        "description": "The capital of the glorious Vijayanagara Empire, Hampi's surreal landscape of balanced granite boulders and sacred riverbanks houses over 1,600 surviving monuments of timeless Dravidian artistry.",
+        "highlights": [
+          "Dawn climb atop Matanga Hill for 360-degree panorama",
+          "Coracle boat ride across Tungabhadra River rapids",
+          "Exploring the underground Shiva temple and royal enclosures"
+        ],
+        "climate": "Semi-arid with warm sunny days and pleasant breezy evenings in winter",
+        "localTip": "Rent a bicycle or lightweight scooter in Sanapur on the hippie island for stunning sunset cliff views.",
+        "coordinates": [
+          15.335,
+          76.46
+        ]
+      },
+      {
+        "id": "ka-coorg",
+        "name": "Coorg (Kodagu)",
+        "region": "Karnataka, India",
+        "category": "mountains",
+        "tagline": "Misty coffee slopes, fragrant cardamom groves, and rich Kodava heritage",
+        "image": "images/india/karnataka/coorg.jpg",
+        "bestTime": "Oct – Apr",
+        "rating": 4.92,
+        "reviewsCount": 460,
+        "startingPrice": 3400,
+        "alt": "Rolling emerald green coffee plantation shrouded in morning mist in Coorg",
+        "topAttractions": [
+          "Abbey Falls Cascade",
+          "Raja's Seat Sunset Pavilion",
+          "Namdroling Golden Temple Bylakuppe"
+        ],
+        "description": "Known as the Scotland of India, Coorg is an aromatic hill district carpeted in emerald coffee estates, silver oak trees wrapped in black pepper vines, and deep-seated warrior culinary traditions.",
+        "highlights": [
+          "Tasting traditional Kodava Pandi Curry and Akki Roti at an ancestral homestay",
+          "Walking with an estate planter through blooming arabica coffee bushes",
+          "Visiting the tranquil Tibetan settlement at Bylakuppe"
+        ],
+        "climate": "Cool montane climate with heavy monsoon drizzles and crisp autumns",
+        "localTip": "Pick up authentic Kodagu bird's eye chillies and unprocessed wild flower honey from Madikeri market.",
+        "coordinates": [
+          12.4244,
+          75.7382
+        ]
+      },
+      {
+        "id": "ka-mysuru",
+        "name": "Mysuru (Mysore)",
+        "region": "Karnataka, India",
+        "category": "heritage",
+        "tagline": "Gilded royal palaces, fragrant sandalwood bazaars, and silk traditions",
+        "image": "images/india/karnataka/mysuru.jpg",
+        "bestTime": "Sep – Mar",
+        "rating": 4.9,
+        "reviewsCount": 410,
+        "startingPrice": 2600,
+        "alt": "Mysore Palace illuminated with nearly 100,000 incandescent lamps on Sunday evening",
+        "topAttractions": [
+          "Amba Vilas Palace Grand Illumination",
+          "Chamundi Hill Chamundeshwari Temple",
+          "Devaraja Heritage Market"
+        ],
+        "description": "The royal cultural capital of Karnataka, Mysuru echoes with regal splendour. Famous for its Indo-Saracenic royal palace, aromatic jasmine blossoms, handwoven Mulberry silks, and rich Mysore Pak sweets.",
+        "highlights": [
+          "Witnessing the Sunday night illumination of Mysore Palace with 97,000 light bulbs",
+          "Walking through the color mounds and sandalwood oils of Devaraja Market",
+          "Sampling authentic Mysore Masala Dosa roasted with pure local ghee"
+        ],
+        "climate": "Mild tropical savanna climate with gentle breezes year-round",
+        "localTip": "Reach the palace gate by 6:30 PM on Sundays to secure a front lawn viewing spot for the sound and light switch-on.",
+        "coordinates": [
+          12.2958,
+          76.6394
+        ]
+      },
+      {
+        "id": "ka-gokarna",
+        "name": "Gokarna Coast",
+        "region": "Karnataka, India",
+        "category": "beaches",
+        "tagline": "Crescent-shaped sacred beaches, tranquil clifftop trails, and soulful tides",
+        "image": "images/india/karnataka/gokarna.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.88,
+        "reviewsCount": 380,
+        "startingPrice": 2200,
+        "alt": "Om-shaped rocky golden sandy beach with turquoise waves in Gokarna",
+        "topAttractions": [
+          "Om Beach Natural Formations",
+          "Kudle Beach Sunset Cafes",
+          "Mahabaleshwar Sacred Temple"
+        ],
+        "description": "A serene coastal sanctuary where forested Western Ghat hills plunge straight into the Arabian Sea. Gokarna balances centuries-old temple rituals with peaceful, bohemian cliff walks connecting secluded crescent shores.",
+        "highlights": [
+          "Trekking the 5-beach clifftop trail from Kudle to Paradise Beach",
+          "Watching bioluminescent phytoplankton on dark new moon nights at Half Moon Bay",
+          "Listening to evening temple bells mingling with rhythmic ocean surf"
+        ],
+        "climate": "Warm tropical coastal climate with refreshing evening sea breezes",
+        "localTip": "Carry sturdy footwear for the cliff hike between Om Beach and Half Moon Beach as the rocks can be steep.",
+        "coordinates": [
+          14.5479,
+          74.3188
+        ]
+      },
+      {
+        "id": "ka-badami",
+        "name": "Badami & Pattadakal",
+        "region": "Karnataka, India",
+        "category": "heritage",
+        "tagline": "Rock-cut sandstone cave sanctuaries and cradle of Chalukyan temple architecture",
+        "image": "images/india/karnataka/badami.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.89,
+        "reviewsCount": 310,
+        "startingPrice": 2500,
+        "alt": "Red sandstone rock-cut cave temples overlooking Agastya Lake in Badami",
+        "topAttractions": [
+          "Badami Cave Temples (1-4)",
+          "Bhutanatha Temple by Agastya Lake",
+          "Pattadakal UNESCO Temple Complex"
+        ],
+        "description": "Once the fortified regal capital of the early Chalukya dynasty, Badami is renowned for its rust-red sandstone cliff caves overlooking serene Agastya Lake, accompanied nearby by UNESCO World Heritage temples at Pattadakal.",
+        "highlights": [
+          "Admiring the 18-armed dancing Shiva Nataraja relief inside Cave 1",
+          "Photographing Bhutanatha Temple reflecting in the waters of Agastya Lake at twilight",
+          "Examining the fusion of Dravidian and Nagara architecture in Pattadakal"
+        ],
+        "climate": "Warm dry inland climate with pleasant cooler days from November to February",
+        "localTip": "Visit Bhutanatha Temple right at sunset when the red cliffs glow with intense amber radiance.",
+        "coordinates": [
+          15.9187,
+          75.6766
+        ]
+      },
+      {
+        "id": "ka-chikmagalur",
+        "name": "Chikmagalur & Mullayanagiri",
+        "region": "Karnataka, India",
+        "category": "mountains",
+        "tagline": "Birthplace of Indian coffee, mountain ridges, and cloud-draped peaks",
+        "image": "images/india/karnataka/chikmagalur.jpg",
+        "bestTime": "Sep – Mar",
+        "rating": 4.87,
+        "reviewsCount": 340,
+        "startingPrice": 3100,
+        "alt": "Lush green rolling hills and winding mountain pass in Chikmagalur",
+        "topAttractions": [
+          "Mullayanagiri Highest Peak",
+          "Baba Budangiri Sacred Shrine",
+          "Hebbe Hidden Waterfall"
+        ],
+        "description": "Cradled in the Baba Budan Giri range where Sufi saint Baba Budan first planted coffee beans brought from Yemen in 1670, Chikmagalur is a paradise of rugged peaks, gushing cascades, and heritage coffee estates.",
+        "highlights": [
+          "Climbing the stone staircase to Mullayanagiri peak, the highest point in Karnataka",
+          "Sampling single-origin washed Arabica coffee at an artisan roastery",
+          "Jeep trail through thick jungle paths leading to Hebbe Falls"
+        ],
+        "climate": "Mild highland mountain climate with cool breezes and misty dawns",
+        "localTip": "Start your Mullayanagiri ascent before 6:30 AM to catch the cloud carpet below the summit.",
+        "coordinates": [
+          13.3161,
+          75.772
+        ]
+      },
+      {
+        "id": "ka-dandeli",
+        "name": "Dandeli Rainforest",
+        "region": "Karnataka, India",
+        "category": "wildlife",
+        "tagline": "White-water river rapids, dense deciduous jungles, and Hornbill sanctuaries",
+        "image": "images/india/karnataka/dandeli.jpg",
+        "bestTime": "Oct – May",
+        "rating": 4.84,
+        "reviewsCount": 290,
+        "startingPrice": 2700,
+        "alt": "Kali river rushing through dense evergreen forest canopy in Dandeli",
+        "topAttractions": [
+          "Kali River White Water Rafting",
+          "Dandeli Wildlife Sanctuary",
+          "Syntheri Rocks Volcanic Gorge"
+        ],
+        "description": "An eco-adventure haven enveloped by the Western Ghats along the frothing Kali River. Dandeli is famed for black panthers, magnificent Great Indian Hornbills, and thrilling grade-III river rafting.",
+        "highlights": [
+          "Grade-III white-water rafting on the roaring Kali River",
+          "Early morning hornbill watching safari through canopy walkways",
+          "Kayaking on natural river pools surrounded by deep bamboo groves"
+        ],
+        "climate": "Humid forest climate with refreshing mountain river waters",
+        "localTip": "Carry water shoes and dry bags for river excursions along the Kali rapids.",
+        "coordinates": [
+          15.2427,
+          74.623
+        ]
+      },
+      {
+        "id": "ka-kabini",
+        "name": "Kabini & Nagarhole",
+        "region": "Karnataka, India",
+        "category": "wildlife",
+        "tagline": "Primeval tiger and leopard territories along calm backwater reservoirs",
+        "image": "images/india/karnataka/kabini.jpg",
+        "bestTime": "Oct – May",
+        "rating": 4.95,
+        "reviewsCount": 395,
+        "startingPrice": 5800,
+        "alt": "Wild Asian elephant herd gathering on the green banks of Kabini river reservoir",
+        "topAttractions": [
+          "Nagarhole Tiger Reserve Boat Safari",
+          "Kabini River Bank Herds",
+          "Balle Elephant Sanctuary"
+        ],
+        "description": "Once the private hunting grounds of the Maharajas of Mysore, Kabini is today one of Asia's most spectacular wildlife theaters, famous for wild Asian elephant herds, elusive leopards, and Royal Bengal tigers.",
+        "highlights": [
+          "Boat safari tracking elephants and marsh crocodiles along reservoir shores",
+          "Open-top 4x4 forest safari inside Nagarhole National Park",
+          "Night stargazing by riverside fire pits with naturalist talks"
+        ],
+        "climate": "Tropical deciduous climate with lush post-monsoon greenery and dry spring game sightings",
+        "localTip": "Book forest department safari slots at least 6 weeks in advance for prime morning drives.",
+        "coordinates": [
+          11.9167,
+          76.2833
+        ]
+      },
+      {
+        "id": "ka-belur-halebidu",
+        "name": "Belur & Halebidu",
+        "region": "Karnataka, India",
+        "category": "heritage",
+        "tagline": "Intricate soapstone temple carvings and 12th-century Hoysala masterpieces",
+        "image": "images/india/karnataka/belur-halebidu.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.88,
+        "reviewsCount": 275,
+        "startingPrice": 2400,
+        "alt": "Detailed star-shaped soapstone temple wall reliefs at Belur Chennakeshava",
+        "topAttractions": [
+          "Chennakeshava Temple Belur",
+          "Hoysaleshwara Temple Halebidu",
+          "Kedareshwara Sanctuary"
+        ],
+        "description": "UNESCO World Heritage gems of the 12th-century Hoysala Empire, where sculptors treated soft chloritic schist soapstone like wax, creating friezes of dancing celestial maidens, charging elephants, and mythological epics.",
+        "highlights": [
+          "Admiring the filigree jewelry carved on the Darpana Sundari bracket figures",
+          "Exploring the star-shaped platform of Hoysaleshwara temple without mortar",
+          "Listening to temple historians decode the Ramayana friezes"
+        ],
+        "climate": "Mild plateau climate with comfortable dry sunny days",
+        "localTip": "Hire an ASI certified guide at the entrance to understand the hidden micro-carvings on pillar joints.",
+        "coordinates": [
+          13.1623,
+          75.8647
+        ]
+      },
+      {
+        "id": "ka-udupi",
+        "name": "Udupi & St. Mary's Island",
+        "region": "Karnataka, India",
+        "category": "coastal",
+        "tagline": "Sacred Krishna traditions, basaltic columnar rock islands, and coastal feasts",
+        "image": "images/india/karnataka/udupi.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.86,
+        "reviewsCount": 310,
+        "startingPrice": 2300,
+        "alt": "Hexagonal columnar basalt rock formations meeting crystal clear sea on St. Marys Island",
+        "topAttractions": [
+          "Sri Krishna Matha Temple",
+          "St. Mary's Columnar Basalt Island",
+          "Malpe Beach Water Sports"
+        ],
+        "description": "The temple city of coastal Kanara, world-famous for its Krishna Matha founded by Madhvacharya and the origin of Udupi vegetarian cuisine, flanked by unique geological columnar volcanic rocks at St. Mary's Island.",
+        "highlights": [
+          "Taking a wooden ferry across to the unique hexagonal lava pillars of St. Mary's Island",
+          "Experiencing the Kanakana Kindi window darshan at Sri Krishna Temple",
+          "Feasting on traditional banana leaf meals with freshly ground coconut chutneys"
+        ],
+        "climate": "Pleasant coastal climate with tropical breezes and clear blue seas",
+        "localTip": "Pack sun hats and slippers when visiting St. Mary's Island as the volcanic stones warm up around midday.",
+        "coordinates": [
+          13.3409,
+          74.7421
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Kerala",
+    "slug": "kerala",
+    "type": "State",
+    "capital": "Thiruvananthapuram",
+    "bannerImage": "images/india/kerala/banner.jpg",
+    "description": "God's Own Country: a tranquil tapestry of palm-fringed backwaters, emerald tea terraces, ancient spice routes, and restorative Ayurvedic traditions along the Malabar Coast.",
+    "iconicSite": {
+      "name": "Bekal Fort & Malabar Coastal Bastion",
+      "image": "images/india/kerala/iconic.jpg",
+      "description": "Rising dramatically over the Arabian Sea, the 17th-century keyhole-shaped laterite bastion was fortified by Shivappa Nayaka. Its observation tower commands sweeping panoramic views of crashing coastal breakers.",
+      "period": "1650 CE",
+      "location": "Kasaragod, Northern Kerala"
+    },
+    "places": [
+      {
+        "id": "kl-munnar",
+        "name": "Munnar & Anamudi",
+        "region": "Kerala, India",
+        "category": "mountains",
+        "tagline": "Rolling emerald tea carpet slopes, misty mountain waterfalls, and wild cardamom trails",
+        "image": "images/india/kerala/munnar.jpg",
+        "bestTime": "Sep – Mar",
+        "rating": 4.93,
+        "reviewsCount": 440,
+        "startingPrice": 3200,
+        "alt": "Endless rolling green tea plantation hills shrouded in morning mountain mist in Munnar",
+        "topAttractions": [
+          "Eravikulam Nilgiri Tahr Sanctuary",
+          "Anamudi Peak Lookout",
+          "Lockhart Organic Tea Factory"
+        ],
+        "description": "Rising 1,600 meters above sea level, Munnar is a sanctuary of undulating tea hills shrouded in ethereal morning mists, colonial-era stone bungalows, and cascading mountain streams.",
+        "highlights": [
+          "Guided plantation walk plucking orthodox single-estate tea leaves with tea masters",
+          "Spotting endangered Nilgiri Tahr mountain goats on the cliffs of Rajamalai",
+          "Trekking along secret spice trails fragrant with wild cinnamon and cloves"
+        ],
+        "climate": "Crisp mountain weather with cool breezes and rolling cloud cover",
+        "localTip": "Wake up at dawn for the Top Station hike to witness the rare sea of clouds blanketing the valley below.",
+        "coordinates": [
+          10.0889,
+          77.0595
+        ]
+      },
+      {
+        "id": "kl-alleppey",
+        "name": "Alleppey (Alappuzha) Backwaters",
+        "region": "Kerala, India",
+        "category": "backwaters",
+        "tagline": "Serene palm-fringed canals, traditional Kettuvallam houseboats, and village lagoons",
+        "image": "images/india/kerala/alleppey.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.95,
+        "reviewsCount": 510,
+        "startingPrice": 4200,
+        "alt": "Traditional thatched wooden houseboat cruising tranquil palm-lined backwaters in Alleppey",
+        "topAttractions": [
+          "Vembanad Lake Backwater Cruise",
+          "Marari Peaceful Beach",
+          "Kuttanad Below Sea Level Farmlands"
+        ],
+        "description": "The Venice of the East, where life moves to the gentle rhythm of water. Drift aboard handcrafted teak and coir Kettuvallam houseboats through tranquil canals bordered by swaying palms and emerald paddy fields.",
+        "highlights": [
+          "Overnight stay on a traditional houseboat with freshly prepared Karimeen Pollichathu",
+          "Country canoe ride through narrow village canals inaccessible to motorboats",
+          "Watching sunrise over the vast expanse of Vembanad Lake"
+        ],
+        "climate": "Tropical backwater climate with balmy breezes and soothing water reflections",
+        "localTip": "Request your houseboat captain to drop anchor near quiet village edges for a peaceful night away from generator noise.",
+        "coordinates": [
+          9.4981,
+          76.3388
+        ]
+      },
+      {
+        "id": "kl-wayanad",
+        "name": "Wayanad Highlands",
+        "region": "Kerala, India",
+        "category": "mountains",
+        "tagline": "Prehistoric rock etchings, misty mountain rainforests, and wild elephant reserves",
+        "image": "images/india/kerala/wayanad.jpg",
+        "bestTime": "Oct – May",
+        "rating": 4.89,
+        "reviewsCount": 360,
+        "startingPrice": 3000,
+        "alt": "Misty mountain peaks and lush tea estates in the highlands of Wayanad",
+        "topAttractions": [
+          "Edakkal Neolithic Caves",
+          "Chembra Heart-Shaped Lake",
+          "Banasura Sagar Earthen Dam"
+        ],
+        "description": "A highland district nestled in the Western Ghats, Wayanad combines ancient Neolithic petroglyphs at Edakkal Caves with mist-laden peaks, cardamom forests, and tranquil tree-house stays.",
+        "highlights": [
+          "Trekking up to the perpetual heart-shaped lake at Chembra Peak",
+          "Climbing Ambukuthi Mala to examine 6,000-year-old rock petroglyphs inside Edakkal Caves",
+          "Boating on India's largest earthen dam at Banasura Sagar"
+        ],
+        "climate": "Pleasantly cool highland weather with lingering monsoon fragrances",
+        "localTip": "Permits for Chembra Peak trekking must be obtained early in the morning from the forest office as daily quotas are limited.",
+        "coordinates": [
+          11.6854,
+          76.132
+        ]
+      },
+      {
+        "id": "kl-varkala",
+        "name": "Varkala Cliff & Papanasam",
+        "region": "Kerala, India",
+        "category": "beaches",
+        "tagline": "Dramatic red laterite cliffs, crashing Arabian surf, and natural mineral springs",
+        "image": "images/india/kerala/varkala.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.88,
+        "reviewsCount": 390,
+        "startingPrice": 2400,
+        "alt": "Dramatic red sandstone cliff overlooking golden beach and turquoise ocean in Varkala",
+        "topAttractions": [
+          "North Cliff Promenade & Cafes",
+          "Papanasam Sacred Beach",
+          "Janardhana Swamy 2000-Year Temple"
+        ],
+        "description": "The only coastal town in southern India where rugged red tertiary laterite cliffs flank the Arabian Sea. Varkala is known for healing mineral beach springs, cliffside cafes, and tranquil sunset yoga decks.",
+        "highlights": [
+          "Sunset yoga session on the open-air wooden decks of North Cliff",
+          "Fresh catch of the day seafood dinner overlooking the ocean under fairy lights",
+          "Bathing in the holy mineral-rich springs along Papanasam Beach"
+        ],
+        "climate": "Warm sunny coastal days with breezy evenings on the cliff summit",
+        "localTip": "Walk along the northern path toward Odayam Beach for uncrowded sands and relaxed vibe.",
+        "coordinates": [
+          8.7379,
+          76.7163
+        ]
+      },
+      {
+        "id": "kl-kochi",
+        "name": "Fort Kochi & Mattancherry",
+        "region": "Kerala, India",
+        "category": "heritage",
+        "tagline": "Cantilevered Chinese fishing nets, Dutch colonial streets, and spice warehouses",
+        "image": "images/india/kerala/kochi.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.91,
+        "reviewsCount": 470,
+        "startingPrice": 2800,
+        "alt": "Cantilevered wooden Chinese fishing nets silhouetted against glowing sunset in Fort Kochi",
+        "topAttractions": [
+          "Chinese Fishing Nets at Sunset",
+          "Mattancherry Dutch Palace Murals",
+          "Paradesi Jewish Synagogue in Jew Town"
+        ],
+        "description": "The historic spice gateway where Portuguese, Dutch, British, and Arab merchants traded ginger and pepper for centuries. Fort Kochi blends art cafes, colonial mansions, and historic Jewish synagogues.",
+        "highlights": [
+          "Watching fishermen operate the massive centuries-old cantilevered Chinese fishing nets",
+          "Browsing antique shops and ginger drying yards in Jew Town Mattancherry",
+          "Evening Kathakali classical dance and face-painting performance"
+        ],
+        "climate": "Balmy maritime climate with tropical breezes",
+        "localTip": "Rent a bicycle to explore Princess Street, Dutch Cemetery, and the murals of Santa Cruz Basilica at your own pace.",
+        "coordinates": [
+          9.9656,
+          76.2425
+        ]
+      },
+      {
+        "id": "kl-thekkady",
+        "name": "Thekkady & Periyar",
+        "region": "Kerala, India",
+        "category": "wildlife",
+        "tagline": "Periyar lake elephant herds, wild spice plantations, and dense cardamom hills",
+        "image": "images/india/kerala/thekkady.jpg",
+        "bestTime": "Sep – Apr",
+        "rating": 4.87,
+        "reviewsCount": 330,
+        "startingPrice": 3100,
+        "alt": "Periyar lake bordered by dense forest trees and mist in Thekkady",
+        "topAttractions": [
+          "Periyar Tiger Reserve Boat Cruise",
+          "Cardamom & Vanilla Spice Plantations",
+          "Kadathanadan Kalaripayattu Arena"
+        ],
+        "description": "Cradled around the scenic Periyar Lake, Thekkady is India's prime tiger and elephant sanctuary. The air is steeped in the intoxicating scent of cardamom, cinnamon, cloves, and nutmeg.",
+        "highlights": [
+          "Bamboo rafting and jungle trekking inside Periyar Tiger Reserve",
+          "Witnessing an authentic Kalaripayattu martial arts duel at the cultural center",
+          "Guided walk through aromatic organic spice gardens"
+        ],
+        "climate": "Cool montane climate with rich forest canopy breezes",
+        "localTip": "The first boat cruise of the day at 7:30 AM offers the highest chances of spotting wild elephants bathing at the lake shore.",
+        "coordinates": [
+          9.6031,
+          77.1615
+        ]
+      },
+      {
+        "id": "kl-kovalam",
+        "name": "Kovalam & Lighthouse Beach",
+        "region": "Kerala, India",
+        "category": "beaches",
+        "tagline": "Iconic red-striped lighthouse, crescent bay sands, and gentle rolling waves",
+        "image": "images/india/kerala/kovalam.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.85,
+        "reviewsCount": 350,
+        "startingPrice": 2600,
+        "alt": "Red and white spiral striped lighthouse on a rocky promontory overlooking Kovalam beach",
+        "topAttractions": [
+          "Vizhinjam Lighthouse Spiral Staircase",
+          "Hawa Beach Promenade",
+          "Samudra Beach Seclusion"
+        ],
+        "description": "A world-renowned beach retreat consisting of three adjacent crescent beaches separated by rocky outcrops. The landmark Vizhinjam Lighthouse offers sweeping panoramic views of the palm-fringed coast.",
+        "highlights": [
+          "Climbing the 142 steps of the 1972 lighthouse for aerial views of the Arabian Sea",
+          "Traditional Ayurvedic rejuvenating massage therapy by certified practitioners",
+          "Fresh coconut water and grilled snapper at seafront cafes"
+        ],
+        "climate": "Warm tropical ocean climate with refreshing sea breeze",
+        "localTip": "Climb the lighthouse between 3 PM and 5 PM for golden hour photography over the crescent curve.",
+        "coordinates": [
+          8.4004,
+          76.9787
+        ]
+      },
+      {
+        "id": "kl-kumarakom",
+        "name": "Kumarakom & Vembanad",
+        "region": "Kerala, India",
+        "category": "backwaters",
+        "tagline": "Migratory bird sanctuaries, mangrove waterways, and tranquil backwater resorts",
+        "image": "images/india/kerala/kumarakom.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.92,
+        "reviewsCount": 320,
+        "startingPrice": 4500,
+        "alt": "Serene lagoon waterway bordered by water lilies and coconut trees in Kumarakom",
+        "topAttractions": [
+          "Kumarakom Bird Sanctuary",
+          "Vembanad Backwater Kayaking",
+          "Aymanam Village Cultural Tour"
+        ],
+        "description": "A cluster of little islands on the eastern bank of Vembanad Lake, immortalized in Arundhati Roy's 'The God of Small Things'. Kumarakom is an eco-paradise of migratory waterfowl, blooming lotus canals, and world-class heritage retreats.",
+        "highlights": [
+          "Dawn bird watching boat tour spotting Siberian storks, herons, and kingfishers",
+          "Floating across tranquil water lily lagoons on an electric solar boat",
+          "Dining on authentic Appam with vegetable stew prepared in earthenware pots"
+        ],
+        "climate": "Humid tropical backwater weather with gentle lake breezes",
+        "localTip": "Visit the bird sanctuary at 6:00 AM on foot when roosting flocks are most vocal and active.",
+        "coordinates": [
+          9.6175,
+          76.4301
+        ]
+      },
+      {
+        "id": "kl-bekal",
+        "name": "Bekal & Malabar Coast",
+        "region": "Kerala, India",
+        "category": "heritage",
+        "tagline": "Keyhole fortress walls, golden shores, and authentic northern Malabar serenity",
+        "image": "images/india/kerala/bekal.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.88,
+        "reviewsCount": 260,
+        "startingPrice": 3800,
+        "alt": "Majestic brown laterite walls of Bekal Fort jutting into the foamy ocean waves",
+        "topAttractions": [
+          "Bekal Fort Observation Tower",
+          "Kappil Beach & Estuary",
+          "Theyyam Sacred Ritual Performances"
+        ],
+        "description": "The crown jewel of North Kerala, Bekal features the state's largest and most impeccably preserved fort jutting into the roaring sea. Far away from mass tourism, Bekal is steeped in northern Malabar mysticism and sacred Theyyam rituals.",
+        "highlights": [
+          "Exploring the underground tunnels and seaside ramparts of Bekal Fort",
+          "Witnessing an authentic overnight Theyyam performance at a local village kavu",
+          "Watching the tranquil estuary where Kappil backwaters meet the Arabian Sea"
+        ],
+        "climate": "Warm maritime climate with dramatic coastal vistas",
+        "localTip": "Look for seasonal Theyyam temple calendar schedules between December and April in surrounding Kasaragod villages.",
+        "coordinates": [
+          12.3924,
+          75.0336
+        ]
+      },
+      {
+        "id": "kl-athirappilly",
+        "name": "Athirappilly & Vazhachal",
+        "region": "Kerala, India",
+        "category": "nature",
+        "tagline": "The Niagara of India, thundering 80-foot river falls, and dense riparian forests",
+        "image": "images/india/kerala/athirappilly.jpg",
+        "bestTime": "Jul – Jan",
+        "rating": 4.9,
+        "reviewsCount": 370,
+        "startingPrice": 2900,
+        "alt": "Spectacular wide curtain of roaring white water crashing down rocks at Athirappilly Falls",
+        "topAttractions": [
+          "Athirappilly Main Falls Base Hike",
+          "Vazhachal Forest Cascade",
+          "Sholayar Rainforest Reserve"
+        ],
+        "description": "Cascading down 80 feet in an impressive 330-foot-wide curtain along the Chalakudy River, Athirappilly is Kerala's most majestic waterfall. The surrounding pristine riparian forests are home to four endangered species of hornbills.",
+        "highlights": [
+          "Trekking down the bamboo path to the rocky foot of the falls to feel the thunderous spray",
+          "Bird watching in the lush Vazhachal forest canopy",
+          "Scenic drive through the virgin rainforest highway toward Valparai"
+        ],
+        "climate": "Tropical rainforest microclimate with refreshing river mists",
+        "localTip": "Wear non-slip walking shoes for the descent to the falls base, as the damp stone path can be slick.",
+        "coordinates": [
+          10.2851,
+          76.5698
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rajasthan",
+    "slug": "rajasthan",
+    "type": "State",
+    "capital": "Jaipur",
+    "bannerImage": "images/india/rajasthan/banner.jpg",
+    "description": "The Land of Kings: an epic expanse of golden Thar desert dunes, invincible Rajput hill forts, glistening palace lakes, and a living heritage of royal chivalry and vibrant textiles.",
+    "iconicSite": {
+      "name": "Amer Palace & Fort, Jaipur",
+      "image": "images/india/rajasthan/iconic.jpg",
+      "description": "Perched high on the rugged Cheel ka Teela hills above Maota Lake, the red sandstone and marble fortress was begun by Raja Man Singh I in 1592. Renowned for its Sheesh Mahal (Mirror Palace) where thousands of convex mirrors glitter with a single candle.",
+      "period": "16th – 18th Century CE",
+      "location": "Amer, Jaipur"
+    },
+    "places": [
+      {
+        "id": "rj-jaipur",
+        "name": "Jaipur & Amer Fort",
+        "region": "Rajasthan, India",
+        "category": "heritage",
+        "tagline": "The Pink City, terracotta sandstone fortresses, and celestial observatories",
+        "image": "images/india/rajasthan/jaipur.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.95,
+        "reviewsCount": 580,
+        "startingPrice": 3200,
+        "alt": "Amber sandstone facade of Amer Fort overlooking Maota Lake in Jaipur",
+        "topAttractions": [
+          "Amer Fort & Sheesh Mahal",
+          "Hawa Mahal Palace of Winds",
+          "Jantar Mantar Astronomical UNESCO Site"
+        ],
+        "description": "The capital of Rajasthan, designed in 1727 on sacred Vedic Vastu Shastra principles. Jaipur is celebrated for its blush terracotta walls, ornate City Palace, bustling gemstone bazaars, and imperial Rajput fortresses.",
+        "highlights": [
+          "Exploring the dazzling mirror mosaic halls of the Sheesh Mahal inside Amer Fort",
+          "Photographing the 953 ornate honeycomb jharokhas of Hawa Mahal at sunrise",
+          "Sampling Dal Baati Churma cooked in pure desi ghee at a royal courtyard"
+        ],
+        "climate": "Semi-arid continental climate with warm sunny winters and cool desert nights",
+        "localTip": "Visit Hawa Mahal early in the morning when the rising sun illuminates the pink facade from the east.",
+        "coordinates": [
+          26.9124,
+          75.7873
+        ]
+      },
+      {
+        "id": "rj-udaipur",
+        "name": "Udaipur & Lake Pichola",
+        "region": "Rajasthan, India",
+        "category": "heritage",
+        "tagline": "The City of Lakes, floating marble palaces, and romantic Aravalli sunsets",
+        "image": "images/india/rajasthan/udaipur.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.97,
+        "reviewsCount": 530,
+        "startingPrice": 3600,
+        "alt": "White marble City Palace overlooking the calm blue waters of Lake Pichola at sunset in Udaipur",
+        "topAttractions": [
+          "City Palace Complex & Museum",
+          "Lake Pichola Sunset Boat Cruise",
+          "Jag Mandir Island Palace"
+        ],
+        "description": "Often hailed as the most romantic city in India, Udaipur sits cradled between ancient Aravalli peaks and reflective lakes. Its grand white marble City Palace and floating Taj Lake Palace are icons of Mewar nobility.",
+        "highlights": [
+          "Sunset boat ride across Lake Pichola past floating marble pavilions",
+          "Exploring the 400-year-old Mewar dynasty collections inside City Palace",
+          "Rooftop dining at Lal Ghat overlooking the glowing lit palace facade"
+        ],
+        "climate": "Pleasant winter climate with dry sunny days and crisp lake breezes at night",
+        "localTip": "Take the ropeway up to Karni Mata Temple at sunset for sweeping views over all three lakes.",
+        "coordinates": [
+          24.5854,
+          73.7125
+        ]
+      },
+      {
+        "id": "rj-jodhpur",
+        "name": "Jodhpur & Mehrangarh",
+        "region": "Rajasthan, India",
+        "category": "heritage",
+        "tagline": "The Blue City, colossal cliffside fortresses, and vibrant Marwar markets",
+        "image": "images/india/rajasthan/jodhpur.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.94,
+        "reviewsCount": 460,
+        "startingPrice": 3000,
+        "alt": "Imposing red sandstone bastions of Mehrangarh Fort rising high above the blue houses of Jodhpur",
+        "topAttractions": [
+          "Mehrangarh Fort Ramparts",
+          "Jaswant Thada White Marble Cenotaph",
+          "Sardar Market Clock Tower"
+        ],
+        "description": "Commanded by the invincible Mehrangarh Fort rising 400 feet atop a sheer perpendicular cliff, Jodhpur's sea of indigo-blue painted houses stretches across the desert plain. Famous for spicy Mirchi Badas and Marwar hospitality.",
+        "highlights": [
+          "Walking along the battle-scarred cannon ramparts of Mehrangarh Fort",
+          "Ziplining on the Flying Fox course across desert battlements and moats",
+          "Tasting legendary Makhaniya Lassi and spicy Pyaaz Kachori near the Clock Tower"
+        ],
+        "climate": "Warm desert climate with clear blue skies and chilly desert nights",
+        "localTip": "Wander through the historic Navchokiya quarter behind the fort to capture the most photogenic cobalt blue alleys.",
+        "coordinates": [
+          26.2389,
+          73.0243
+        ]
+      },
+      {
+        "id": "rj-jaisalmer",
+        "name": "Jaisalmer & Thar Desert",
+        "region": "Rajasthan, India",
+        "category": "desert",
+        "tagline": "The Golden City, living sand-castles, and rippling Thar desert dunes",
+        "image": "images/india/rajasthan/jaisalmer.jpg",
+        "bestTime": "Nov – Feb",
+        "rating": 4.93,
+        "reviewsCount": 430,
+        "startingPrice": 3400,
+        "alt": "Yellow sandstone living fort of Jaisalmer glowing golden under clear desert sky",
+        "topAttractions": [
+          "Sonar Qila Living Fort",
+          "Sam Sand Dunes Desert Safari",
+          "Patwon Ki Haveli Filigree Work"
+        ],
+        "description": "Rising like a golden mirage from the heart of the Great Indian Desert, Sonar Qila is one of the world's few surviving living forts, where one-fourth of the city still resides within yellow sandstone bastions.",
+        "highlights": [
+          "Overnight desert glamping under starry Bortle-2 desert skies at Sam Sand Dunes",
+          "Exploring the 7 intricate carved Jain temples inside the golden fort",
+          "Listening to desert folk musicians play the Kamayacha over a campfire"
+        ],
+        "climate": "Arid desert climate with sunny daytime temperatures and cold, starry winter nights",
+        "localTip": "Wake up early inside the fort to see the stone glow from pale sand to blazing gold at first sunrise.",
+        "coordinates": [
+          26.9157,
+          70.9083
+        ]
+      },
+      {
+        "id": "rj-pushkar",
+        "name": "Pushkar Sacred Lake",
+        "region": "Rajasthan, India",
+        "category": "culture",
+        "tagline": "Sacred 52-ghat holy lake, rare Brahma sanctuary, and iconic camel fair",
+        "image": "images/india/rajasthan/pushkar.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.87,
+        "reviewsCount": 380,
+        "startingPrice": 2000,
+        "alt": "Whitewashed ghats and sacred lake waters surrounded by desert hills in Pushkar",
+        "topAttractions": [
+          "Pushkar 52 Ghats Aarti",
+          "Jagatpita Brahma Temple",
+          "Savitri Temple Hilltop Ropeway"
+        ],
+        "description": "Encircled by rugged hills on the edge of the desert, Pushkar is one of India's oldest and most revered pilgrimage towns, housing the world's most prominent temple dedicated to Lord Brahma and 52 sacred lake ghats.",
+        "highlights": [
+          "Attending the twilight Maha Aarti with bells and chanting at Varaha Ghat",
+          "Ropeway ride up to Savitri Devi Temple for panoramic sunset views over Pushkar valley",
+          "Browsing silver tribal jewelry and rose water essences in the market"
+        ],
+        "climate": "Dry desert valley climate with calm, spiritual atmosphere",
+        "localTip": "Respect sacred lake customs by leaving footwear at the designated stairs before stepping onto the ghats.",
+        "coordinates": [
+          26.4899,
+          74.5511
+        ]
+      },
+      {
+        "id": "rj-ranthambore",
+        "name": "Ranthambore Tiger Reserve",
+        "region": "Rajasthan, India",
+        "category": "wildlife",
+        "tagline": "Royal Bengal tigers hunting amidst ancient ruined palaces and banyan trees",
+        "image": "images/india/rajasthan/ranthambore.jpg",
+        "bestTime": "Oct – May",
+        "rating": 4.96,
+        "reviewsCount": 490,
+        "startingPrice": 4800,
+        "alt": "Magnificent Royal Bengal tiger prowling through dry deciduous jungle in Ranthambore",
+        "topAttractions": [
+          "Ranthambore 10th-Century Fort",
+          "Padam Talao Lake Safaris",
+          "Jogi Mahal Historic Lodge"
+        ],
+        "description": "One of the most famous tiger sanctuaries in the world, where wild Royal Bengal tigers roam against the dramatic backdrop of a 10th-century UNESCO World Heritage hilltop fortress and thousand-year-old banyans.",
+        "highlights": [
+          "Open-top 4x4 Gypsy safari tracking tigers through Zones 1 to 5",
+          "Climbing up to the cliffside ramparts of Ranthambore Fort overlooking the park",
+          "Spotting marsh crocodiles, sambar deer, and leopards by Padam Talao"
+        ],
+        "climate": "Dry deciduous woodland climate with cold mornings and warm sunny afternoons in winter",
+        "localTip": "Book safaris well in advance to secure slots in core zones (Zones 1-5).",
+        "coordinates": [
+          26.0173,
+          76.5026
+        ]
+      },
+      {
+        "id": "rj-mount-abu",
+        "name": "Mount Abu & Dilwara",
+        "region": "Rajasthan, India",
+        "category": "mountains",
+        "tagline": "Rajasthan's only hill retreat, translucent marble carvings, and Nakki Lake",
+        "image": "images/india/rajasthan/mount-abu.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.86,
+        "reviewsCount": 320,
+        "startingPrice": 2700,
+        "alt": "Intricate translucent white marble ceiling carvings inside Dilwara Temple, Mount Abu",
+        "topAttractions": [
+          "Dilwara Marble Jain Temples",
+          "Nakki Lake Boating",
+          "Guru Shikhar Peak (1,722m)"
+        ],
+        "description": "Set atop a rocky plateau in the Aravalli Range at 1,220 meters, Mount Abu is Rajasthan's lone hill station. The 11th-century Dilwara Temples are unmatched in human history for marble lace carving.",
+        "highlights": [
+          "Marveling at the paper-thin, translucent marble lotus pendants in the Luna Vasahi temple",
+          "Paddle boating across serene Nakki Lake surrounded by granite boulder formations",
+          "Reaching Guru Shikhar, the highest peak in the entire Aravalli Range"
+        ],
+        "climate": "Pleasant temperate hill station climate with refreshing mountain breezes",
+        "localTip": "Cameras and leather items are strictly prohibited inside the Dilwara complex; use the safe lockers provided.",
+        "coordinates": [
+          24.5926,
+          72.7156
+        ]
+      },
+      {
+        "id": "rj-bikaner",
+        "name": "Bikaner & Junagarh",
+        "region": "Rajasthan, India",
+        "category": "heritage",
+        "tagline": "Unconquered desert forts, red sandstone palaces, and camel breeding traditions",
+        "image": "images/india/rajasthan/bikaner.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.89,
+        "reviewsCount": 290,
+        "startingPrice": 2800,
+        "alt": "Ornate red sandstone courtyard and filigree jalis inside Junagarh Fort, Bikaner",
+        "topAttractions": [
+          "Junagarh Fort & Anup Mahal",
+          "Lalgarh Palace Architecture",
+          "National Research Centre on Camels"
+        ],
+        "description": "Founded in 1488 by Rao Bika, Bikaner is an unconquered desert stronghold. Its Junagarh Fort is uniquely built on plains rather than a hilltop, housing opulent mirror-inlaid palaces and gold-leaf ceilings.",
+        "highlights": [
+          "Inspecting the gold-leaf lacquered walls and Belgian glass mirrors in the Anup Mahal",
+          "Sampling authentic spicy Bikaneri Bhujia and Ghevar from century-old halwais",
+          "Visiting the National Camel Breeding Farm on the outskirts"
+        ],
+        "climate": "Dry desert climate with crisp winters and glorious blue skies",
+        "localTip": "Try the fresh camel milk kulfi available at the camel research centre.",
+        "coordinates": [
+          28.0229,
+          73.3119
+        ]
+      },
+      {
+        "id": "rj-chittorgarh",
+        "name": "Chittorgarh Citadel",
+        "region": "Rajasthan, India",
+        "category": "heritage",
+        "tagline": "India's largest fort citadel, Vijay Stambha tower, and tales of Mewar valor",
+        "image": "images/india/rajasthan/chittorgarh.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.92,
+        "reviewsCount": 340,
+        "startingPrice": 2300,
+        "alt": "The majestic 9-story carved Vijay Stambha (Tower of Victory) in Chittorgarh Fort",
+        "topAttractions": [
+          "Vijay Stambha (Tower of Victory)",
+          "Kirti Stambha",
+          "Rani Padmini Water Palace"
+        ],
+        "description": "Sprawling across 700 acres atop a 590-foot hill, Chittorgarh is the monumental symbol of Rajput valor, sacrifice, and honor. Its nine-story carved Victory Tower and water reservoirs are engineering marvels.",
+        "highlights": [
+          "Climbing the narrow circular stairs of the 9-story Vijay Stambha for aerial fort views",
+          "Exploring the water palace of Rani Padmini reflecting in its surrounding lily pond",
+          "Learning about the three epic sieges of Mewar history"
+        ],
+        "climate": "Warm dry plateau climate with cool winter evenings",
+        "localTip": "Hire a vehicle to explore the fort grounds as distances between monuments inside the 700-acre complex are substantial.",
+        "coordinates": [
+          24.8887,
+          74.6269
+        ]
+      },
+      {
+        "id": "rj-bundi",
+        "name": "Bundi & Taragarh",
+        "region": "Rajasthan, India",
+        "category": "heritage",
+        "tagline": "Cobalt-blue alleys, medieval stepwells, and exquisite miniature fresco murals",
+        "image": "images/india/rajasthan/bundi.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.9,
+        "reviewsCount": 270,
+        "startingPrice": 2200,
+        "alt": "Intricate stone arches of Raniji ki Baori stepwell and blue buildings in Bundi",
+        "topAttractions": [
+          "Taragarh Star Fort",
+          "Chitrashala Bundi Frescoes",
+          "Raniji ki Baori (Queen's Stepwell)"
+        ],
+        "description": "An unspoiled fairytale town tucked in a narrow gorge, Bundi captivated Rudyard Kipling with its cliffside palaces, cobalt painted houses, and over 50 magnificent medieval stepwells (baoris).",
+        "highlights": [
+          "Admiring the turquoise and gold Krishna frescoes inside the Chitrashala art gallery",
+          "Descending the multi-tiered carved pavilions of the 1699 Raniji ki Baori stepwell",
+          "Exploring the wild, atmospheric overgrown ramparts of Taragarh Fort"
+        ],
+        "climate": "Temperate dry winter weather with minimal tourist crowds",
+        "localTip": "Bundi is best explored entirely on foot; make sure to carry a flashlight for exploring the stepwells.",
+        "coordinates": [
+          25.4414,
+          75.6441
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Himachal Pradesh",
+    "slug": "himachal-pradesh",
+    "type": "State",
+    "capital": "Shimla",
+    "bannerImage": "images/india/himachal-pradesh/banner.jpg",
+    "description": "The Abode of Snow: towering Himalayan pinnacles, fragrant deodar valleys, ancient timber temples, and serene Tibetan Buddhist monasteries nestled along roaring glacial rivers.",
+    "iconicSite": {
+      "name": "Hadimba 16th-Century Wooden Temple, Manali",
+      "image": "images/india/himachal-pradesh/iconic.jpg",
+      "description": "Built in 1553 CE by Raja Bahadur Singh in the Dhungri forest, this four-tiered pagoda-style timber sanctuary sits amidst colossal cedar giants. Decorated with intricate wooden carvings of Hindu motifs and mythological animals.",
+      "period": "1553 CE",
+      "location": "Old Manali, Kullu Valley"
+    },
+    "places": [
+      {
+        "id": "hp-manali",
+        "name": "Manali & Solang Valley",
+        "region": "Himachal Pradesh, India",
+        "category": "mountains",
+        "tagline": "Cedar-scented pine slopes, snow-clad mountain passes, and roaring Beas riverbanks",
+        "image": "images/india/himachal-pradesh/manali.jpg",
+        "bestTime": "Oct – Feb (Snow) & Apr – Jun (Lush)",
+        "rating": 4.94,
+        "reviewsCount": 480,
+        "startingPrice": 3800,
+        "alt": "Snow-dusted pine forests and wooden Himachali cottage overlooking mountain valley in Manali",
+        "topAttractions": [
+          "Solang Valley Alpine Meadow",
+          "Hadimba 16th-century Wooden Temple",
+          "Old Manali Apple Orchards"
+        ],
+        "description": "Nestled high in the Kullu Valley, Manali balances ancient cedar-wood sanctuaries with alpine adventures. From the cobblestone bohemian alleys of Old Manali to the snow slopes of Solang, crisp mountain air whispers legends.",
+        "highlights": [
+          "Morning walk through heritage apple orchards with a local Himachali family",
+          "Pahadi wild-herb tea tasting by the glacial waters of the Beas River",
+          "Scenic drive up to Atal Tunnel for panoramic views of snow-locked Pir Panjal peaks"
+        ],
+        "climate": "Cool temperate summers with wildflower meadows and crisp, powder-snow winters",
+        "localTip": "Wander through the upper trails of Old Manali before 8 AM for peaceful mountain vistas and the scent of freshly baked mountain bread.",
+        "coordinates": [
+          32.2432,
+          77.1892
+        ]
+      },
+      {
+        "id": "hp-spiti",
+        "name": "Spiti Valley & Kaza",
+        "region": "Himachal Pradesh, India",
+        "category": "mountains",
+        "tagline": "Cold-desert moonscapes, thousand-year-old gompas, and fossil-rich high passes",
+        "image": "images/india/himachal-pradesh/spiti.jpg",
+        "bestTime": "Jun – Sep",
+        "rating": 4.98,
+        "reviewsCount": 390,
+        "startingPrice": 4600,
+        "alt": "Key Monastery perched atop a conical hill in Spiti Valley against barren mountains",
+        "topAttractions": [
+          "Key Gompa Fortress Monastery",
+          "Chicham Bridge (Highest in Asia)",
+          "Chandratal Crescent Moon Lake"
+        ],
+        "description": "The Middle Land between Tibet and India, Spiti is an ethereal high-altitude cold desert where ancient Tibetan Buddhist monasteries cling to conical rocky crags at elevations exceeding 3,800 meters.",
+        "highlights": [
+          "Chanting with monks inside the 1,000-year-old assembly hall of Key Monastery",
+          "Posting a handwritten postcard from Hikkim, the world's highest post office (4,400m)",
+          "Camping near the jewel-blue crescent waters of Chandratal Lake"
+        ],
+        "climate": "Arid high-altitude alpine desert with intense ultraviolet sun and frosty nights",
+        "localTip": "Acclimatize for at least 24 hours in Kalpa or Kaza and stay well-hydrated to avoid acute mountain sickness.",
+        "coordinates": [
+          32.2276,
+          78.071
+        ]
+      },
+      {
+        "id": "hp-dharamshala",
+        "name": "Dharamshala & McLeodganj",
+        "region": "Himachal Pradesh, India",
+        "category": "culture",
+        "tagline": "The residence of His Holiness the Dalai Lama, Tibetan arts, and Dhauladhar crags",
+        "image": "images/india/himachal-pradesh/dharamshala.jpg",
+        "bestTime": "Mar – Jun & Sep – Dec",
+        "rating": 4.92,
+        "reviewsCount": 440,
+        "startingPrice": 2800,
+        "alt": "Snowy granite peaks of the Dhauladhar range towering above McLeodganj monasteries",
+        "topAttractions": [
+          "Tsuglagkhang Dalai Lama Temple Complex",
+          "Triund Trekking Ridge",
+          "Norbulingka Institute for Tibetan Arts"
+        ],
+        "description": "Perched high on the cedar-clad slopes of the Kangra Valley beneath the sheer granite walls of the Dhauladhar range, McLeodganj (Little Lhasa) is the headquarters of the Tibetan government in exile.",
+        "highlights": [
+          "Spinning the prayer wheels along the sacred Kora circuit around Tsuglagkhang Temple",
+          "Trekking the day trail to the ridge of Triund for close-up views of the Dhauladhar crest",
+          "Observing master craftsmen preserve Thangka painting and wood carving at Norbulingka"
+        ],
+        "climate": "Sub-tropical highland climate with crisp mountain air and panoramic valley views",
+        "localTip": "Join early morning meditation classes at Tushita Center in upper Dharamkot.",
+        "coordinates": [
+          32.2426,
+          76.3213
+        ]
+      },
+      {
+        "id": "hp-shimla",
+        "name": "Shimla & Kalka Railway",
+        "region": "Himachal Pradesh, India",
+        "category": "heritage",
+        "tagline": "Colonial summer capital, UNESCO heritage toy train, and pine-clad ridges",
+        "image": "images/india/himachal-pradesh/shimla.jpg",
+        "bestTime": "Year-Round",
+        "rating": 4.88,
+        "reviewsCount": 460,
+        "startingPrice": 3200,
+        "alt": "Historic neo-Gothic Christ Church standing on The Ridge in Shimla",
+        "topAttractions": [
+          "The Ridge & Christ Church",
+          "Viceregal Lodge (Rashtrapati Niwas)",
+          "Kalka-Shimla UNESCO Toy Train"
+        ],
+        "description": "The former British summer capital of India, Shimla retains its Victorian neo-Gothic elegance amidst lush oak and rhododendron forests, connected by the engineering wonder of the Kalka-Shimla mountain railway.",
+        "highlights": [
+          "Riding the vintage narrow-gauge toy train crossing 102 tunnels and 864 bridges",
+          "Walking along the vehicle-free Mall Road and pedestrianized Ridge",
+          "Visiting the Scottish baronial Viceregal Lodge where historic partition treaties were signed"
+        ],
+        "climate": "Temperate highland climate with cool summers and charming winter snowfalls",
+        "localTip": "Take the forest trail from Scandal Point to Jakhu Temple through dense deodar woods.",
+        "coordinates": [
+          31.1048,
+          77.1734
+        ]
+      },
+      {
+        "id": "hp-kasol",
+        "name": "Kasol & Parvati Valley",
+        "region": "Himachal Pradesh, India",
+        "category": "mountains",
+        "tagline": "Rushing Parvati riverbanks, pine forests, and alpine trekking trails to Tosh and Kheerganga",
+        "image": "images/india/himachal-pradesh/kasol.jpg",
+        "bestTime": "Apr – Jun & Sep – Nov",
+        "rating": 4.9,
+        "reviewsCount": 420,
+        "startingPrice": 2200,
+        "alt": "Rushing clear green river rapids of the Parvati River surrounded by tall pine trees in Kasol",
+        "topAttractions": [
+          "Kheerganga Natural Hot Springs",
+          "Tosh Cliffside Village",
+          "Manikaran Sahib Gurdwara"
+        ],
+        "description": "Nestled in the lush Parvati Valley along the roaring Parvati River, Kasol is a haven for backpackers and nature lovers, serving as the gateway to ancient villages like Malana and the hot sulfur springs of Kheerganga.",
+        "highlights": [
+          "Trekking through pine forests to soak in the mountain-top hot springs of Kheerganga",
+          "Sampling freshly baked apple pies and Israeli shakshuka in village cafes",
+          "Crossing timber suspension footbridges over the roaring turquoise river"
+        ],
+        "climate": "Cool mountain climate with crisp pine-scented breezes",
+        "localTip": "Walk beyond Kasol toward Chalal village across the footbridge for quiet riverside cafes.",
+        "coordinates": [
+          32.01,
+          77.315
+        ]
+      },
+      {
+        "id": "hp-dalhousie",
+        "name": "Dalhousie & Khajjiar",
+        "region": "Himachal Pradesh, India",
+        "category": "mountains",
+        "tagline": "The Mini Switzerland of India, rolling cedar meadows, and colonial churches",
+        "image": "images/india/himachal-pradesh/dalhousie.jpg",
+        "bestTime": "Mar – Jun & Oct – Dec",
+        "rating": 4.87,
+        "reviewsCount": 350,
+        "startingPrice": 2900,
+        "alt": "Emerald alpine meadow surrounded by dense cedar pine forest with lake in Khajjiar",
+        "topAttractions": [
+          "Khajjiar Green Meadow & Lake",
+          "Dainkund Peak Singal Trail",
+          "St. John's 1863 Church"
+        ],
+        "description": "Spread across five forested hills in the Dhauladhar range, Dalhousie features colonial Scottish bungalows, tranquil pine walks, and the saucer-shaped alpine meadow of Khajjiar encircled by towering deodars.",
+        "highlights": [
+          "Strolling the saucer-shaped grassy meadow and floating island at Khajjiar",
+          "Hiking up to Dainkund Peak for 360-degree views of the Chenab and Ravi river valleys",
+          "Quiet strolls along the forested Garam Sadak nature loop"
+        ],
+        "climate": "Mild temperate highland climate with crisp deodar mountain air",
+        "localTip": "Pack a picnic blanket for an afternoon on the grassy meadows of Khajjiar away from the central horse riding zone.",
+        "coordinates": [
+          32.5387,
+          75.971
+        ]
+      },
+      {
+        "id": "hp-kinnaur",
+        "name": "Kinnaur & Kalpa",
+        "region": "Himachal Pradesh, India",
+        "category": "mountains",
+        "tagline": "Sacred Kinnaur Kailash massif, hanging apple orchards, and Sutlej gorge roads",
+        "image": "images/india/himachal-pradesh/kinnaur.jpg",
+        "bestTime": "Apr – Oct",
+        "rating": 4.95,
+        "reviewsCount": 290,
+        "startingPrice": 3500,
+        "alt": "Snow-covered sacred peaks of Kinnaur Kailash glowing pink at sunrise viewed from Kalpa",
+        "topAttractions": [
+          "Kinnaur Kailash Sunrise View",
+          "Roghi Cliffside Village & Suicide Point",
+          "Kamru Fort in Sangla Valley"
+        ],
+        "description": "Where the Himalayas meet Tibet, Kinnaur is a land of dramatic vertical gorges carved by the Sutlej River, hanging apple orchards, and the sacred 6,050m Kinnaur Kailash peak that changes color with the sun.",
+        "highlights": [
+          "Watching the sacred 79-foot natural Shiva Lingam rock pillar change hues at sunrise",
+          "Sampling crisp golden Kinnauri apples fresh from tree branches in Kalpa",
+          "Exploring the wood-carved Kamru Fort in the picturesque Sangla Valley"
+        ],
+        "climate": "Alpine highland climate with cool days and chilly starry mountain nights",
+        "localTip": "Stay in Kalpa village for unobstructed panoramic morning views of the entire Kailash range.",
+        "coordinates": [
+          31.5372,
+          78.2562
+        ]
+      },
+      {
+        "id": "hp-bir-billing",
+        "name": "Bir Billing",
+        "region": "Himachal Pradesh, India",
+        "category": "adventure",
+        "tagline": "World's second highest paragliding takeoff, Tibetan monasteries, and tea gardens",
+        "image": "images/india/himachal-pradesh/bir-billing.jpg",
+        "bestTime": "Oct – Dec & Mar – Jun",
+        "rating": 4.93,
+        "reviewsCount": 380,
+        "startingPrice": 3400,
+        "alt": "Colorful paraglider soaring high above lush green Kangra valley mountains in Bir Billing",
+        "topAttractions": [
+          "Billing Paragliding Takeoff Point (2,400m)",
+          "Chokling Tibetan Monastery",
+          "Dharmalaya Eco-Living Institute"
+        ],
+        "description": "Ranked as one of the world's best paragliding venues, Bir Billing offers thrilling thermals launching from Billing (2,400m) and gliding down to the peaceful Tibetan colony of Bir amidst lush Kangra tea gardens.",
+        "highlights": [
+          "Tandem paragliding flight soaring alongside eagles over Kangra valleys",
+          "Visiting the tranquil Dzongsar Khyentse Chökyi Lodrö monastery in Chauntra",
+          "Sipping locally roasted coffee in eco-cafes run by artists and eco-architects"
+        ],
+        "climate": "Mild temperate climate with optimal thermal wind currents for flying",
+        "localTip": "Book evening paragliding flights around 4:30 PM for breathtaking golden hour sunset landings.",
+        "coordinates": [
+          32.0506,
+          76.7161
+        ]
+      },
+      {
+        "id": "hp-tirthan",
+        "name": "Tirthan Valley & Jibhi",
+        "region": "Himachal Pradesh, India",
+        "category": "nature",
+        "tagline": "Crystal clear trout streams, Great Himalayan National Park, and wooden tower temples",
+        "image": "images/india/himachal-pradesh/tirthan.jpg",
+        "bestTime": "Mar – Jun & Oct – Nov",
+        "rating": 4.91,
+        "reviewsCount": 310,
+        "startingPrice": 2800,
+        "alt": "Charming traditional wooden Himachali cottage by a sparkling mountain river in Tirthan",
+        "topAttractions": [
+          "Great Himalayan National Park UNESCO Gateway",
+          "Jalori Pass (3,120m) & Serolsar Lake",
+          "Chehni Kothi 12-Story Wooden Tower"
+        ],
+        "description": "An untouched, serene valley named after the pristine Tirthan River fed by glacial springs. Gateway to the UNESCO World Heritage Great Himalayan National Park, it offers world-class brown trout fishing and secluded cedar forests.",
+        "highlights": [
+          "Catch-and-release brown trout fly-fishing in crystal clear mountain streams",
+          "Trek through oak and deodar woods up to sacred Serolsar Lake from Jalori Pass",
+          "Marveling at the earthquake-proof interlocking timber masonry of Chehni Kothi"
+        ],
+        "climate": "Crisp alpine valley climate with unpolluted river air and starry skies",
+        "localTip": "Permits for angling are issued daily by the Himachal Fisheries Department in Banjar.",
+        "coordinates": [
+          31.6425,
+          77.4377
+        ]
+      },
+      {
+        "id": "hp-kaza",
+        "name": "Kaza & High Spiti",
+        "region": "Himachal Pradesh, India",
+        "category": "mountains",
+        "tagline": "Sub-zero stargazing, ancient ammonite fossils at Langza, and Asia's highest bridge",
+        "image": "images/india/himachal-pradesh/kaza.jpg",
+        "bestTime": "Jun – Sep",
+        "rating": 4.96,
+        "reviewsCount": 330,
+        "startingPrice": 4200,
+        "alt": "Giant golden Buddha statue in Langza village facing the snow-capped Chau Chau Kang Nilda peak",
+        "topAttractions": [
+          "Langza Giant Buddha & Fossil Village",
+          "Komic (Highest Motorable Village)",
+          "Dhankar Clifftop Monastery & Lake"
+        ],
+        "description": "The administrative heart of Spiti perched at 3,650 meters, Kaza connects the highest motorable villages in Asia. Here, prehistoric sea-bed fossils from the ancient Tethys Sea still lie scattered on high mountain ridges.",
+        "highlights": [
+          "Standing beneath the colossal outdoor Buddha statue of Langza facing Chau Chau Kang Nilda",
+          "Visiting the 1,200-year-old cliff-hanging monastery of Dhankar above the river confluence",
+          "Looking for marine ammonite fossils embedded in high mountain shale rocks"
+        ],
+        "climate": "High-altitude arid cold desert with zero light pollution for celestial astrophotography",
+        "localTip": "Always carry warm layers even in mid-summer as night temperatures can plummet near freezing.",
+        "coordinates": [
+          32.2265,
+          78.07
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Goa",
+    "slug": "goa",
+    "type": "State",
+    "capital": "Panaji",
+    "bannerImage": "images/india/goa/banner.jpg",
+    "description": "The Pearl of the Orient: sun-bleached golden sands, swaying coconut groves, Indo-Portuguese baroque basilicas, and a vibrant fusion of Konkani and Portuguese culinary joie de vivre.",
+    "iconicSite": {
+      "name": "Basilica of Bom Jesus, Old Goa",
+      "image": "images/india/goa/iconic.jpg",
+      "description": "Consecrated in May 1605, this UNESCO World Heritage baroque basilica built of black laterite stone holds the sacred mortal remains of St. Francis Xavier. Its ornate gilded altarpiece represents the highest triumph of Portuguese baroque craftsmanship in Asia.",
+      "period": "1605 CE (UNESCO)",
+      "location": "Old Goa, Tiswadi"
+    },
+    "places": [
+      {
+        "id": "ga-panaji-fontainhas",
+        "name": "Fontainhas & Panaji Coast",
+        "region": "Goa, India",
+        "category": "culture",
+        "tagline": "Cobalt Portuguese villas, terracotta roofs, and historic Latin quarter charm",
+        "image": "images/india/goa/panaji-fontainhas.jpg",
+        "bestTime": "Oct – Apr",
+        "rating": 4.93,
+        "reviewsCount": 520,
+        "startingPrice": 3200,
+        "alt": "Vibrant yellow and indigo colonial Portuguese villas with tiled roofs in Fontainhas, Goa",
+        "topAttractions": [
+          "Fontainhas Latin Quarter Walking Tour",
+          "Our Lady of the Immaculate Conception Church",
+          "Mandovi River Sunset Cruises"
+        ],
+        "description": "The heritage Latin Quarter of Panaji, Fontainhas retains an indelible Portuguese soul. Pastel-hued villas painted in bright yellow, indigo, and terracotta feature wrought-iron balconies and rooster weather vanes.",
+        "highlights": [
+          "Heritage walking tour photographing hand-painted azulejo ceramic tiles",
+          "Sampling warm Bebinca and cashew feni at traditional Goan taverns",
+          "Mandovi river evening cruise with traditional folk Konkani music"
+        ],
+        "climate": "Tropical coastal warmth with breezy evenings and maritime light",
+        "localTip": "Stroll through the narrow lanes early morning when the sunlight strikes the colorful facades without crowds.",
+        "coordinates": [
+          15.4989,
+          73.8278
+        ]
+      },
+      {
+        "id": "ga-palolem",
+        "name": "Palolem Beach",
+        "region": "Goa, India",
+        "category": "beaches",
+        "tagline": "Crescent-shaped white sand haven, calm swimming waters, and coconut groves",
+        "image": "images/india/goa/palolem.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.91,
+        "reviewsCount": 470,
+        "startingPrice": 2600,
+        "alt": "Crescent golden beach lined with wooden beach shacks and coconut trees in Palolem",
+        "topAttractions": [
+          "Palolem Crescent Bay",
+          "Butterfly Beach Kayak Tour",
+          "Silent Noise Headphone Club"
+        ],
+        "description": "One of South Goa's most idyllic shores, Palolem forms a nearly mile-long crescent bay sheltered between two headlands, making its warm waters exceptionally safe and calm for ocean swimming.",
+        "highlights": [
+          "Morning sea kayak excursion to secluded Butterfly Beach spotting dolphins",
+          "Dining by candlelight on the beach with grilled Kingfish and garlic butter naan",
+          "Attending the headphone party at Neptune Point overlooking the moonlit surf"
+        ],
+        "climate": "Gentle tropical beach climate with gentle waves and cool sea breeze",
+        "localTip": "Rent a kayak at the northern end of the beach early in the morning for calm water paddling to Monkey Island.",
+        "coordinates": [
+          15.0099,
+          74.0232
+        ]
+      },
+      {
+        "id": "ga-anjuna-chapora",
+        "name": "Anjuna & Chapora Fort",
+        "region": "Goa, India",
+        "category": "beaches",
+        "tagline": "Legendary red rock cliffs, bohemian flea markets, and Dil Chahta Hai fort ruins",
+        "image": "images/india/goa/anjuna-chapora.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.88,
+        "reviewsCount": 490,
+        "startingPrice": 2800,
+        "alt": "Rugged laterite ramparts of Chapora Fort overlooking the sandy estuary and sea at sunset",
+        "topAttractions": [
+          "Chapora Fort Sunset Lookout",
+          "Wednesday Anjuna Flea Market",
+          "Curlies & Shiva Valley Shores"
+        ],
+        "description": "The historic cradle of Goa's counter-culture, Anjuna combines red laterite coastal headlands with legendary flea markets and the iconic ruins of 17th-century Chapora Fort overlooking the Vagator coastline.",
+        "highlights": [
+          "Watching sunset from the panoramic stone ramparts of Chapora Fort",
+          "Browsing silver handicrafts, dreamcatchers, and beachwear at the Wednesday Flea Market",
+          "Sipping chilled kokum feni coolers at cliffside lounges with ambient music"
+        ],
+        "climate": "Warm tropical coastal climate with lively ocean breezes",
+        "localTip": "Arrive at Chapora Fort around 5:15 PM to grab a prime sitting spot on the western stone wall for sunset.",
+        "coordinates": [
+          15.5833,
+          73.7389
+        ]
+      },
+      {
+        "id": "ga-old-goa",
+        "name": "Old Goa & Bom Jesus",
+        "region": "Goa, India",
+        "category": "heritage",
+        "tagline": "Rome of the East, UNESCO World Heritage basilicas, and sacred gilded altars",
+        "image": "images/india/goa/old-goa.jpg",
+        "bestTime": "Oct – Mar",
+        "rating": 4.94,
+        "reviewsCount": 430,
+        "startingPrice": 2200,
+        "alt": "The ornate facade of the Basilica of Bom Jesus constructed in laterite stone in Old Goa",
+        "topAttractions": [
+          "Basilica of Bom Jesus (UNESCO)",
+          "Sé Cathedral & Golden Bell",
+          "Church of St. Francis of Assisi"
+        ],
+        "description": "Once the cosmopolitan capital of Portuguese India rivaling Lisbon in wealth, Old Goa is home to Asia's largest churches, including the Sé Cathedral and the Basilica containing the sacred relics of St. Francis Xavier.",
+        "highlights": [
+          "Viewing the silver casket of St. Francis Xavier inside the Basilica of Bom Jesus",
+          "Hearing the deep reverberation of the famous Golden Bell at Sé Cathedral",
+          "Admiring the Portuguese-Manueline entrance portal of St. Francis Church"
+        ],
+        "climate": "Warm tropical climate with peaceful, shaded heritage church grounds",
+        "localTip": "Dress respectfully with shoulders and knees covered when entering these active basilicas.",
+        "coordinates": [
+          15.5009,
+          73.9116
+        ]
+      },
+      {
+        "id": "ga-dudhsagar",
+        "name": "Dudhsagar Waterfalls",
+        "region": "Goa, India",
+        "category": "nature",
+        "tagline": "Sea of Milk cascade, four-tiered mountain falls, and railway bridge vistas",
+        "image": "images/india/goa/dudhsagar.jpg",
+        "bestTime": "Oct – May",
+        "rating": 4.92,
+        "reviewsCount": 450,
+        "startingPrice": 3100,
+        "alt": "Four-tiered massive white waterfall with train crossing the bridge right in front of the cascade",
+        "topAttractions": [
+          "Dudhsagar Four-Tiered Falls",
+          "Bhagwan Mahaveer Wildlife Sanctuary",
+          "Kulem Jeep Jungle Safari"
+        ],
+        "description": "Plunging 310 meters down the sheer Western Ghats border in a roar of foamy white spray, Dudhsagar (Sea of Milk) is India's fifth tallest waterfall, famous for the railway track arching dramatically across its middle tier.",
+        "highlights": [
+          "Adventurous 4x4 open-top jeep safari crossing jungle rivers inside Bhagwan Mahaveer Sanctuary",
+          "Swimming in the natural freshwater pool beneath the thunderous falls with life jackets",
+          "Watching a railway train cross the bridge suspended right in front of the waterfall spray"
+        ],
+        "climate": "Humid jungle microclimate with cool, refreshing mountain plunge pools",
+        "localTip": "Rent lifejackets at the forest entrance gate; swimming without them is not permitted by forest rangers.",
+        "coordinates": [
+          15.3144,
+          74.3144
+        ]
+      },
+      {
+        "id": "ga-morjim",
+        "name": "Morjim & Olive Ridley Coast",
+        "region": "Goa, India",
+        "category": "beaches",
+        "tagline": "Pristine white sand expanses, protected Olive Ridley turtle nesting grounds",
+        "image": "images/india/goa/morjim.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.87,
+        "reviewsCount": 360,
+        "startingPrice": 3300,
+        "alt": "Wide open quiet sandy shore of Morjim Beach bordered by green dunes and blue water",
+        "topAttractions": [
+          "Olive Ridley Turtle Sanctuary",
+          "Chapora River Estuary",
+          "Open-Air Beachfront Shacks"
+        ],
+        "description": "Known affectionately as Little Russia, Morjim is a tranquil wide expanse of gentle sand dunes and shallow waters. Its southern stretch is a protected nesting sanctuary for endangered Olive Ridley sea turtles.",
+        "highlights": [
+          "Visiting the turtle conservation center to learn about nesting and hatchling protection",
+          "Watching kite-surfers harness coastal winds across shallow ocean sandbanks",
+          "Long uninterrupted shoreline walks along the undisturbed beach"
+        ],
+        "climate": "Warm sunny coastal breeze with low humidity in winter months",
+        "localTip": "Respect the turtle conservation markers by avoiding bright flashlights or loud music on the beach at night.",
+        "coordinates": [
+          15.6175,
+          73.7375
+        ]
+      },
+      {
+        "id": "ga-arambol",
+        "name": "Arambol & Sweetwater Lake",
+        "region": "Goa, India",
+        "category": "beaches",
+        "tagline": "Sunset drum circles, bohemian cliffside bazaar, and hidden freshwater lagoons",
+        "image": "images/india/goa/arambol.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.86,
+        "reviewsCount": 410,
+        "startingPrice": 2000,
+        "alt": "Golden sand beach meeting lush green hill and cliff walk at Arambol Beach",
+        "topAttractions": [
+          "Arambol Sunset Drum Circle",
+          "Sweetwater Freshwater Lake",
+          "The Ancient Banyan Tree Hike"
+        ],
+        "description": "The bohemian heart of North Goa, Arambol attracts travelers, musicians, and yogis from across the globe. Just beyond the main beach lies a secluded freshwater lagoon fed by natural hot springs.",
+        "highlights": [
+          "Joining the spontaneous daily sunset drum circle as the sun sinks into the sea",
+          "Taking a dip in the calm freshwater Sweetwater Lake bordered by palm slopes",
+          "Trekking through the jungle to sit under the mythical Money Stone Banyan tree"
+        ],
+        "climate": "Relaxed tropical beach weather with vibrant sunset gatherings",
+        "localTip": "Take the cliff path north of Arambol main beach to reach the peaceful Sweetwater Lake.",
+        "coordinates": [
+          15.6864,
+          73.7042
+        ]
+      },
+      {
+        "id": "ga-divar",
+        "name": "Divar Island",
+        "region": "Goa, India",
+        "category": "culture",
+        "tagline": "Traditional river island heritage, vintage car ferries, and old-world Goan quietude",
+        "image": "images/india/goa/divar.jpg",
+        "bestTime": "Oct – Apr",
+        "rating": 4.9,
+        "reviewsCount": 280,
+        "startingPrice": 2600,
+        "alt": "Quiet countryside road lined with traditional Portuguese mansions and paddy fields on Divar Island",
+        "topAttractions": [
+          "Church of Our Lady of Compassion",
+          "Piedade Village Walk",
+          "Bonderam Flag Festival Grounds"
+        ],
+        "description": "Reached only by government car ferries across the Mandovi River, Divar Island is a tranquil time-capsule of pristine Goan village life, ancient ruins, and grand Portuguese manors tucked among green paddy fields.",
+        "highlights": [
+          "Crossing the Mandovi River aboard a charming free government vehicle ferry",
+          "Climbing to the hilltop Church of Our Lady of Compassion for 360-degree river valley views",
+          "Cycling through empty sleepy village lanes lined with blooming bougainvillea"
+        ],
+        "climate": "Peaceful riverine island climate with pleasant breezes",
+        "localTip": "Rent an electric bicycle in Old Goa before boarding the ferry for an effortless island exploration.",
+        "coordinates": [
+          15.5167,
+          73.9167
+        ]
+      },
+      {
+        "id": "ga-candolim-aguada",
+        "name": "Fort Aguada & Candolim",
+        "region": "Goa, India",
+        "category": "heritage",
+        "tagline": "17th-century Portuguese coastal fortress, historic lighthouse, and golden beaches",
+        "image": "images/india/goa/candolim-aguada.jpg",
+        "bestTime": "Oct – Apr",
+        "rating": 4.89,
+        "reviewsCount": 460,
+        "startingPrice": 3100,
+        "alt": "Ancient Portuguese laterite stone watchtower and ramparts of Fort Aguada overlooking the sea",
+        "topAttractions": [
+          "Fort Aguada 1612 Ramparts",
+          "Four-Story Heritage Lighthouse",
+          "Sinquerim Beach Watersports"
+        ],
+        "description": "Constructed in 1612 to guard the entrance of the Mandovi River against Dutch and Maratha fleets, Fort Aguada possessed a monumental freshwater cistern capable of supplying passing galleons.",
+        "highlights": [
+          "Standing beside the four-story 1864 lighthouse overlooking the Arabian Sea",
+          "Exploring the massive underground freshwater reservoir chambers",
+          "Parasailing and jet skiing from Sinquerim beach below the fort walls"
+        ],
+        "climate": "Warm coastal sunshine with panoramic sea breezes on the upper headland",
+        "localTip": "Visit early in the morning before tourist buses arrive for serene panoramic photos of the ocean.",
+        "coordinates": [
+          15.4925,
+          73.7739
+        ]
+      },
+      {
+        "id": "ga-cola-beach",
+        "name": "Cola Beach & Emerald Lagoon",
+        "region": "Goa, India",
+        "category": "beaches",
+        "tagline": "Secluded hidden cove, emerald freshwater lagoon, and untouched rustic serenity",
+        "image": "images/india/goa/cola-beach.jpg",
+        "bestTime": "Nov – Mar",
+        "rating": 4.94,
+        "reviewsCount": 340,
+        "startingPrice": 3800,
+        "alt": "Turquoise ocean waves separated by a sandbar from a still emerald freshwater river lagoon in Cola",
+        "topAttractions": [
+          "Cola Emerald Freshwater Lagoon",
+          "Secluded Beach Cove",
+          "Luxury Rajasthani Tented Stays"
+        ],
+        "description": "One of Goa's best-kept secrets, Cola Beach is an extraordinary hidden paradise where an emerald green freshwater stream flows into a calm lagoon right beside the breaking waves of the Arabian Sea.",
+        "highlights": [
+          "Swimming in the calm, warm freshwater lagoon just steps from the ocean surf",
+          "Kayaking through the serene river lagoon bordered by lush palm groves",
+          "Relaxing on private sunbeds with zero commercial vendors or noisy water sports"
+        ],
+        "climate": "Peaceful tropical seclusion with gentle ocean murmurs",
+        "localTip": "Access requires navigating an unpaved dirt trail; drive carefully or hire an experienced local taxi.",
+        "coordinates": [
+          15.056,
+          73.975
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Andhra Pradesh",
+    "slug": "andhra-pradesh",
+    "type": "State",
+    "capital": "Amaravati",
+    "bannerImage": "images/india/andhra-pradesh/banner.jpg",
+    "description": "Home of Tirumala Venkateswara, the verdant Araku Valley coffee hills, and the historic Buddhist monuments of Amaravati.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Tirumala Venkateswara Temple",
+      "image": "images/india/andhra-pradesh/iconic.jpg",
+      "description": "One of the most visited and sacred Vaishnavite pilgrimage shrines in the world, perched atop the sacred Seshachalam Hills.",
+      "period": "9th – 16th Century CE",
+      "location": "Tirupati, Andhra Pradesh"
+    },
+    "places": []
+  },
+  {
+    "name": "Arunachal Pradesh",
+    "slug": "arunachal-pradesh",
+    "type": "State",
+    "capital": "Itanagar",
+    "bannerImage": "images/india/arunachal-pradesh/banner.jpg",
+    "description": "The Land of Dawn-Lit Mountains: pristine snow-bound passes, Tawang's 17th-century monastery, and untouched eastern Himalayan wilderness.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Tawang Monastery (Galden Namgyal Lhatse)",
+      "image": "images/india/arunachal-pradesh/iconic.jpg",
+      "description": "Founded in 1681 by Merak Lama Lodre Gyamtso, Tawang is the largest Buddhist monastery in India, perched at 3,000 meters above sea level.",
+      "period": "1680 – 1681 CE",
+      "location": "Tawang, Arunachal Pradesh"
+    },
+    "places": []
+  },
+  {
+    "name": "Assam",
+    "slug": "assam",
+    "type": "State",
+    "capital": "Dispur",
+    "bannerImage": "images/india/assam/banner.jpg",
+    "description": "The emerald Brahmaputra valley: home to the one-horned Indian rhinoceros in Kaziranga, orthodox black teas, and the sacred Kamakhya Temple.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Kaziranga National Park (UNESCO)",
+      "image": "images/india/assam/iconic.jpg",
+      "description": "A UNESCO World Heritage sanctuary hosting two-thirds of the world's great one-horned rhinoceroses in tall elephant-grass plains.",
+      "period": "1905 CE (Reserve) / 1985 (UNESCO)",
+      "location": "Golaghat & Nagaon, Assam"
+    },
+    "places": []
+  },
+  {
+    "name": "Bihar",
+    "slug": "bihar",
+    "type": "State",
+    "capital": "Patna",
+    "bannerImage": "images/india/bihar/banner.jpg",
+    "description": "The cradle of world religions and learning: Bodh Gaya where the Buddha achieved enlightenment, and the ancient ruins of Nalanda University.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Mahabodhi Temple Complex, Bodh Gaya",
+      "image": "images/india/bihar/iconic.jpg",
+      "description": "The UNESCO World Heritage brick sanctuary marking the spot where Siddhartha Gautama attained enlightenment beneath the sacred Bodhi Tree.",
+      "period": "3rd Century BCE / 5th Century CE",
+      "location": "Bodh Gaya, Bihar"
+    },
+    "places": []
+  },
+  {
+    "name": "Chhattisgarh",
+    "slug": "chhattisgarh",
+    "type": "State",
+    "capital": "Raipur",
+    "bannerImage": "images/india/chhattisgarh/banner.jpg",
+    "description": "Dense tribal forests, ancient metal crafts of Bastar, and the horse-shoe curtain of Chitrakote Waterfalls on the Indravati River.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Chitrakote Waterfalls",
+      "image": "images/india/chhattisgarh/iconic.jpg",
+      "description": "The broadest natural waterfall in India, spanning nearly 300 meters across the Indravati river gorge in the heart of Bastar.",
+      "period": "Natural Wonder",
+      "location": "Jagdalpur, Bastar, Chhattisgarh"
+    },
+    "places": []
+  },
+  {
+    "name": "Gujarat",
+    "slug": "gujarat",
+    "type": "State",
+    "capital": "Gandhinagar",
+    "bannerImage": "images/india/gujarat/banner.jpg",
+    "description": "The white salt desert of the Rann of Kutch, the last sanctuary of Asiatic Lions in Gir, and Rani ki Vav's subterranean stepwell artistry.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Rani ki Vav Stepwell (UNESCO)",
+      "image": "images/india/gujarat/iconic.jpg",
+      "description": "Constructed in 1063 CE by Queen Udayamati, this subterranean masterwork of Maru-Gurjara architecture holds over 500 principal sculptures.",
+      "period": "11th Century CE",
+      "location": "Patan, Gujarat"
+    },
+    "places": []
+  },
+  {
+    "name": "Haryana",
+    "slug": "haryana",
+    "type": "State",
+    "capital": "Chandigarh",
+    "bannerImage": "images/india/haryana/banner.jpg",
+    "description": "The historic battlefield of Kurukshetra, sacred Brahma Sarovar, and lush Mughal gardens of Pinjore nestled in the Shivalik foothills.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Yadavindra Mughal Gardens, Pinjore",
+      "image": "images/india/haryana/iconic.jpg",
+      "description": "A 17th-century terrace garden built in the classical Charbagh style by Nawab Fidai Khan, featuring cascading water canals and fountains.",
+      "period": "17th Century CE",
+      "location": "Pinjore, Panchkula, Haryana"
+    },
+    "places": []
+  },
+  {
+    "name": "Jharkhand",
+    "slug": "jharkhand",
+    "type": "State",
+    "capital": "Ranchi",
+    "bannerImage": "images/india/jharkhand/banner.jpg",
+    "description": "The land of waterfalls: Hundru, Dassam, and Jonha cascades, along with the sacred Jain pilgrimage summits of Parasnath Hill.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Shikharji (Parasnath Hill)",
+      "image": "images/india/jharkhand/iconic.jpg",
+      "description": "Rising 1,365 meters, this sacred mountain peak is where twenty of the twenty-four Jain Tirthankaras attained Moksha.",
+      "period": "Ancient Holy Shrine",
+      "location": "Giridih, Jharkhand"
+    },
+    "places": []
+  },
+  {
+    "name": "Madhya Pradesh",
+    "slug": "madhya-pradesh",
+    "type": "State",
+    "capital": "Bhopal",
+    "bannerImage": "images/india/madhya-pradesh/banner.jpg",
+    "description": "The Heart of Incredible India: erotic stone sculptures of Khajuraho, Sanchi Stupa, and the world-renowned tiger reserves of Kanha and Bandhavgarh.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Khajuraho Western Group of Temples",
+      "image": "images/india/madhya-pradesh/iconic.jpg",
+      "description": "Built by the Chandela dynasty between 950 and 1050 CE, these UNESCO-listed temples celebrate medieval Nagara architecture and human passion.",
+      "period": "10th – 11th Century CE",
+      "location": "Khajuraho, Chhatarpur, Madhya Pradesh"
+    },
+    "places": []
+  },
+  {
+    "name": "Maharashtra",
+    "slug": "maharashtra",
+    "type": "State",
+    "capital": "Mumbai",
+    "bannerImage": "images/india/maharashtra/banner.jpg",
+    "description": "Rock-cut caves of Ajanta and Ellora, Shivaji Maharaj's coastal sea-forts, misty Sahyadri Western Ghats, and the financial heartbeat of Mumbai.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Kailasa Temple, Ellora Caves (Cave 16)",
+      "image": "images/india/maharashtra/iconic.jpg",
+      "description": "The world's largest monolithic rock-cut structure, carved top-down from a single basalt cliff face under Rashtrakuta King Krishna I in 756 CE.",
+      "period": "8th Century CE",
+      "location": "Aurangabad (Chhatrapati Sambhajinagar), Maharashtra"
+    },
+    "places": []
+  },
+  {
+    "name": "Manipur",
+    "slug": "manipur",
+    "type": "State",
+    "capital": "Imphal",
+    "bannerImage": "images/india/manipur/banner.jpg",
+    "description": "The Jeweled Land: Loktak Lake with its unique circular floating islands (Phumdis), and the endangered brow-antlered Sangai deer.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Keibul Lamjao & Loktak Floating Lake",
+      "image": "images/india/manipur/iconic.jpg",
+      "description": "The world's only floating national park, located on the vast freshwater Loktak Lake and home to the dancing Sangai deer.",
+      "period": "Natural Wildlife Reserve",
+      "location": "Bishnupur, Manipur"
+    },
+    "places": []
+  },
+  {
+    "name": "Meghalaya",
+    "slug": "meghalaya",
+    "type": "State",
+    "capital": "Shillong",
+    "bannerImage": "images/india/meghalaya/banner.jpg",
+    "description": "The Abode of the Clouds: bio-engineered living root bridges of Cherrapunji, crystal clear waters of Dawki, and rain-drenched Khasi hills.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Nongriat Double Decker Living Root Bridge",
+      "image": "images/india/meghalaya/iconic.jpg",
+      "description": "Grown over centuries by Khasi tribes guiding the aerial roots of Ficus elastica trees across rushing mountain streams.",
+      "period": "Centuries of Bio-Engineering",
+      "location": "Nongriat, Cherrapunji, Meghalaya"
+    },
+    "places": []
+  },
+  {
+    "name": "Mizoram",
+    "slug": "mizoram",
+    "type": "State",
+    "capital": "Aizawl",
+    "bannerImage": "images/india/mizoram/banner.jpg",
+    "description": "The land of rolling blue hills, bamboo forests, peaceful Mizo cultural traditions, and breathtaking hilltop sunrises in Aizawl.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Reiek Mountain Ridge",
+      "image": "images/india/mizoram/iconic.jpg",
+      "description": "A prominent cliffside peak rising to 1,548 meters offering panoramic views of surrounding green valleys and distant Bangladesh plains.",
+      "period": "Natural Heritage",
+      "location": "Aizawl District, Mizoram"
+    },
+    "places": []
+  },
+  {
+    "name": "Nagaland",
+    "slug": "nagaland",
+    "type": "State",
+    "capital": "Kohima",
+    "bannerImage": "images/india/nagaland/banner.jpg",
+    "description": "The Land of Festivals: the vibrant Hornbill Festival at Kisama, dramatic Dzukou Valley bamboo meadows, and fierce warrior heritage.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Dzukou Valley & Lily Meadows",
+      "image": "images/india/nagaland/iconic.jpg",
+      "description": "A surreal high-altitude valley sitting at 2,452 meters on the Nagaland-Manipur border, carpeted in endemic Dzukou lilies in summer.",
+      "period": "Natural Heritage Sanctuary",
+      "location": "Kohima, Nagaland"
+    },
+    "places": []
+  },
+  {
+    "name": "Odisha",
+    "slug": "odisha",
+    "type": "State",
+    "capital": "Bhubaneswar",
+    "bannerImage": "images/india/odisha/banner.jpg",
+    "description": "Konark's colossal Sun Temple chariot, the sacred Jagannath Temple in Puri, and the tranquil brackish waters of Chilika Lake.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Konark Sun Temple (UNESCO)",
+      "image": "images/india/odisha/iconic.jpg",
+      "description": "Built in 1250 CE by King Narasimhadeva I, the Black Pagoda is sculpted as a monumental 24-wheeled chariot of Surya driven by seven stone horses.",
+      "period": "1250 CE",
+      "location": "Konark, Puri, Odisha"
+    },
+    "places": []
+  },
+  {
+    "name": "Punjab",
+    "slug": "punjab",
+    "type": "State",
+    "capital": "Chandigarh",
+    "bannerImage": "images/india/punjab/banner.jpg",
+    "description": "The Land of Five Rivers: the gilded serenity of Sri Harmandir Sahib (Golden Temple), patriotic flag lowering at Wagah, and rich agricultural warmth.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Sri Harmandir Sahib (The Golden Temple)",
+      "image": "images/india/punjab/iconic.jpg",
+      "description": "The spiritual heart of Sikhism, coated with 500 kg of pure gold foil above the sacred Amrit Sarovar (Pool of Nectar), open to all humanity.",
+      "period": "1588 – 1604 CE / 1830 (Gold plating)",
+      "location": "Amritsar, Punjab"
+    },
+    "places": []
+  },
+  {
+    "name": "Sikkim",
+    "slug": "sikkim",
+    "type": "State",
+    "capital": "Gangtok",
+    "bannerImage": "images/india/sikkim/banner.jpg",
+    "description": "Guardians of Mount Kanchenjunga: holy high-altitude Gurudongmar Lake, sacred Rumtek Monastery, and colorful rhododendron sanctuaries.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Rumtek Monastery (Dharma Chakra Centre)",
+      "image": "images/india/sikkim/iconic.jpg",
+      "description": "Perched on a green ridge opposite Gangtok, this seat of the Karma Kagyu lineage houses priceless Tibetan Buddhist relics and golden stupas.",
+      "period": "1966 CE (Rebuilt)",
+      "location": "Rumtek, East Sikkim"
+    },
+    "places": []
+  },
+  {
+    "name": "Tamil Nadu",
+    "slug": "tamil-nadu",
+    "type": "State",
+    "capital": "Chennai",
+    "bannerImage": "images/india/tamil-nadu/banner.jpg",
+    "description": "Towering colorful temple gopurams of Madurai, UNESCO Great Living Chola Temples of Thanjavur, and Chettinad's grand palatial mansions.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Brihadisvara Temple, Thanjavur (UNESCO)",
+      "image": "images/india/tamil-nadu/iconic.jpg",
+      "description": "Commissioned by Rajaraja Chola I in 1010 CE, this granite architectural triumph features a single 80-tonne monolithic stone dome (Kumbam).",
+      "period": "1010 CE",
+      "location": "Thanjavur, Tamil Nadu"
+    },
+    "places": []
+  },
+  {
+    "name": "Telangana",
+    "slug": "telangana",
+    "type": "State",
+    "capital": "Hyderabad",
+    "bannerImage": "images/india/telangana/banner.jpg",
+    "description": "The City of Pearls: the acoustic marvels of Golconda Fort, the iconic Charminar, and the UNESCO-inscribed 13th-century Ramappa Temple.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Golconda Fort & Acoustic Diamond Vaults",
+      "image": "images/india/telangana/iconic.jpg",
+      "description": "The medieval citadel of the Qutb Shahi dynasty, famous for world-class diamond mines (Koh-i-Noor, Hope Diamond) and engineered acoustics.",
+      "period": "16th Century CE",
+      "location": "Hyderabad, Telangana"
+    },
+    "places": []
+  },
+  {
+    "name": "Tripura",
+    "slug": "tripura",
+    "type": "State",
+    "capital": "Agartala",
+    "bannerImage": "images/india/tripura/banner.jpg",
+    "description": "The floating water palace of Neermahal on Rudrasagar Lake, rock-carved giant Shiva reliefs of Unakoti, and royal Ujjayanta Palace.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Unakoti Rock-Cut Shiva Reliefs",
+      "image": "images/india/tripura/iconic.jpg",
+      "description": "An ancient Shaivite pilgrimage site featuring monumental rock carvings and stone bas-reliefs sculpted along forest waterfalls.",
+      "period": "7th – 9th Century CE",
+      "location": "Kailashahar, Unakoti, Tripura"
+    },
+    "places": []
+  },
+  {
+    "name": "Uttar Pradesh",
+    "slug": "uttar-pradesh",
+    "type": "State",
+    "capital": "Lucknow",
+    "bannerImage": "images/india/uttar-pradesh/banner.jpg",
+    "description": "The timeless Taj Mahal in Agra, sacred Ganga Aarti along the ancient ghats of Varanasi, and Awadhi culinary culture in Lucknow.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "The Taj Mahal, Agra (UNESCO)",
+      "image": "images/india/uttar-pradesh/iconic.jpg",
+      "description": "Emperor Shah Jahan's ivory-white marble mausoleum built on the southern bank of the Yamuna River, universally admired as an eternal poem in marble.",
+      "period": "1632 – 1648 CE",
+      "location": "Agra, Uttar Pradesh"
+    },
+    "places": []
+  },
+  {
+    "name": "Uttarakhand",
+    "slug": "uttarakhand",
+    "type": "State",
+    "capital": "Dehradun",
+    "bannerImage": "images/india/uttarakhand/banner.jpg",
+    "description": "Devbhoomi (Land of the Gods): holy Ganga origins in Rishikesh and Haridwar, Nanda Devi alpine sanctuary, and the Char Dham pilgrimage.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Badrinath Temple, Garhwal Himalayas",
+      "image": "images/india/uttarakhand/iconic.jpg",
+      "description": "Perched at 3,133 meters along the Alaknanda River between Nar and Narayana mountain ranges, established by Adi Shankaracharya in the 9th century.",
+      "period": "9th Century CE",
+      "location": "Chamoli, Uttarakhand"
+    },
+    "places": []
+  },
+  {
+    "name": "West Bengal",
+    "slug": "west-bengal",
+    "type": "State",
+    "capital": "Kolkata",
+    "bannerImage": "images/india/west-bengal/banner.jpg",
+    "description": "Muscatel Darjeeling tea hills, Royal Bengal Tigers of the mangrove Sundarbans, and Kolkata's intellectual literary renaissance.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Victoria Memorial & Kolkata Maidan",
+      "image": "images/india/west-bengal/iconic.jpg",
+      "description": "Built of white Makrana marble between 1906 and 1921, blending British and Mughal elements overlooking the tranquil reflecting pools.",
+      "period": "1906 – 1921 CE",
+      "location": "Kolkata, West Bengal"
+    },
+    "places": []
+  },
+  {
+    "name": "Andaman and Nicobar Islands",
+    "slug": "andaman-and-nicobar-islands",
+    "type": "Union Territory",
+    "capital": "Port Blair",
+    "bannerImage": "images/india/andaman-and-nicobar-islands/banner.jpg",
+    "description": "Turquoise coral reefs of Havelock, untouched Radhanagar sands, and the solemn national freedom memorial at Cellular Jail.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Radhanagar Beach (Beach No. 7), Havelock",
+      "image": "images/india/andaman-and-nicobar-islands/iconic.jpg",
+      "description": "Consistently ranked among Asia's most pristine beaches, featuring powdered white coral sand against lush rainforest canopies.",
+      "period": "Natural Marine Sanctuary",
+      "location": "Swaraj Dweep (Havelock), Andaman Islands"
+    },
+    "places": []
+  },
+  {
+    "name": "Chandigarh",
+    "slug": "chandigarh",
+    "type": "Union Territory",
+    "capital": "Chandigarh",
+    "bannerImage": "images/india/chandigarh/banner.jpg",
+    "description": "The City Beautiful: Le Corbusier's master modernist urban architecture, Nek Chand's fantasy Rock Garden, and serene Sukhna Lake.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Nek Chand's Rock Garden",
+      "image": "images/india/chandigarh/iconic.jpg",
+      "description": "A visionary 40-acre sculpture park built entirely of discarded industrial and domestic urban waste, ceramics, and broken bangles.",
+      "period": "1957 – 1976 CE",
+      "location": "Sector 1, Chandigarh"
+    },
+    "places": []
+  },
+  {
+    "name": "Dadra and Nagar Haveli and Daman and Diu",
+    "slug": "dadra-nagar-haveli-daman-diu",
+    "type": "Union Territory",
+    "capital": "Daman",
+    "bannerImage": "images/india/dadra-nagar-haveli-daman-diu/banner.jpg",
+    "description": "Portuguese sea-fortresses of Diu, black sand shores, Naida limestone caves, and tranquil tribal forests along the Daman Ganga river.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Diu Fort & Sea Bastion",
+      "image": "images/india/dadra-nagar-haveli-daman-diu/iconic.jpg",
+      "description": "A monumental 1535 stone fortress surrounded by the Arabian Sea on three sides, commanding the maritime trade routes of the Gulf of Cambay.",
+      "period": "1535 CE",
+      "location": "Diu Island"
+    },
+    "places": []
+  },
+  {
+    "name": "Delhi",
+    "slug": "delhi",
+    "type": "Union Territory",
+    "capital": "New Delhi",
+    "bannerImage": "images/india/delhi/banner.jpg",
+    "description": "The National Capital: three millennia of imperial empires from the Red Fort and Qutub Minar to Humayun's Garden Tomb and vibrant Chandni Chowk.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Humayun's Tomb, New Delhi (UNESCO)",
+      "image": "images/india/delhi/iconic.jpg",
+      "description": "Built in 1570, this UNESCO World Heritage garden tomb was the first grand dynastic mausoleum in India that inspired the design of the Taj Mahal.",
+      "period": "1565 – 1572 CE",
+      "location": "Nizamuddin East, New Delhi"
+    },
+    "places": []
+  },
+  {
+    "name": "Jammu and Kashmir",
+    "slug": "jammu-and-kashmir",
+    "type": "Union Territory",
+    "capital": "Srinagar (Summer) / Jammu (Winter)",
+    "bannerImage": "images/india/jammu-and-kashmir/banner.jpg",
+    "description": "Paradise on Earth: cedar houseboats on Dal Lake, snow meadows of Gulmarg, saffron fields of Pampore, and Vaishno Devi shrine.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Dal Lake Shikaras & Floating Gardens",
+      "image": "images/india/jammu-and-kashmir/iconic.jpg",
+      "description": "The Jewel of Srinagar, framed by the Pir Panjal mountains and terraced Mughal pleasure gardens (Shalimar & Nishat).",
+      "period": "Historic Water Realm",
+      "location": "Srinagar, Kashmir"
+    },
+    "places": []
+  },
+  {
+    "name": "Ladakh",
+    "slug": "ladakh",
+    "type": "Union Territory",
+    "capital": "Leh",
+    "bannerImage": "images/india/ladakh/banner.jpg",
+    "description": "The Land of High Passes: cobalt glacial waters of Pangong Tso, ancient Thiksey Monastery, and double-humped camel dunes in Nubra Valley.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Thiksey Monastery (Mini Potala)",
+      "image": "images/india/ladakh/iconic.jpg",
+      "description": "A 12-story whitewashed and ochre gompa of the Gelug lineage rising on a hill at 3,600m, housing a two-story statue of Maitreya Buddha.",
+      "period": "15th Century CE (1430)",
+      "location": "Thiksey, Leh, Ladakh"
+    },
+    "places": []
+  },
+  {
+    "name": "Lakshadweep",
+    "slug": "lakshadweep",
+    "type": "Union Territory",
+    "capital": "Kavaratti",
+    "bannerImage": "images/india/lakshadweep/banner.jpg",
+    "description": "One Hundred Thousand Islands: crystal clear atoll lagoons, vibrant living coral gardens of Bangaram, and untouched tropical seclusion.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Bangaram Atoll & Bioluminescent Lagoon",
+      "image": "images/india/lakshadweep/iconic.jpg",
+      "description": "A teardrop-shaped uninhabited coral atoll surrounded by a shallow turquoise lagoon where manta rays and sea turtles glide freely.",
+      "period": "Pristine Marine Atoll",
+      "location": "Bangaram, Lakshadweep"
+    },
+    "places": []
+  },
+  {
+    "name": "Puducherry",
+    "slug": "puducherry",
+    "type": "Union Territory",
+    "capital": "Pondicherry",
+    "bannerImage": "images/india/puducherry/banner.jpg",
+    "description": "The French Riviera of the East: mustard-yellow colonial mansions of White Town, seaside promenade, Sri Aurobindo Ashram, and Auroville.",
+    "comingSoon": true,
+    "iconicSite": {
+      "name": "Matrimandir & Peace Pavilion, Auroville",
+      "image": "images/india/puducherry/iconic.jpg",
+      "description": "A golden geodesic sphere surrounded by twelve petal meditation rooms in the international universal township of Auroville.",
+      "period": "1971 – 2008 CE",
+      "location": "Auroville, Puducherry"
+    },
+    "places": []
+  }
+];
+
+// Make available globally on window
+if (typeof window !== 'undefined') {
+  window.STATES_DATA = STATES_DATA;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { STATES_DATA };
+}

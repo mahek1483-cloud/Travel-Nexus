@@ -1,0 +1,389 @@
+/**
+ * Travel Nexus - Responsive Styles & Mobile Navigation
+ */
+
+/* ==========================================================================
+   DESKTOP RESPONSIVE COLLAPSE (1151px - 1480px)
+   Prevents navbar from ever wrapping to a second row on desktop & keeps
+   all right controls (theme switcher, currency, wishlist, sign-in/up) visible
+   ========================================================================== */
+@media (max-width: 1480px) and (min-width: 1151px) {
+  /* Move 'Become a Host' into More dropdown */
+  .nav-item-host {
+    display: none !important;
+  }
+  .nav-collapse-host {
+    display: block !important;
+  }
+  #navDropdownDivider {
+    display: block !important;
+  }
+  .navbar {
+    gap: clamp(4px, 0.7vw, 12px) !important;
+  }
+  .nav-menu {
+    gap: 2px !important;
+  }
+  .nav-link {
+    padding: 6px 6px !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 1360px) and (min-width: 1151px) {
+  /* Move 'Local Cuisine' into More dropdown */
+  .nav-item-dining {
+    display: none !important;
+  }
+  .nav-collapse-dining {
+    display: block !important;
+  }
+  .theme-btn {
+    padding: 3px 5px !important;
+  }
+}
+
+@media (max-width: 1290px) and (min-width: 1151px) {
+  /* Move 'States & UTs' into More dropdown */
+  .nav-item-states {
+    display: none !important;
+  }
+  .nav-collapse-states {
+    display: block !important;
+  }
+  .nav-actions {
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 1220px) and (min-width: 1151px) {
+  .theme-btn .theme-label {
+    display: none !important;
+  }
+  .theme-btn {
+    padding: 3px 5px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* ==========================================================================
+   NAVIGATION & TABLET BREAKPOINTS (max-width: 1150px)
+   ========================================================================== */
+@media (max-width: 1150px) {
+  :root {
+    --navbar-height: 72px;
+  }
+
+  /* Mobile Navigation Drawer */
+  .nav-menu {
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    width: 100%;
+    background: var(--bg-surface);
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-lg) var(--space-xl);
+    box-shadow: var(--shadow-xl);
+    border-bottom: 1px solid var(--border-light);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+    z-index: 999;
+    max-height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    gap: 8px;
+    white-space: normal !important;
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu > li {
+    width: 100%;
+    display: block;
+  }
+
+  /* In mobile drawer: show all standard links in menu list */
+  .nav-item-host,
+  .nav-item-dining,
+  .nav-item-states {
+    display: block !important;
+  }
+
+  /* Hide duplicate collapsed items inside the dropdown in mobile drawer */
+  .nav-dropdown-collapse,
+  #navDropdownDivider {
+    display: none !important;
+  }
+
+  /* Hide navbar right-side theme switcher on mobile (it's inside mobile drawer) */
+  #navbarThemeSwitcher {
+    display: none !important;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-item-more {
+    width: 100%;
+    display: block;
+  }
+
+  .nav-more-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-dropdown-menu {
+    position: static !important;
+    box-shadow: none;
+    background: var(--bg-cream);
+    margin: 4px 0 8px 12px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--border-light);
+  }
+
+  .nav-dropdown-theme-row {
+    display: none !important;
+  }
+
+  .nav-item-mobile-auth {
+    display: block !important;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border-light);
+    margin-top: var(--space-sm);
+  }
+
+  .nav-item-mobile-auth .nav-auth-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-item-mobile-auth .nav-auth-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .nav-item-mobile-theme {
+    display: block !important;
+  }
+
+  .nav-mobile-toggle {
+    display: flex;
+  }
+
+  .stays-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .stays-sidebar {
+    position: static;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .theme-header-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-banner-img {
+    height: 240px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .host-spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .host-spotlight img {
+    height: 260px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINTS (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .section {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .tourism-top-bar-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px var(--space-sm);
+  }
+
+  .tourism-badge-strip .tourism-bullet,
+  .tourism-badge-strip .tourism-highlight {
+    display: none;
+  }
+
+  /* Responsive Search Bar */
+  .search-bar-wrapper {
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    gap: var(--space-xs);
+  }
+
+  .search-field {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+  }
+
+  .search-field:last-of-type {
+    border-bottom: none;
+  }
+
+  .search-cta-btn {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 6px;
+    padding: 14px;
+  }
+
+  .guest-popover {
+    position: static;
+    width: 100%;
+    margin-top: var(--space-sm);
+    box-shadow: none;
+    border: 1px solid var(--border-light);
+  }
+
+  /* Destinations & Stays Grids */
+  .destinations-grid, .stays-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: var(--radius-lg);
+  }
+
+  .filter-categories {
+    overflow-x: auto;
+    padding-bottom: 6px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-cat-btn {
+    flex-shrink: 0;
+  }
+
+  .search-box-inline {
+    width: 100%;
+  }
+
+  /* Testimonials & Footer */
+  .testimonial-card {
+    padding: var(--space-xl);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-newsletter-form {
+    flex-direction: column;
+  }
+
+  /* Chat Widget */
+  .chat-widget-wrapper {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .chat-trigger-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .chat-window {
+    width: calc(100vw - 32px);
+    right: -8px;
+    height: 480px;
+  }
+
+  /* Scroll Stack Section Mobile */
+  .scroll-stack-section {
+    padding-top: var(--space-2xl);
+  }
+
+  .stack-panel-sticky {
+    padding: var(--space-xl) var(--space-md);
+    align-items: flex-end;
+  }
+
+  .stack-panel-title {
+    font-size: 2rem;
+  }
+
+  .stack-panel-desc {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   SMALL SMARTPHONE BREAKPOINTS (max-width: 540px)
+   ========================================================================== */
+@media (max-width: 540px) {
+  .brand-logo {
+    font-size: 1.3rem;
+  }
+  .brand-tag {
+    display: none;
+  }
+  .currency-selector-wrapper {
+    display: none;
+  }
+  .nav-auth-btn {
+    padding: 0 10px;
+    font-size: 0.78rem;
+    height: 34px;
+  }
+  .btn-wishlist-toggle {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+  }
+  .nav-actions {
+    gap: 6px;
+  }
+}

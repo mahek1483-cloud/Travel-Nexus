@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    function isAdmin() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    function isHost() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'host';
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Host Listings Collection
+    match /listings/{listingId} {
+      // Public can read only approved listings
+      allow read: if resource.data.status == 'approved' || 
+                     (isAuthenticated() && (resource.data.hostId == request.auth.uid || isAdmin()));
+      
+      // Hosts can submit new listings with pending status
+      allow create: if isAuthenticated() && 
+                       request.resource.data.hostId == request.auth.uid &&
+                       request.resource.data.status == 'pending';
+      
+      // Only host can edit their own listing details while pending, but cannot change status to approved
+      allow update: if isAdmin() || 
+                       (isAuthenticated() && 
+                        resource.data.hostId == request.auth.uid && 
+                        request.resource.data.status == resource.data.status);
+      
+      // Only admin can delete listings
+      allow delete: if isAdmin();
+    }
+
+    // Wishlist Subcollections
+    match /users/{userId}/wishlist/{itemId} {
+      allow read, write: if isOwner(userId) || isAdmin();
+    }
+  }
+}

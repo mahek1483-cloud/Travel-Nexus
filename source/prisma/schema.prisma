@@ -1,0 +1,90 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  passwordHash String
+  role         String        @default("traveler") // traveler, host, admin
+  createdAt    DateTime      @default(now())
+  wishlist     Wishlist[]
+  chatMessages ChatMessage[]
+  listings     Listing[]
+
+  @@map("users")
+}
+
+model Listing {
+  id           String     @id @default(cuid())
+  type         String     // hotel, dining, guide
+  businessName String
+  tagline      String
+  description  String
+  address      String
+  lat          Float
+  lng          Float
+  priceMin     Int
+  priceMax     Int
+  specialty    String?
+  dishes       Json?      // JSON array of dishes for dining
+  photos       String[]   // PostgreSQL native text[]
+  videoUrl     String?
+  hostId       String
+  host         User       @relation(fields: [hostId], references: [id], onDelete: Cascade)
+  hostName     String
+  hostEmail    String
+  status       String     @default("pending") // pending, approved, rejected
+  createdAt    DateTime   @default(now())
+  reviews      Review[]
+
+  @@map("listings")
+}
+
+model Review {
+  id               String   @id @default(cuid())
+  listingId        String
+  listing          Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  author           String
+  rating           Float
+  date             String
+  verifiedTraveler Boolean  @default(true)
+  comment          String
+  photos           String[]
+  hostResponse     String?
+  createdAt        DateTime @default(now())
+
+  @@map("reviews")
+}
+
+model Wishlist {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listingId String   // Stores listing or static stay ID
+  createdAt DateTime @default(now())
+
+  @@unique([userId, listingId])
+  @@index([userId])
+  @@map("wishlists")
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  sessionId String
+  sender    String   // "user" or "assistant"
+  text      String
+  createdAt DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([userId])
+  @@map("chat_messages")
+}

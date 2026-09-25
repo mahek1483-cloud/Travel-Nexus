@@ -1,0 +1,38 @@
+{
+  "name": "travel-nexus",
+  "version": "1.0.0",
+  "description": "A modern, aesthetically polished tourism and hospitality platform website uniting boutique stays, authentic regional dining, local guides, and AI itinerary architecture.",
+  "scripts": {
+    "start": "npx serve . -p 3000",
+    "dev": "npx serve . -p 3000",
+    "serve": "npx serve .",
+    "check": "node scripts/validate-syntax.js",
+    "test": "npm run check",
+    "check-images": "node scripts/check-images.js",
+    "fetch-images": "node scripts/fetch-images.js",
+    "build": "node scripts/build-production.js",
+    "postinstall": "prisma generate",
+    "prisma:seed": "node prisma/seed.js",
+    "deploy": "npx vercel --prod --yes"
+  },
+  "keywords": [
+    "travel",
+    "hospitality",
+    "boutique-hotels",
+    "culinary-tourism",
+    "ai-itinerary-planner",
+    "sustainable-travel"
+  ],
+  "author": "Travel Nexus Team",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "bcryptjs": "^3.0.3",
+    "cookie": "^2.0.1",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "prisma": "^6.4.1"
+  }
+}

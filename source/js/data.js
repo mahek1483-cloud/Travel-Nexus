@@ -1,0 +1,1311 @@
+/**
+ * Travel Nexus - Comprehensive Curated Data Store
+ * Authentic Indian boutique destinations, local stays, culinary themes, and reviews.
+ */
+
+const TRAVEL_DATA = {
+  "destinations": [
+    {
+      "id": "dest-manali",
+      "name": "Manali & Solang Valley",
+      "region": "Himachal Pradesh, India",
+      "coordinates": [
+        32.2432,
+        77.1892
+      ],
+      "category": "mountains",
+      "tagline": "Cedar-scented pine slopes, snow-clad mountain passes, and roaring Beas riverbanks",
+      "image": "images/india/destinations/dest-manali.jpg",
+      "bestTime": "Oct – Feb (Snow) & Apr – Jun (Lush)",
+      "rating": 4.94,
+      "reviewsCount": 420,
+      "startingPrice": 3800,
+      "alt": "Snow-dusted pine forests and wooden Himachali cottage overlooking mountain valley in Manali",
+      "topAttractions": [
+        "Solang Valley Alpine Meadow",
+        "Hadimba 16th-century Wooden Temple",
+        "Old Manali Apple Orchards"
+      ],
+      "description": "Nestled high in the Kullu Valley, Manali balances ancient cedar-wood sanctuaries with alpine adventures. From the cobblestone bohemian alleys of Old Manali to the snow-covered slopes of Solang, crisp mountain air whispers legends through deodar groves.",
+      "highlights": [
+        "Morning walk through heritage apple orchards with a local Himachali family",
+        "Pahadi wild-herb tea tasting by the glacial waters of the Beas River",
+        "Scenic drive up to Atal Tunnel for panoramic views of snow-locked Pir Panjal peaks"
+      ],
+      "climate": "Cool temperate summers with wildflower meadows and crisp, powder-snow winters",
+      "localTip": "Wander through the upper trails of Old Manali before 8 AM for peaceful mountain vistas and the scent of freshly baked mountain bread."
+    },
+    {
+      "id": "dest-leh-ladakh",
+      "name": "Leh-Ladakh & Nubra Valley",
+      "region": "Ladakh, India",
+      "coordinates": [
+        34.1526,
+        77.5771
+      ],
+      "category": "mountains",
+      "tagline": "High-altitude desert monasteries, turquoise glacial lakes, and cosmic starlit skies",
+      "image": "images/india/destinations/dest-leh-ladakh.jpg",
+      "bestTime": "May – Sep (Open Passes & Sun)",
+      "rating": 4.97,
+      "reviewsCount": 380,
+      "startingPrice": 4800,
+      "alt": "Pangong Tso turquoise lake bordered by barren ochre Himalayan mountains in Ladakh",
+      "topAttractions": [
+        "Thiksey Monastery Sunrise Chants",
+        "Pangong Tso Glacial Waters",
+        "Nubra Valley White Sand Dunes"
+      ],
+      "description": "A mesmerizing lunar wonderland crowned by whitewashed stupas and fluttering prayer flags. Perched over 3,500 meters above sea level, Ladakh is a spiritual mountain realm where ancient Tibetan Buddhist gompas overlook sheer desert valleys and sapphire lakes.",
+      "highlights": [
+        "Dawn chanting ceremony with monks inside the 15th-century Thiksey Monastery",
+        "Double-humped Bactrian camel ride across the cold-desert dunes of Hunder",
+        "Stargazing under Bortle-1 skies near the high-altitude Pangong lakefront"
+      ],
+      "climate": "Arid high-altitude sunshine with cool breezes during the day and sub-zero night skies",
+      "localTip": "Spend your first 36 hours resting in Leh town with traditional butter tea to properly acclimatize before crossing high passes."
+    },
+    {
+      "id": "dest-munnar",
+      "name": "Munnar & Western Ghats",
+      "region": "Kerala, India",
+      "coordinates": [
+        10.0889,
+        77.0595
+      ],
+      "category": "mountains",
+      "tagline": "Rolling emerald tea carpet slopes, misty mountain waterfalls, and wild cardamom trails",
+      "image": "images/india/destinations/dest-munnar.jpg",
+      "bestTime": "Sep – Mar (Misty & Crisp)",
+      "rating": 4.93,
+      "reviewsCount": 340,
+      "startingPrice": 3200,
+      "alt": "Endless rolling green tea plantation hills shrouded in morning mountain mist in Munnar",
+      "topAttractions": [
+        "Eravikulam Nilgiri Tahr Sanctuary",
+        "Anamudi Peak Lookout",
+        "Lockhart Organic Tea Factory"
+      ],
+      "description": "Rising 1,600 meters above sea level in God's Own Country, Munnar is a sanctuary of undulating tea hills shrouded in ethereal morning mists. Colonial-era stone bungalows, cascading mountain streams, and fragrant spice groves define its slow, serene mountain rhythm.",
+      "highlights": [
+        "Guided plantation walk plucking orthodox single-estate tea leaves with tea masters",
+        "Spotting endangered Nilgiri Tahr mountain goats on the cliffs of Rajamalai",
+        "Trekking along secret spice trails fragrant with wild cinnamon, cloves, and cardamom"
+      ],
+      "climate": "Pleasantly crisp year-round with rolling mountain mists and gentle monsoon showers",
+      "localTip": "Wake up at dawn for the Top Station hike to witness the rare sea of clouds blanketing the valley below."
+    },
+    {
+      "id": "dest-darjeeling",
+      "name": "Darjeeling & Kanchenjunga",
+      "region": "West Bengal, India",
+      "coordinates": [
+        27.041,
+        88.2663
+      ],
+      "category": "mountains",
+      "tagline": "World-renowned muscatel tea gardens, vintage toy trains, and golden Himalayan summits",
+      "image": "images/india/destinations/dest-darjeeling.jpg",
+      "bestTime": "Oct – Dec & Mar – May",
+      "rating": 4.91,
+      "reviewsCount": 315,
+      "startingPrice": 3400,
+      "alt": "Sunlight illuminating snow-capped Mount Kanchenjunga seen from Darjeeling hills",
+      "topAttractions": [
+        "Tiger Hill Sunrise over Kanchenjunga",
+        "Darjeeling Himalayan Toy Train",
+        "Happy Valley Tea Estate"
+      ],
+      "description": "Perched along steep Himalayan ridges facing Mount Kanchenjunga, Darjeeling is legendary for the champagne of teas and heritage colonial charm. Whistling steam trains wind past Victorian tea cottages, rhododendron forests, and peaceful Tibetan Buddhist monasteries.",
+      "highlights": [
+        "First light hitting Kanchenjunga's golden peak from Tiger Hill panoramic deck",
+        "Muscatel first-flush tea tasting session at an artisan biodynamic tea estate",
+        "Ride on the UNESCO World Heritage steam locomotive through the Batasia Loop"
+      ],
+      "climate": "Temperate alpine climate with cool mountain fog and clear autumn skies",
+      "localTip": "Stop by the century-old bakery on Mall Road for freshly baked ginger cookies and Darjeeling hot chocolate."
+    },
+    {
+      "id": "dest-gangtok",
+      "name": "Gangtok & East Sikkim",
+      "region": "Sikkim, India",
+      "coordinates": [
+        27.3389,
+        88.6065
+      ],
+      "category": "mountains",
+      "tagline": "Organic Himalayan slopes, fluttering prayer wheels, and sacred glacial waters",
+      "image": "images/india/destinations/dest-gangtok.jpg",
+      "bestTime": "Oct – Dec & Mar – Jun",
+      "rating": 4.92,
+      "reviewsCount": 290,
+      "startingPrice": 3600,
+      "alt": "Panoramic view of Gangtok hill town nestled beneath towering Sikkim mountain peaks",
+      "topAttractions": [
+        "Rumtek Monastery Golden Stupa",
+        "Tsomgo Sacred Glacial Lake",
+        "Nathula Pass Border Ridge"
+      ],
+      "description": "Nestled in India’s fully certified organic state, Gangtok rises against the magnificent backdrop of the Eastern Himalayas. Clean cobblestone walkways, ornate Buddhist gompas, wild orchid sanctuaries, and warm Lepcha hospitality make it an unforgettable alpine sanctuary.",
+      "highlights": [
+        "Experiencing early morning butter-lamp ceremonies at the ancient Rumtek Monastery",
+        "Scenic drive past snow-clad cliffs to the sacred turquoise waters of Tsomgo Lake",
+        "Savoring traditional Sikkimese thukpa and steamed fermented tingmo dumplings"
+      ],
+      "climate": "Invigorating crisp air with vibrant spring alpine blossoms and clear mountain horizons",
+      "localTip": "Visit Enchey Monastery in late afternoon when the tranquil forest surrounding the monastery fills with soothing wind chants."
+    },
+    {
+      "id": "dest-goa",
+      "name": "Goa & Fontainhas Coast",
+      "region": "Goa, India",
+      "coordinates": [
+        15.4989,
+        73.8278
+      ],
+      "category": "beaches",
+      "tagline": "Pastel Indo-Portuguese mansions, golden palm-fringed sands, and fiery coastal curries",
+      "image": "images/india/destinations/dest-goa.jpg",
+      "bestTime": "Nov – Mar (Sun & Ocean)",
+      "rating": 4.95,
+      "reviewsCount": 520,
+      "startingPrice": 4200,
+      "alt": "Golden sunset over calm Arabian Sea waves with coconut palm silhouettes in South Goa",
+      "topAttractions": [
+        "Fontainhas Latin Quarter",
+        "Palolem Curved Crescent Beach",
+        "Cabo de Rama Cliff Fort"
+      ],
+      "description": "Far beyond crowded tourist strips lies the soul of Goa: quiet southern bays with swaying coconut groves, heritage Indo-Portuguese villas with oyster-shell windows, and spice-infused susegad living where time slows to the rhythm of the Arabian Sea tide.",
+      "highlights": [
+        "Architectural heritage walk through the terracotta and indigo lanes of Fontainhas",
+        "Morning dolphin cruise in traditional wooden boats along tranquil South Goa coves",
+        "Fresh catch Kokum fish thali dinner cooked by ancestral Goan homestay keepers"
+      ],
+      "climate": "Warm tropical sunshine tempered by refreshing evening Arabian Sea breezes",
+      "localTip": "Head south to Agonda or Cola Beach for quiet golden shores without motorized sports."
+    },
+    {
+      "id": "dest-gokarna",
+      "name": "Gokarna & Om Beach",
+      "region": "Karnataka, India",
+      "coordinates": [
+        14.5479,
+        74.3188
+      ],
+      "category": "beaches",
+      "tagline": "Sacred temple cliffs, pristine secluded coves, and untouched coastal wilderness",
+      "image": "images/india/destinations/dest-gokarna.jpg",
+      "bestTime": "Oct – Mar (Gentle Waves)",
+      "rating": 4.9,
+      "reviewsCount": 310,
+      "startingPrice": 2800,
+      "alt": "Rugged clifftop overlooking secluded golden crescent beach in Gokarna",
+      "topAttractions": [
+        "Om Beach Natural Headland",
+        "Half Moon Beach Cliff Trail",
+        "Mahabaleshwar Shore Temple"
+      ],
+      "description": "Where rugged Western Ghats meet the Arabian Sea, Gokarna remains a serene coastal haven untouched by commercial hustle. Sacred seaside temple chants mingle with the sound of crashing waves, and narrow cliff trails connect four secluded crescent beaches.",
+      "highlights": [
+        "Coastal cliff trek connecting Kudle, Om, Half Moon, and secluded Paradise Beach",
+        "Sunset meditation on the volcanic rocks overlooking Om Beach's natural curve",
+        "Traditional coastal Karavali banana-leaf meal featuring spiced coconut gravies"
+      ],
+      "climate": "Tropical coastal weather with calm sea waters and star-filled night skies",
+      "localTip": "Take the cliff-edge footpath between Half Moon and Paradise Beach during golden hour for dramatic ocean views."
+    },
+    {
+      "id": "dest-andaman",
+      "name": "Havelock & Andaman Islands",
+      "region": "Andaman & Nicobar Islands, India",
+      "coordinates": [
+        12.0104,
+        92.9876
+      ],
+      "category": "beaches",
+      "tagline": "Crystal aquamarine waters, untouched coral reefs, and bioluminescent night lagoons",
+      "image": "images/india/destinations/dest-andaman.jpg",
+      "bestTime": "Nov – May (Calm Blue Seas)",
+      "rating": 4.98,
+      "reviewsCount": 460,
+      "startingPrice": 5500,
+      "alt": "Pristine white sand beach with leaning palm trees and crystal turquoise waters in Andaman",
+      "topAttractions": [
+        "Radhanagar Beach Sunset",
+        "Elephant Beach Coral Reefs",
+        "Kalapathar Turquoise Bay"
+      ],
+      "description": "An isolated emerald archipelago in the Bay of Bengal, the Andaman Islands boast powdery white sands, ancient rainforest canopies, and some of the richest coral gardens on earth. Radhanagar Beach consistently ranks among Asia’s most breathtaking coastlines.",
+      "highlights": [
+        "Snorkeling through vibrant coral formations alongside sea turtles at Elephant Beach",
+        "Night kayaking through mangrove lagoons illuminated by glowing bioluminescence",
+        "Walking the sugar-white sands of Radhanagar as the sun melts into the ocean"
+      ],
+      "climate": "Equatorial maritime warmth with gentle ocean breezes and crystalline water clarity",
+      "localTip": "Rent a bicycle to explore the peaceful interior village lanes of Havelock through dense coconut groves."
+    },
+    {
+      "id": "dest-kovalam",
+      "name": "Kovalam & Lighthouse Beach",
+      "region": "Kerala, India",
+      "coordinates": [
+        8.4004,
+        76.9787
+      ],
+      "category": "beaches",
+      "tagline": "Iconic striped lighthouse cliffs, healing Ayurvedic breezes, and Arabian Sea sunsets",
+      "image": "images/india/destinations/dest-kovalam.jpg",
+      "bestTime": "Sep – Mar (Warm & Gentle)",
+      "rating": 4.88,
+      "reviewsCount": 290,
+      "startingPrice": 3100,
+      "alt": "Historic red-and-white striped lighthouse on palm-covered headland above Kovalam beach",
+      "topAttractions": [
+        "Vizhinjam Heritage Lighthouse",
+        "Hawa Beach Rock Outcrops",
+        "Samudra Beach Fishing Harbor"
+      ],
+      "description": "Formed by three adjacent crescent beaches separated by rocky headlands, Kovalam has attracted seekers of coastal rejuvenation for decades. The red-and-white Vizhinjam Lighthouse commands sweeping ocean views, while age-old Ayurvedic traditions soothe the senses.",
+      "highlights": [
+        "Climbing the spiral steps of the 1970s lighthouse for 360-degree Arabian Sea vistas",
+        "Rejuvenating herbal oil Abhyanga massage with traditional Kerala Ayurvedic practitioners",
+        "Watching local fishermen launch wooden catamaran boats into the morning surf"
+      ],
+      "climate": "Tropical coastal warmth with cooling onshore sea breezes in the afternoon",
+      "localTip": "Visit Samudra Beach in the morning to see local fishermen bring in the daily catch and haul traditional shore nets."
+    },
+    {
+      "id": "dest-pondicherry",
+      "name": "Pondicherry & French Quarter",
+      "region": "Puducherry, India",
+      "coordinates": [
+        11.9416,
+        79.8083
+      ],
+      "category": "beaches",
+      "tagline": "Mustard-hued colonial villas, bougainvillea-draped lanes, and tranquil Coromandel shores",
+      "image": "images/india/destinations/dest-pondicherry.jpg",
+      "bestTime": "Oct – Mar (Pleasant Breeze)",
+      "rating": 4.91,
+      "reviewsCount": 375,
+      "startingPrice": 3400,
+      "alt": "Mustard yellow French colonial mansion with arched windows and pink bougainvillea in Pondicherry",
+      "topAttractions": [
+        "White Town French Quarter",
+        "Promenade Beachfront Walk",
+        "Auroville Matrimandir Dome"
+      ],
+      "description": "A unique confluence of French elegance and Tamil heritage on the Coromandel Coast. Cobblestone streets are lined with mustard-yellow colonial mansions, stylish artisan boutiques, courtyard bakeries serving freshly baked croissants, and sea-facing promenades.",
+      "highlights": [
+        "Morning bicycle ride through the quiet, shaded avenues of White Town",
+        "Meditation walk around the serene golden globe of the Matrimandir in Auroville",
+        "Tasting French-Creole fusion seafood cuisine in an intimate bougainvillea courtyard"
+      ],
+      "climate": "Mild coastal winter warmth with cool ocean breezes sweeping along the promenade",
+      "localTip": "Rent a vintage bicycle to explore the contrasting architectural worlds of the French and Tamil quarters."
+    },
+    {
+      "id": "dest-jaipur",
+      "name": "Jaipur & Amer Fort",
+      "region": "Rajasthan, India",
+      "coordinates": [
+        26.9124,
+        75.7873
+      ],
+      "category": "heritage",
+      "tagline": "Terracotta-pink city gates, hilltop Rajput fortresses, and royal block-print bazaars",
+      "image": "images/india/destinations/dest-jaipur.jpg",
+      "bestTime": "Oct – Mar (Pleasant Sun)",
+      "rating": 4.96,
+      "reviewsCount": 540,
+      "startingPrice": 3900,
+      "alt": "Majestic Amer Fort mirrored in Maota Lake with rugged Aravalli hills in Jaipur",
+      "topAttractions": [
+        "Amer Fort Amber Courtyards",
+        "Hawa Mahal Palace of Winds",
+        "Jantar Mantar Stone Observatories"
+      ],
+      "description": "The famed Pink City is a living royal masterpiece planned according to ancient Vastu Shastra. Towering Aravalli fortresses guard ornate palace complexes, while bustling heritage bazaars overflow with artisan jewelry, hand-carved gemstones, and natural indigo textiles.",
+      "highlights": [
+        "Private dawn exploration of Amer Fort's mirror palace before visitor hours",
+        "Hands-on woodblock textile printing workshop with a 5th-generation master artisan in Sanganer",
+        "Evening rooftop dinner overlooking the illuminated facade of the Hawa Mahal"
+      ],
+      "climate": "Warm dry sunny winter days with delightfully crisp, starlit desert evenings",
+      "localTip": "Climb up to Nahargarh Fort just before sunset for an unparalleled panorama of the entire Pink City glowing amber."
+    },
+    {
+      "id": "dest-udaipur",
+      "name": "Udaipur & Lake Pichola",
+      "region": "Rajasthan, India",
+      "coordinates": [
+        24.5854,
+        73.7125
+      ],
+      "category": "heritage",
+      "tagline": "Shimmering marble palaces floating on emerald waters beneath rugged Aravalli ridges",
+      "image": "images/india/destinations/dest-udaipur.jpg",
+      "bestTime": "Sep – Mar (Romantic & Mild)",
+      "rating": 4.97,
+      "reviewsCount": 512,
+      "startingPrice": 4500,
+      "alt": "White marble royal palace illuminated over serene Lake Pichola at sunset in Udaipur",
+      "topAttractions": [
+        "City Palace Complex & Museum",
+        "Lake Pichola Sunset Boat Cruise",
+        "Bagore Ki Haveli Folk Dances"
+      ],
+      "description": "Celebrated as India’s most romantic heritage city, Udaipur radiates royal grace. Grand Rajput havelis with stained-glass balconies line the shores of Lake Pichola, while heritage wooden boats glide past island palaces reflecting the golden hue of setting desert suns.",
+      "highlights": [
+        "Private heritage boat crossing Lake Pichola as twilight turns the water to liquid gold",
+        "Authentic royal Mewari dinner prepared with recipes handed down by royal court chefs",
+        "Hands-on miniature painting and artisan pottery workshop in Lal Ghat"
+      ],
+      "climate": "Pleasant, dry winter breeze with warm golden sunshine and cool lakeside nights",
+      "localTip": "Walk through the quiet rear lanes of Lal Ghat in the morning to watch local fresco artists at work."
+    },
+    {
+      "id": "dest-jodhpur",
+      "name": "Jodhpur & Mehrangarh",
+      "region": "Rajasthan, India",
+      "coordinates": [
+        26.2389,
+        73.0243
+      ],
+      "category": "heritage",
+      "tagline": "Indigo-blue Brahmin alleyways, cliff-carved citadel walls, and desert spice trails",
+      "image": "images/india/destinations/dest-jodhpur.jpg",
+      "bestTime": "Oct – Mar (Crisp Desert Days)",
+      "rating": 4.94,
+      "reviewsCount": 410,
+      "startingPrice": 3600,
+      "alt": "Panoramic view of blue painted houses beneath the sheer rock cliff of Mehrangarh Fort in Jodhpur",
+      "topAttractions": [
+        "Mehrangarh Fort Ramparts",
+        "Jaswant Thada White Marble Memorial",
+        "Clock Tower Sardar Bazaar"
+      ],
+      "description": "Known as the Sun City and Blue City, Jodhpur spreads below the sheer perpendicular cliffs of Mehrangarh Fort. Winding through labyrinthine indigo-painted alleys, the scent of crushed red chilies, cardamom, and leatherwork fills the air.",
+      "highlights": [
+        "Walking the ancient ramparts of Mehrangarh Fort with panoramic views of the blue city",
+        "Ziplining across the fort moats and rugged desert cliffs of Ranisar Lake",
+        "Exploring the aromatic spice market near the Clock Tower with a local culinary guide"
+      ],
+      "climate": "Clear, brilliant desert sunshine with cool evenings and zero humidity",
+      "localTip": "Venture deep into the Navchokiya neighborhood to photograph the most vibrant and authentic indigo-painted homes."
+    },
+    {
+      "id": "dest-hampi",
+      "name": "Hampi & Vijayanagara",
+      "region": "Karnataka, India",
+      "coordinates": [
+        15.335,
+        76.46
+      ],
+      "category": "heritage",
+      "tagline": "Bizarre boulder-strewn landscapes, stone chariot shrines, and lost imperial empires",
+      "image": "images/india/destinations/dest-hampi.jpg",
+      "bestTime": "Oct – Feb (Mild & Clear)",
+      "rating": 4.96,
+      "reviewsCount": 395,
+      "startingPrice": 3000,
+      "alt": "Ancient stone carved temple pillars surrounded by surreal granite boulders at sunset in Hampi",
+      "topAttractions": [
+        "Vijaya Vittala Stone Chariot",
+        "Virupaksha Riverside Temple",
+        "Matanga Hill Sunrise Point"
+      ],
+      "description": "A surreal open-air museum spread across 4,100 hectares of giant granite boulders and banana plantations. Hampi preserves the magnificent ruins of the 14th-century Vijayanagara Empire—intricately sculpted stone pillars, musical mandapas, and royal elephant stables.",
+      "highlights": [
+        "Sunrise trek up Matanga Hill overlooking a 360-degree sea of golden boulders and temple spires",
+        "Crossing the Tungabhadra River on a traditional round wicker coracle boat",
+        "Listening to the acoustics of the resonant musical stone pillars inside Vittala Temple"
+      ],
+      "climate": "Warm dry days with refreshing morning breezes and starlit open night skies",
+      "localTip": "Rent a bicycle or moped to explore the quiet heritage ruins on the Sanapur hippie-island side of the river."
+    },
+    {
+      "id": "dest-mysuru",
+      "name": "Mysuru & Chamundi Hills",
+      "region": "Karnataka, India",
+      "coordinates": [
+        12.2958,
+        76.6394
+      ],
+      "category": "heritage",
+      "tagline": "Gilded royal palace illumination, fragrant sandalwood markets, and heritage silk looms",
+      "image": "images/india/destinations/dest-mysuru.jpg",
+      "bestTime": "Sep – Mar (Festive & Green)",
+      "rating": 4.91,
+      "reviewsCount": 330,
+      "startingPrice": 3100,
+      "alt": "Ornate facade of Mysore Palace illuminated with thousands of golden light bulbs at dusk",
+      "topAttractions": [
+        "Mysore Palace Grand Durbar",
+        "Devaraja Century-Old Spice Market",
+        "Chamundeshwari Hilltop Temple"
+      ],
+      "description": "The cultural heart of Karnataka, Mysuru is synonymous with royal grandeur, pure mulberry silk, and aromatic sandalwood. Its grand Indo-Saracenic palace glows with nearly 100,000 light bulbs on weekend evenings, while heritage markets carry fragrant heaps of flowers.",
+      "highlights": [
+        "Witnessing the breathtaking Sunday evening illumination of Mysore Palace",
+        "Sensory walk through Devaraja Market sampling fresh Mysore Pak sweet delicacies",
+        "Visiting an active heritage silk-weaving loom to see pure gold zari being woven"
+      ],
+      "climate": "Mild, comfortable highland climate with pleasant temperatures throughout the year",
+      "localTip": "Order authentic wood-fired Mysore Masala Dosa at a 70-year-old heritage corner eatery near the palace."
+    },
+    {
+      "id": "dest-spiti",
+      "name": "Spiti Valley & Kaza",
+      "region": "Himachal Pradesh, India",
+      "coordinates": [
+        32.2276,
+        78.071
+      ],
+      "category": "rural",
+      "tagline": "Ancient cliff-hanging gompas, fossil-rich villages, and raw Trans-Himalayan silence",
+      "image": "images/india/destinations/dest-spiti.jpg",
+      "bestTime": "Jun – Sep (Accessible Passes)",
+      "rating": 4.97,
+      "reviewsCount": 310,
+      "startingPrice": 3600,
+      "alt": "Whitewashed Key Monastery perched high on a conical mountain cliff in Spiti Valley",
+      "topAttractions": [
+        "Key 1,000-Year-Old Cliff Monastery",
+        "Chandratal Crescent Moon Lake",
+        "Hikkim World's Highest Post Office"
+      ],
+      "description": "Often called 'The Middle Land' between India and Tibet, Spiti is a rugged, barren high-altitude desert where ancient Buddhist culture thrives untouched by commercialization. Isolated villages sit like eagle nests on sheer cliffs overlooking the braided Spiti River.",
+      "highlights": [
+        "Sending a handwritten postcard from Hikkim, home to the world's highest post office at 4,400m",
+        "Camping beneath the Milky Way alongside the turquoise crescent waters of Chandratal Lake",
+        "Sharing hot barley soup and sea buckthorn tea with village families in mud-brick homestays"
+      ],
+      "climate": "Crisp alpine desert days with brilliant blue skies and freezing, starry nights",
+      "localTip": "Stay in Langza village to hunt for ancient marine fossils embedded in the mountain shale."
+    },
+    {
+      "id": "dest-coorg",
+      "name": "Coorg & Kodagu Hills",
+      "region": "Karnataka, India",
+      "coordinates": [
+        12.4244,
+        75.7382
+      ],
+      "category": "rural",
+      "tagline": "Misty coffee estates, pepper vine canopy trails, and rich Kodava warrior hospitality",
+      "image": "images/india/destinations/dest-coorg.jpg",
+      "bestTime": "Oct – Mar (Coffee Harvest)",
+      "rating": 4.93,
+      "reviewsCount": 365,
+      "startingPrice": 3400,
+      "alt": "Lush green coffee and spice plantation surrounded by misty forest trees in Coorg",
+      "topAttractions": [
+        "Abbey Waterfalls in Deep Jungle",
+        "Madikeri Fort & Viewpoint",
+        "Dubare Elephant Camp by Cauvery"
+      ],
+      "description": "Known as the Scotland of India, Coorg is a verdant mountain district blanketed by dense rainforest, shaded coffee plantations, and pepper vines. The proud Kodava community welcomes travelers with aromatic filter coffee, pandi curry, and warm hearthside hospitality.",
+      "highlights": [
+        "Guided plantation walk identifying Arabica, Robusta, cardamom, and wild vanilla orchids",
+        "Bathing and feeding gentle Asian elephants on the banks of the sacred Cauvery River",
+        "Trekking to the misty summit of Tadiandamol, Coorg’s highest peak"
+      ],
+      "climate": "Pleasantly cool highland weather with refreshing mountain mist and lush green landscapes",
+      "localTip": "Visit between November and January to witness the fragrant white coffee blossom blooming across entire hills."
+    },
+    {
+      "id": "dest-chettinad",
+      "name": "Chettinad Heritage Villages",
+      "region": "Tamil Nadu, India",
+      "coordinates": [
+        10.1667,
+        78.7833
+      ],
+      "category": "rural",
+      "tagline": "Palatial 1,000-room mansions, handmade Athangudi tiles, and legendary black-pepper cuisine",
+      "image": "images/india/destinations/dest-chettinad.jpg",
+      "bestTime": "Oct – Mar (Pleasant Days)",
+      "rating": 4.92,
+      "reviewsCount": 280,
+      "startingPrice": 3800,
+      "alt": "Immense inner courtyard of a heritage Chettinad mansion with Burma teak pillars and Athangudi tiles",
+      "topAttractions": [
+        "Kanadukathan Grand Palaces",
+        "Athangudi Handcrafted Tile Works",
+        "Karaikudi Heritage Antique Bazaar"
+      ],
+      "description": "A cluster of 70 heritage villages founded by wealthy merchant traders in the 19th century. Chettinad is famous for palatial mansions built with Burmese teak, Italian marble, and Belgian glass, accompanied by one of India’s most nuanced, spice-driven culinary traditions.",
+      "highlights": [
+        "Private tour inside a 100-room heritage mansion with ancestral brassware and teak pillars",
+        "Hands-on workshop pouring and curing geometric Athangudi handmade floor tiles",
+        "Traditional 7-course Chettinad feast served on freshly cut banana leaves"
+      ],
+      "climate": "Dry, comfortable tropical winter days with calm evenings and starry village nights",
+      "localTip": "Rent an antique bicycle in Kanadukathan to meander through silent lanes lined with magnificent haveli gates."
+    },
+    {
+      "id": "dest-majuli",
+      "name": "Majuli River Island",
+      "region": "Assam, India",
+      "coordinates": [
+        26.95,
+        94.2167
+      ],
+      "category": "rural",
+      "tagline": "World's largest inhabited river island, Neo-Vaishnavite sattras, and bamboo craftsmanship",
+      "image": "images/india/destinations/dest-majuli.jpg",
+      "bestTime": "Oct – Mar (Migratory Birds)",
+      "rating": 4.89,
+      "reviewsCount": 220,
+      "startingPrice": 2600,
+      "alt": "Tranquil river inlet on Brahmaputra with traditional wooden fishing boat and wetlands in Majuli",
+      "topAttractions": [
+        "Kamalabari Heritage Satra",
+        "Samaguri Traditional Mask-Making Studio",
+        "Brahmaputra Sunset Ferries"
+      ],
+      "description": "Resting like a green emerald in the mighty Brahmaputra River, Majuli is the cradle of Assamese Neo-Vaishnavite culture. Here, monks practice classical music, drum dances, and ancestral bamboo mask-making, surrounded by serene wetlands alive with migratory birds.",
+      "highlights": [
+        "Watching master artisans craft traditional mythological masks from bamboo and river clay",
+        "Listening to rhythmic Borgeet prayer chants inside the centuries-old Kamalabari Satra",
+        "Cycling along elevated mud embankments through Mishing tribal stilt villages"
+      ],
+      "climate": "Gentle riverine weather with cool river breezes and misty winter mornings",
+      "localTip": "Stay in a traditional bamboo cottage on stilts hosted by the indigenous Mishing community."
+    },
+    {
+      "id": "dest-khajuraho",
+      "name": "Khajuraho & Panna",
+      "region": "Madhya Pradesh, India",
+      "coordinates": [
+        24.8318,
+        79.9199
+      ],
+      "category": "rural",
+      "tagline": "Masterpiece Chandela stone temples, teak wildlife forests, and royal tiger reserves",
+      "image": "images/india/destinations/dest-khajuraho.jpg",
+      "bestTime": "Oct – Mar (Safari & Temples)",
+      "rating": 4.9,
+      "reviewsCount": 310,
+      "startingPrice": 2900,
+      "alt": "Detailed stone carved spire of the Kandariya Mahadeva temple rising against a blue sky in Khajuraho",
+      "topAttractions": [
+        "Kandariya Mahadeva Temple",
+        "Western Group of Temples",
+        "Panna National Park Tiger Safari"
+      ],
+      "description": "Set amid the peaceful countryside of Bundelkhand, Khajuraho is home to UNESCO-listed sandstone temples celebrating life, music, love, and spirituality. Just a short drive away lie the pristine dry deciduous forests and roaring waterfalls of Panna Tiger Reserve.",
+      "highlights": [
+        "Marveling at the intricate Chandela Dynasty stone carvings with a certified archaeological guide",
+        "Morning open-top jeep safari in Panna National Park tracking wild Royal Bengal tigers",
+        "Boat cruise along the deep Ken River gorge watching gharials and nesting vultures"
+      ],
+      "climate": "Pleasant sunny winter days with crisp forest breezes and warm golden sunlight",
+      "localTip": "Rent an audio tour guide early in the morning for the Western Group to appreciate the architectural symbolism in solitude."
+    }
+  ],
+  "stays": [
+    {
+      "id": "stay-solang-chalet",
+      "name": "The Cedar Ridge Pahadi Chalet",
+      "coordinates": [
+        32.253,
+        77.175
+      ],
+      "location": "Old Manali, Himachal Pradesh, India",
+      "type": "chalet",
+      "pricePerNight": 6500,
+      "rating": 4.97,
+      "reviewsCount": 148,
+      "badge": "Alpine Gem",
+      "image": "images/india/stays/stay-solang-chalet.jpg",
+      "alt": "Rustic wooden pine chalet with sloping roof and stone fireplace overlooking snowy Manali peaks",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Stone Hearth Fireplace",
+        "Organic Pahadi Breakfast",
+        "Panoramic Valley Views",
+        "Orchard Forest Trail",
+        "Heated Oak Bedding"
+      ],
+      "description": "Handcrafted from salvaged deodar timber and local river stone, this cozy alpine haven overlooks the roaring Beas River and snow-covered peaks. Enjoy hot cups of spiced kahwa by the fireplace, homemade apricot jams, and guided morning hikes into apple orchards.",
+      "host": {
+        "name": "Vikram & Sunita Thakur",
+        "role": "3rd-Generation Kullu Naturalists",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "No outdoor footwear indoors, peaceful quiet hours after 10 PM. Firewood is harvested sustainably."
+    },
+    {
+      "id": "stay-rawla-haveli",
+      "name": "Rawla Pichola Heritage Haveli",
+      "coordinates": [
+        24.5765,
+        73.6835
+      ],
+      "location": "Lal Ghat, Udaipur, Rajasthan, India",
+      "type": "hotel",
+      "pricePerNight": 12500,
+      "rating": 4.98,
+      "reviewsCount": 215,
+      "badge": "Royal Heritage",
+      "image": "images/india/stays/stay-rawla-haveli.jpg",
+      "alt": "Intricate carved stone jharokha balcony overlooking the shimmering waters of Lake Pichola",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Lakeside Rooftop Dining",
+        "Marble Courtyard Pool",
+        "Royal Heritage Breakfast",
+        "Lake Pichola Views",
+        "Sunset Boat Launch"
+      ],
+      "description": "A meticulously conserved 240-year-old Rajput noble mansion standing directly over Lake Pichola. Hand-carved jharokhas, stained-glass arches, and tranquil lotus courtyards evoke the golden era of Mewar royalty, accompanied by family heirloom recipes.",
+      "host": {
+        "name": "Maharaj Shakti Singh",
+        "role": "Heritage Restorer & Historian",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Smoking restricted to lakeside terraces. Guided palace tours provided complimentary for guests."
+    },
+    {
+      "id": "stay-fontainhas-villa",
+      "name": "Casa Da Bougainvillea",
+      "coordinates": [
+        15.498,
+        73.832
+      ],
+      "location": "Fontainhas, Panaji, Goa, India",
+      "type": "villa",
+      "pricePerNight": 14000,
+      "rating": 4.95,
+      "reviewsCount": 162,
+      "badge": "Colonial Luxe",
+      "image": "images/india/stays/stay-fontainhas-villa.jpg",
+      "alt": "Vibrant mustard yellow colonial Portuguese villa with clay roof tiles and lush flowering bougainvillea",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Private Plunge Pool",
+        "Courtyard Garden",
+        "Farm-to-Table Breakfast",
+        "Vintage Bicycle Fleet",
+        "Oyster Shell Windows"
+      ],
+      "description": "Tucked inside the Latin Quarter of Fontainhas, this 1890s Indo-Portuguese manor boasts high ceilings, antique teak credenzas, mother-of-pearl window shutters, and a shaded plunge pool fringed by hibiscus and frangipani blossoms.",
+      "host": {
+        "name": "Dr. Maria & Antonio Pinto",
+        "role": "Goan Cultural Conservationists",
+        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Quiet neighborhood retreat. Enjoy complimentary vintage bicycles for morning explorations."
+    },
+    {
+      "id": "stay-kerala-houseboat",
+      "name": "Tharavadu Backwater Eco Estate",
+      "coordinates": [
+        9.6175,
+        76.4301
+      ],
+      "location": "Kumarakom, Kerala, India",
+      "type": "homestay",
+      "pricePerNight": 7800,
+      "rating": 4.96,
+      "reviewsCount": 189,
+      "badge": "Backwater Serenity",
+      "image": "images/india/stays/stay-kerala-houseboat.jpg",
+      "alt": "Traditional Kerala wooden homestead on peaceful backwaters surrounded by coconut palms",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Traditional Canoe Cruises",
+        "Authentic Sadya Breakfast",
+        "Panoramic Canal Views",
+        "Organic Spice Orchard",
+        "Ayurvedic Consultation"
+      ],
+      "description": "A 150-year-old traditional teak 'Tharavadu' home nestled between calm freshwater canals and paddy fields. Wake up to gentle kingfisher calls, enjoy fresh appams with coconut stew, and drift through silent backwaters on private wooden country canoes.",
+      "host": {
+        "name": "Kurian & Mary Varghese",
+        "role": "Traditional Spice Orchardists",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "No outdoor motors near bird nesting areas. Fresh farm meals cooked to order in ancestral clay pots."
+    },
+    {
+      "id": "stay-coorg-plantation",
+      "name": "The Mist Haven Coffee Retreat",
+      "coordinates": [
+        12.43,
+        75.73
+      ],
+      "location": "Madikeri, Coorg, Karnataka, India",
+      "type": "resort",
+      "pricePerNight": 9500,
+      "rating": 4.94,
+      "reviewsCount": 135,
+      "badge": "Forest Sanctuary",
+      "image": "images/india/stays/stay-coorg-plantation.jpg",
+      "alt": "Eco luxury wooden villa nestled inside lush green coffee plantation and misty forest in Coorg",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Infinity Forest Pool",
+        "Plantation Trail Walks",
+        "Single-Origin Coffee Tasting",
+        "Panoramic Hill Views",
+        "Hearthside Bonfire"
+      ],
+      "description": "Set deep within an organic 120-acre coffee and cardamom estate, this eco-resort merges sustainable luxury with rustic tranquility. Wake up to mist rising over tree ferns, sip fresh single-origin brew, and stargaze by wood embers under the dark canopy.",
+      "host": {
+        "name": "Bopanna & Devika",
+        "role": "Artisan Coffee Cultivators",
+        "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Eco-sanctuary with zero single-use plastics. Gentle night hours to protect nocturnal forest fauna."
+    },
+    {
+      "id": "stay-ladakh-camp",
+      "name": "Nubra Starlight Eco Glamp",
+      "coordinates": [
+        34.5428,
+        77.5619
+      ],
+      "location": "Diskit, Nubra Valley, Ladakh, India",
+      "type": "resort",
+      "pricePerNight": 11000,
+      "rating": 4.96,
+      "reviewsCount": 112,
+      "badge": "High-Altitude Haven",
+      "image": "images/india/stays/stay-ladakh-camp.jpg",
+      "alt": "Luxury geodesic dome tent surrounded by rugged Karakoram mountains and starry desert sky",
+      "amenities": [
+        "High-Speed Satellite WiFi",
+        "Astrophotography Telescope",
+        "Geothermal Heating",
+        "Organic Ladakhi Breakfast",
+        "Glacial Stream Views",
+        "Stargazing Skylight"
+      ],
+      "description": "Surrounded by snow-capped Karakoram peaks and cold desert dunes, these heated geodesic domes feature custom panoramic skylights for starlight viewing. Enjoy hot butter tea, Ladakhi momos, and cosmic observation guided by resident astronomers.",
+      "host": {
+        "name": "Tsering & Dolma Stobdan",
+        "role": "Himalayan Geologist & Guides",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Heated during evening hours. Strictly zero littering policy across the fragile high-altitude desert."
+    },
+    {
+      "id": "stay-chettinad-mansion",
+      "name": "Visalam Heritage Mansion",
+      "coordinates": [
+        10.1742,
+        78.7845
+      ],
+      "location": "Kanadukathan, Chettinad, Tamil Nadu, India",
+      "type": "homestay",
+      "pricePerNight": 8200,
+      "rating": 4.93,
+      "reviewsCount": 98,
+      "badge": "Heirloom Mansion",
+      "image": "images/india/stays/stay-chettinad-mansion.jpg",
+      "alt": "Colonnaded central open courtyard of ancestral Chettinad heritage mansion with antique chandeliers",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Athangudi Tiled Pool",
+        "Chettinad Banana-Leaf Feast",
+        "Antique Teak Furnishings",
+        "Village Vintage Cycles",
+        "Cooking Masterclasses"
+      ],
+      "description": "Built over 90 years ago by an illustrious merchant family, this grand estate features Belgian crystal chandeliers, hand-poured Athangudi tiles, and Burmese teak colonnades. Savor authentic culinary secrets prepared by master village cooks.",
+      "host": {
+        "name": "Meenakshi Aachi",
+        "role": "Chettiar Heritage Custodian",
+        "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Traditional barefoot etiquette within inner courtyard shrines. Family recipes cooked fresh daily."
+    },
+    {
+      "id": "stay-gokarna-cliff",
+      "name": "Om Cliff Ocean Sanctuary",
+      "coordinates": [
+        14.5186,
+        74.3164
+      ],
+      "location": "Om Beach Cliff, Gokarna, Karnataka, India",
+      "type": "villa",
+      "pricePerNight": 16500,
+      "rating": 4.95,
+      "reviewsCount": 124,
+      "badge": "Clifftop Haven",
+      "image": "images/india/stays/stay-gokarna-cliff.jpg",
+      "alt": "Luxury oceanfront wooden villa with infinity deck looking down at turquoise waves crashing on rocks",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Clifftop Ocean Views",
+        "Private Sunset Deck",
+        "Coastal Karavali Breakfast",
+        "Beach Footpath Access",
+        "Outdoor Rain Shower"
+      ],
+      "description": "Perched dramatically upon laterite sea cliffs between Kudle and Om Beach, this private villa offers uninterrupted Arabian Sea horizons. Fall asleep to the roar of ocean swells, practice yoga at sunrise on the wooden deck, and access secluded sandy coves.",
+      "host": {
+        "name": "Girish & Ananya Bhat",
+        "role": "Yoga Teachers & Coastal Guides",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Non-smoking property. Care should be exercised when walking along the natural cliff pathways."
+    },
+    {
+      "id": "stay-darjeeling-estate",
+      "name": "Glenview Heritage Tea Bungalow",
+      "coordinates": [
+        27.06,
+        88.27
+      ],
+      "location": "Lebong Valley, Darjeeling, West Bengal, India",
+      "type": "chalet",
+      "pricePerNight": 13500,
+      "rating": 4.97,
+      "reviewsCount": 142,
+      "badge": "Tea Sanctuary",
+      "image": "images/india/stays/stay-darjeeling-estate.jpg",
+      "alt": "Colonial stone tea estate bungalow surrounded by manicured green tea bushes facing Kanchenjunga",
+      "amenities": [
+        "Free High-Speed WiFi",
+        "Working Tea Estate Tour",
+        "Wood-Burning Fireplace",
+        "Kanchenjunga Mountain Views",
+        "High Tea On Lawn",
+        "Butler Service"
+      ],
+      "description": "An authentic 1910 British planter’s stone bungalow surrounded by 800 acres of biodynamic tea bushes with clear vistas of Mount Kanchenjunga. Features polished pine floors, antique brass fireplaces, and afternoon high-tea served with freshly plucked white tips.",
+      "host": {
+        "name": "Sanjay & Pema Lama",
+        "role": "Estate Tea Planters & Botanists",
+        "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+      },
+      "rules": "Respect quiet tea tasting hours. Early morning wake-up tea served directly to private veranda."
+    }
+  ],
+  "culinaryThemes": [
+    {
+      "id": "cuisine-rustic-village",
+      "name": "Rustic Village Kitchen",
+      "tagline": "Slow clay-pot handi cooking, heirloom millet rotis, and ancestral hearth feasts",
+      "accentColor": "#994D25",
+      "badge": "Farm-to-Fork Heritage",
+      "heroImage": "images/india/cuisine/cuisine-rustic-village.jpg",
+      "alt": "Warm rustic rural kitchen with clay tandoor oven, bronze bowls, and fresh stone-ground spices",
+      "ambiance": "Terracotta clay walls, rough-hewn teak charpais, crackling wood-fire chulhas, and the unforgettable aroma of slow-simmered black dal and roasted cumin. Dining here brings the nostalgic warmth of a village grandmother's open-air kitchen.",
+      "story": "We partner directly with over 40 rural farmer cooperatives across Himachal, Rajasthan, and Karnataka to source stone-ground heirloom millets, cold-pressed mustard oils, and wild mountain morels. Every dish is cooked in clay handis and seasoned cast iron.",
+      "dishes": [
+        {
+          "name": "Heritage Clay-Pot Thali Feast",
+          "price": 650,
+          "description": "Seven slow-simmered regional delicacies featuring heirloom black lentils, smoked baingan bharta, wild seasonal greens, hot hand-patted bajra rotis, and fresh churned white makhan.",
+          "image": "images/india/cuisine/heritage-clay-pot-thali-feast.jpg",
+          "alt": "Traditional Indian thali with katori bowls of curries, lentils, dal, and fresh flatbreads",
+          "dietary": "Vegetarian / Organic Grain"
+        },
+        {
+          "name": "Pahadi Wild Morel & Red Rice Khichdi",
+          "price": 780,
+          "description": "Rare Himalayan guchhi (wild morels) slow-cooked with heirloom red rice, mountain cow ghee, roasted coriander seeds, and mountain herbs gathered from Kullu forests.",
+          "image": "images/india/cuisine/pahadi-wild-morel-red-rice-khichdi.jpg",
+          "alt": "Fragrant Himalayan wild mushroom rice bowl seasoned with fresh mountain herbs",
+          "dietary": "Vegetarian / Gluten Free"
+        },
+        {
+          "name": "Chulha-Smoked Desi Chicken Handi",
+          "price": 850,
+          "description": "Free-range country fowl marinated in crushed whole peppercorns, roasted coriander, and ginger-garlic, sealed in clay pottery and slow-braised over acacia wood embers.",
+          "image": "images/india/cuisine/chulha-smoked-desi-chicken-handi.jpg",
+          "alt": "Slow cooked country chicken in earthen handi pot with fragrant curry gravy",
+          "dietary": "High Protein / Farm Raised"
+        }
+      ]
+    },
+    {
+      "id": "cuisine-coastal-catch",
+      "name": "Coastal Catch Shack",
+      "tagline": "Dawn net-fisherman catches, wood-fired coastal grills, and tangy coconut-kokum curries",
+      "accentColor": "#1B4944",
+      "badge": "Ocean-to-Plate Freshness",
+      "heroImage": "images/india/cuisine/cuisine-coastal-catch.jpg",
+      "alt": "Open-air seaside dining shack overlooking turquoise waves with fresh fish grilled over coconut husks",
+      "ambiance": "Thatch-roofed wooden verandas, salted sea breeze, kerosene fishing lamps, and the sizzling crackle of banana-leaf wrapped fish grilling over fragrant coconut husks.",
+      "story": "We work directly with traditional artisanal fishermen in South Goa, Gokarna, and Kerala who cast eco-friendly hand nets at first light. By cutting out seafood brokers, our catch reaches your table within six hours of leaving the Arabian Sea.",
+      "dishes": [
+        {
+          "name": "Banana-Leaf Smoked Pomfret Polichathu",
+          "price": 920,
+          "description": "Freshly caught silver pomfret smeared with shallot-curry leaf masala, wrapped in charred banana leaves, and pan-roasted over wood embers with cold-pressed coconut oil.",
+          "image": "images/india/cuisine/banana-leaf-smoked-pomfret-polichathu.jpg",
+          "alt": "Charred banana leaf packet opening to reveal steaming spiced whole fish",
+          "dietary": "Pescatarian / Ocean Catch"
+        },
+        {
+          "name": "Malabar Tiger Prawn & Mango Curry",
+          "price": 880,
+          "description": "Jumbo Arabian Sea prawns simmered in freshly extracted thick coconut milk, raw green country mangoes, crushed bird's eye chilies, and tempered curry leaves. Served with hot appams.",
+          "image": "images/india/cuisine/malabar-tiger-prawn-mango-curry.jpg",
+          "alt": "Rich golden coconut prawn curry garnished with crispy curry leaves",
+          "dietary": "Pescatarian / Gluten Free"
+        },
+        {
+          "name": "Konkan Kokum & Raw Jackfruit Stew",
+          "price": 580,
+          "description": "Tender young jackfruit simmered in stone-ground roasted coconut paste, wild purple kokum, and freshly crushed black pepper from Wayanad hillside groves.",
+          "image": "images/india/cuisine/konkan-kokum-raw-jackfruit-stew.jpg",
+          "alt": "Tangy coconut jackfruit stew served in black clay bowl",
+          "dietary": "100% Vegan / Plant-Based"
+        }
+      ]
+    },
+    {
+      "id": "cuisine-heritage-fine-dine",
+      "name": "Heritage Fine Dine",
+      "tagline": "Lost royal court recipes, silver-service hospitality, and saffron-scented dum banquets",
+      "accentColor": "#D4A373",
+      "badge": "Royal Court Legacy",
+      "heroImage": "images/india/cuisine/cuisine-heritage-fine-dine.jpg",
+      "alt": "Opulent royal palace dining hall with ornate arches, Belgian chandeliers, and candlelit tables",
+      "ambiance": "Hand-painted frescoes, Belgian chandeliers casting golden light over silver cutlery, sitar notes echoing across marble courtyards, and fragrant attar of roses welcoming guests.",
+      "story": "Curated in partnership with culinary descendants of royal khansamas from the princely states of Mewar, Awadh, and Hyderabad. Each recipe revives ancestral slow-cooking techniques like dum pukht, infusing saffron, rose petals, and rare spices.",
+      "dishes": [
+        {
+          "name": "Shahi Dum Pukht Biryani",
+          "price": 950,
+          "description": "Aged extra-long basmati rice layered with tender morsels, Kashmiri saffron milk, caramelized shallots, and wild mint, sealed under dough purdah and slow-steamed for six hours.",
+          "image": "images/india/cuisine/shahi-dum-pukht-biryani.jpg",
+          "alt": "Royal dum biryani in earthen pot garnished with saffron strands and fried mint",
+          "dietary": "Royal Specialty"
+        },
+        {
+          "name": "Awadhi Smoked Paneer Qalyan",
+          "price": 740,
+          "description": "Artisan buffalo milk paneer simmered in an aromatic gravy of ground white poppy seeds, green cardamom, almond cream, and infused with smoky clove embers.",
+          "image": "images/india/cuisine/awadhi-smoked-paneer-qalyan.jpg",
+          "alt": "Creamy white royal paneer curry served in ornate brass bowl",
+          "dietary": "Vegetarian / Royal Feast"
+        },
+        {
+          "name": "Saffron Phirni with Silver Leaf",
+          "price": 420,
+          "description": "Stone-ground broken basmati rice slow-thickened with full-cream milk, infused with high-altitude Kishtwar saffron and crushed cardamom, set in unglazed earthenware shikoras.",
+          "image": "images/india/cuisine/saffron-phirni-with-silver-leaf.jpg",
+          "alt": "Chilled saffron rice pudding in terracotta cup topped with pistachios and edible silver",
+          "dietary": "Vegetarian / Traditional Sweet"
+        }
+      ]
+    },
+    {
+      "id": "cuisine-street-food",
+      "name": "Street Food Trail Bazaar",
+      "tagline": "Sizzling iron tawas, handcrafted artisanal chaats, and vibrant nocturnal night markets",
+      "accentColor": "#C85A32",
+      "badge": "Artisanal Bazaar Street",
+      "heroImage": "images/india/cuisine/cuisine-street-food.jpg",
+      "alt": "Vibrant Indian street food night market stall with brass bowls, sizzling spices, and warm lights",
+      "ambiance": "Bustling brass carts under festive festoon lighting, the rhythmic clatter of flat iron spatulas, aromatic toasted cumin puffs, and the joyful buzz of travelers sharing handcrafted chaats.",
+      "story": "India's greatest culinary genius lives on its street corners. We curate heritage stall masters from Old Delhi, Lucknow, and Indore who use clean cold-pressed oils, mineral water, and natural tamarind to serve street icons with five-star hygiene.",
+      "dishes": [
+        {
+          "name": "Six-Water Artisanal Pani Puri Flight",
+          "price": 350,
+          "description": "Crispy hand-rolled semolina puris filled with spiced sprouted moong and black chickpeas, served with a flight of six mineral waters: wild mint, raw mango, hing-cumin, guava-chili, and sweet date-tamarind.",
+          "image": "images/india/cuisine/six-water-artisanal-pani-puri-flight.jpg",
+          "alt": "Crisp golgappa puris displayed with six distinct flavored herbal water shooters",
+          "dietary": "100% Vegetarian / Interactive"
+        },
+        {
+          "name": "Lucknowi Galouti Kebab on Ulte Tawe Ka Paratha",
+          "price": 520,
+          "description": "Melt-in-mouth smoked vegetarian or tender minced patties spiced with 24 secret forest potli spices, served atop flaky saffron-infused griddle flatbread with mint chutney.",
+          "image": "images/india/cuisine/lucknowi-galouti-kebab-on-ulte-tawe-ka-paratha.jpg",
+          "alt": "Golden succulent kebabs resting on flaky griddle bread with onion rings and lemon",
+          "dietary": "Artisanal Street Favorite"
+        },
+        {
+          "name": "Crispy Saffron Jalebi with Chilled Rabri",
+          "price": 320,
+          "description": "Golden spirals of fermented batter fried crisp in pure desi ghee, soaked in saffron syrup, and served hot alongside chilled slow-reduced clotted cream rabri.",
+          "image": "images/india/cuisine/crispy-saffron-jalebi-with-chilled-rabri.jpg",
+          "alt": "Hot golden orange jalebi spirals served with thick creamy rabri",
+          "dietary": "Vegetarian / Dessert"
+        }
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "test-1",
+      "name": "Elena Rostova",
+      "role": "Travel Journalist & Photographer",
+      "location": "Vienna, Austria",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "stayedAt": "The Cedar Ridge Pahadi Chalet, Manali",
+      "quote": "Before Travel Nexus, traveling in India meant juggling 6 confusing apps and endless negotiation. Staying at the Cedar Ridge Chalet was transformative — waking up to tea with host Vikram and following an AI itinerary that led us to secluded apple orchard trails far beyond tourist crowds.",
+      "badge": "Verified Traveler"
+    },
+    {
+      "id": "test-2",
+      "name": "David & Sarah Chen",
+      "role": "Architectural Designers",
+      "location": "San Francisco, USA",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "stayedAt": "Rawla Pichola Heritage Haveli, Udaipur",
+      "quote": "The combination of verified boutique havelis and authentic regional dining is unparalleled. Reserving our table at Heritage Fine Dine was effortless, and knowing our booking fee went directly to support local stone carvers made it unforgettable.",
+      "badge": "Verified Traveler"
+    },
+    {
+      "id": "test-3",
+      "name": "Marcus Lindqvist",
+      "role": "Outdoor Enthusiast & Writer",
+      "location": "Stockholm, Sweden",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "stayedAt": "Nubra Starlight Eco Glamp, Ladakh",
+      "quote": "The AI Trip Planner was remarkably intelligent. It designed a 5-day mountain itinerary balanced with monastery sunrise chants, quiet village walks, and stargazing at 3,500 meters. It saved us over 25 hours of stressful research.",
+      "badge": "Verified Traveler"
+    },
+    {
+      "id": "test-4",
+      "name": "Aanya Patel",
+      "role": "Culinary Curator",
+      "location": "Mumbai, India",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "stayedAt": "Tharavadu Backwater Eco Estate, Kerala",
+      "quote": "As someone who travels extensively across India, seeing Travel Nexus champion small rural homestays and family kitchens without middlemen exploitation filled me with immense joy. This is the mindful future of Indian hospitality.",
+      "badge": "Verified Traveler"
+    }
+  ],
+  "itineraryTemplates": {
+    "dest-manali": {
+      "name": "Manali & Solang Valley",
+      "days": [
+        {
+          "day": 1,
+          "title": "Ancient Cedar Sanctuaries & Old Manali Heritage",
+          "morning": "Dawn walk through deodar cedar forest to the 16th-century wooden Hadimba Temple before morning visitors arrive.",
+          "afternoon": "Meander through the cobblestone alleys of Old Manali, browsing local hand-spun Kullu shawls and organic apricot jams.",
+          "evening": "Riverside dinner by the Beas River savoring hot Siddu stuffed with poppy-seed paste and spiced mountain tea.",
+          "cost": "₹3,500 - ₹5,000",
+          "insiderTip": "Head past Old Manali village to the Manu Temple footpath for undisturbed panoramic views of snow-dusted peaks."
+        },
+        {
+          "day": 2,
+          "title": "Solang Alpine Meadows & Glacial Air",
+          "morning": "Scenic morning drive up to Solang Valley for a mountain hike across high-altitude wildflower meadows.",
+          "afternoon": "Traverse the engineering marvel of Atal Tunnel to explore the quiet tribal valleys of Sissu and its tumbling waterfall.",
+          "evening": "Unwind around an outdoor wood bonfire with your chalet hosts, sampling clay-pot braised Pahadi country chicken.",
+          "cost": "₹4,200 - ₹6,500",
+          "insiderTip": "Cross the bridge at Sissu village to view the waterfall from the secluded willow grove on the opposite bank."
+        },
+        {
+          "day": 3,
+          "title": "Naggar Castle Heritage & Artisan Crafts",
+          "morning": "Explore the medieval wood-and-stone architecture of Naggar Castle overlooking the valley.",
+          "afternoon": "Visit the Nicholas Roerich Himalayan Art Gallery and learn about indigenous Kullu folk painting.",
+          "evening": "Traditional thali dinner at an organic village farm featuring wild mustard greens and hand-churned white butter.",
+          "cost": "₹3,200 - ₹4,800",
+          "insiderTip": "Stop at the small wood-fired bakery below Naggar Castle for warm walnut pies made with local orchard harvest."
+        }
+      ]
+    },
+    "dest-leh-ladakh": {
+      "name": "Leh-Ladakh & Nubra Valley",
+      "days": [
+        {
+          "day": 1,
+          "title": "Spiritual Acclimatization & Monastery Chants",
+          "morning": "Gentle morning walk through Leh Old Town with traditional herbal butter tea to acclimatize properly.",
+          "afternoon": "Visit the Shanti Stupa for panoramic views of Leh Valley bathed in crisp, clear high-altitude sunshine.",
+          "evening": "Attend evening prayer chants at Thiksey Monastery, followed by a warm bowl of Ladakhi noodle soup (Thukpa).",
+          "cost": "₹4,500 - ₹6,500",
+          "insiderTip": "Keep physical exertion light on your first day and drink plenty of water infused with local dried sea buckthorn."
+        },
+        {
+          "day": 2,
+          "title": "Crossing Khardung La into Nubra Dunes",
+          "morning": "Ascend the legendary Khardung La mountain pass at 5,359 meters, taking in endless snow ranges.",
+          "afternoon": "Descend into Nubra Valley to watch double-humped Bactrian camels roam against white sand dunes.",
+          "evening": "Starlight stargazing session outside your heated geodesic dome tent under Bortle-1 dark skies.",
+          "cost": "₹5,500 - ₹7,800",
+          "insiderTip": "Dress in warm layers for the Khardung La pass summit—temperatures can drop below freezing even in midsummer."
+        },
+        {
+          "day": 3,
+          "title": "Pangong Tso Turquoise Waters & Chang La",
+          "morning": "Scenic overland journey along the Shyok River route towards the breathtaking sapphire lake of Pangong.",
+          "afternoon": "Walk along the silent shorelines of Pangong Tso, watching the lake shift shades from cerulean to deep turquoise.",
+          "evening": "Traditional campfire with Ladakhi village hosts, listening to folklore of the Trans-Himalayan trade routes.",
+          "cost": "₹5,000 - ₹7,200",
+          "insiderTip": "Walk 15 minutes north from the main camp zone to enjoy the lake reflection in absolute solitude."
+        }
+      ]
+    },
+    "dest-udaipur": {
+      "name": "Udaipur & Lake Pichola",
+      "days": [
+        {
+          "day": 1,
+          "title": "City Palace Splendors & Lake Pichola Sunset",
+          "morning": "Private morning tour of the City Palace complex exploring the Sheesh Mahal mirror galleries before midday queues.",
+          "afternoon": "Stroll along the ghats of Lal Ghat, visiting traditional miniature painters and silversmith ateliers.",
+          "evening": "Private wooden boat cruise across Lake Pichola at golden hour, watching the palace turn radiant amber.",
+          "cost": "₹4,800 - ₹7,500",
+          "insiderTip": "Take the boat from Rameshwar Ghat right at 5:15 PM for the best photographic light across the water."
+        },
+        {
+          "day": 2,
+          "title": "Monsoon Palace & Royal Mewari Cuisine",
+          "morning": "Drive up to Sajjangarh (Monsoon Palace) perched high in the Aravalli hills for bird's-eye views of Udaipur's lakes.",
+          "afternoon": "Hands-on culinary session learning royal Mewari gravies, hand-crushed spices, and saffron breads.",
+          "evening": "Front-row seats at the historic Bagore Ki Haveli for an enchanting evening of Rajasthani folk music and fire dances.",
+          "cost": "₹4,000 - ₹6,000",
+          "insiderTip": "Arrive 30 minutes early at Bagore Ki Haveli to secure front-row seating right beside the lit courtyard stage."
+        },
+        {
+          "day": 3,
+          "title": "Artisan Villages & Saheliyon Ki Bari",
+          "morning": "Walk through the fountains and marble pavilions of Saheliyon Ki Bari gardens in the calm morning cool.",
+          "afternoon": "Excursion to nearby Shilpgram rural arts complex to witness traditional block printing and terracotta crafts.",
+          "evening": "Candlelit rooftop dinner at a heritage haveli enjoying slow-simmered dal baati churma under the stars.",
+          "cost": "₹3,500 - ₹5,200",
+          "insiderTip": "Ask for pure desi ghee with your baati at dinner—it unlocks the rich roasted aroma of the wheat dough."
+        }
+      ]
+    },
+    "dest-munnar": {
+      "name": "Munnar & Western Ghats",
+      "days": [
+        {
+          "day": 1,
+          "title": "Emerald Tea Carpets & Lockhart Factory",
+          "morning": "Early dawn walk through the dewy tea trails of Lockhart Estate as the morning mist rolls over the valley.",
+          "afternoon": "Tour a working heritage tea factory, observing traditional rolling and orthodox oxidation processes.",
+          "evening": "Traditional Kerala feast served on banana leaf with spiced coconut curries and steamed appams.",
+          "cost": "₹3,200 - ₹4,800",
+          "insiderTip": "Buy orthodox whole-leaf black tea directly from the estate outlet for superior freshness and aroma."
+        },
+        {
+          "day": 2,
+          "title": "Wildlife at Eravikulam & Anamudi Views",
+          "morning": "Ascend Rajamalai inside Eravikulam National Park to spot the rare Nilgiri Tahr against mountain cliffs.",
+          "afternoon": "Trek along secret spice gardens fragrant with fresh green cardamom, cloves, and wild cinnamon.",
+          "evening": "Ayurvedic warm herbal oil foot treatment followed by tea by the stone fireplace in your plantation chalet.",
+          "cost": "₹3,800 - ₹5,500",
+          "insiderTip": "Book the early 7:30 AM national park slot to catch the mountain goats grazing peacefully before crowds arrive."
+        },
+        {
+          "day": 3,
+          "title": "Mattupetty Lake & Top Station Panorama",
+          "morning": "Kayaking across the tranquil green waters of Mattupetty reservoir surrounded by rolling tea plantations.",
+          "afternoon": "Drive up to Top Station on the Tamil Nadu border for a breathtaking panoramic view of the Western Ghats.",
+          "evening": "Campfire dinner at an organic spice farm with fresh river fish wrapped in charred banana leaves.",
+          "cost": "₹3,500 - ₹5,000",
+          "insiderTip": "Stop at the small roadside stalls near Top Station for freshly roasted spiced country corn."
+        }
+      ]
+    },
+    "dest-goa": {
+      "name": "Goa & Fontainhas Coast",
+      "days": [
+        {
+          "day": 1,
+          "title": "Fontainhas Latin Heritage & Susegad Living",
+          "morning": "Morning walking tour through the indigo and mustard alleys of Fontainhas, photographing Portuguese architecture.",
+          "afternoon": "Browse vintage art galleries and savor warm pastéis de nata at a century-old Goan bakery.",
+          "evening": "Candlelit courtyard dinner enjoying Goan fish curry with red unpolished rice and kokum sol kadi.",
+          "cost": "₹3,800 - ₹5,800",
+          "insiderTip": "Visit the Chapel of St. Sebastian in Fontainhas before 9 AM for peaceful light and quiet streets."
+        },
+        {
+          "day": 2,
+          "title": "South Goa Secluded Coves & Catamarans",
+          "morning": "Drive south to the crescent shores of Palolem or Cola Beach for swimming in calm, turquoise waters.",
+          "afternoon": "Take a wooden fisherman's boat to secluded Butterfly Beach, watching coastal dolphins along the headlands.",
+          "evening": "Fresh seafood barbecue on the sands under palm thatch, accompanied by chilled coconut water.",
+          "cost": "₹4,200 - ₹6,500",
+          "insiderTip": "Cola Beach has a hidden fresh-water emerald lagoon right behind the beach that is ideal for a tranquil swim."
+        },
+        {
+          "day": 3,
+          "title": "Spice Plantations & River Mangroves",
+          "morning": "Guided exploration of a heritage spice plantation in Ponda, tasting fresh black pepper and raw vanilla.",
+          "afternoon": "Kayak through the tranquil mangrove backwaters of the Zuari River spotting colorful kingfishers.",
+          "evening": "Sunset drinks atop the ancient stone bastions of Cabo de Rama Fort overlooking the Arabian Sea.",
+          "cost": "₹3,500 - ₹5,200",
+          "insiderTip": "Cabo de Rama Fort is completely free of crowds at dusk and offers the most dramatic cliffside sunset in Goa."
+        }
+      ]
+    },
+    "dest-jaipur": {
+      "name": "Jaipur & Amer Fort",
+      "days": [
+        {
+          "day": 1,
+          "title": "Amber Courtyards & Palace of Winds",
+          "morning": "Dawn ascent to Amer Fort to experience the magnificent mirror work of the Sheesh Mahal in tranquil quiet.",
+          "afternoon": "Marvel at the intricate stone facade of Hawa Mahal and explore the stone astronomical instruments of Jantar Mantar.",
+          "evening": "Heritage dinner at an old haveli courtyard listening to live sarangi music under starry desert skies.",
+          "cost": "₹4,200 - ₹6,200",
+          "insiderTip": "Enter Amer Fort right when gates open at 8:00 AM to see morning sunlight illuminate the mirror inlays."
+        },
+        {
+          "day": 2,
+          "title": "Textile Artisans & Indigo Dyes",
+          "morning": "Excursion to Sanganer or Bagru for a hands-on block-printing workshop using ancestral wooden stamps and natural indigo.",
+          "afternoon": "Browse the gemstone and brassware ateliers of Johari Bazaar with an insider shopping guide.",
+          "evening": "Rooftop sunset cocktails at Nahargarh Fort as the entire Pink City lights up below.",
+          "cost": "₹3,800 - ₹5,500",
+          "insiderTip": "The open ramparts at Nahargarh's Padao restaurant offer the best panoramic night vantage point of Jaipur."
+        },
+        {
+          "day": 3,
+          "title": "Royal Cenotaphs & Stepwells",
+          "morning": "Visit the geometric marvel of Panna Meena Ka Kund stepwell and the peaceful white marble Gaitore cenotaphs.",
+          "afternoon": "Sample rich lassi served in terracotta kulhads at the iconic 1944 shop on MI Road.",
+          "evening": "Royal thali feast featuring laal maas, ker sangri, and hot missi rotis.",
+          "cost": "₹3,500 - ₹5,000",
+          "insiderTip": "Gaitore Cenotaphs are often missed by tour buses—it is one of the most serene, photogenic marble sites in the city."
+        }
+      ]
+    }
+  },
+  "faqs": [
+    {
+      "q": "How does Travel Nexus verify boutique stays and rural homestays across India?",
+      "a": "Every property on Travel Nexus undergoes an in-person, 40-point verification process by our regional host curators. We assess aesthetic character, hygiene standards, high-speed Wi-Fi reliability, drinking water safety, and authentic local ownership to ensure you experience genuine Indian hospitality without unwelcome surprises."
+    },
+    {
+      "q": "How does the AI Trip Planner tailor itineraries for Indian travel?",
+      "a": "Our AI itinerary engine combines real-time geographic road travel estimates, optimal seasonal timings, authentic regional dining spots, and recommendations from local village hosts. It avoids unrealistic multi-city sprints and instead structures balanced day-by-day journeys tailored to your preferred pace, budget tier, and travel style."
+    },
+    {
+      "q": "What makes Travel Nexus's pricing transparent and community-first?",
+      "a": "All prices on Travel Nexus are listed in Indian Rupees (₹) with all applicable local taxes and host fees clearly displayed upfront. Furthermore, 92% of booking revenue stays directly with independent hosts and village artisans—we charge zero commission on rural homestays to ensure sustainable community empowerment."
+    },
+    {
+      "q": "What is the cancellation policy on verified stays?",
+      "a": "All standard boutique bookings on Travel Nexus offer 100% free cancellation up to 48 hours prior to your scheduled check-in date. If unexpected weather or mountain road closures affect your journey, our 24/7 on-call concierge will assist with free rescheduling or full credit refunds."
+    },
+    {
+      "q": "Can dietary preferences like pure vegetarian, Jain, or vegan be accommodated?",
+      "a": "Absolutely. India has the world’s richest vegetarian culinary tradition, and all of our dining partners clearly label vegetarian, vegan, and gluten-sensitive dishes. When reserving a table or booking a homestay, simply specify your dietary preferences in the reservation notes and your hosts will tailor the menu accordingly."
+    }
+  ]
+};
+
+// Make accessible globally
+if (typeof window !== 'undefined') {
+  window.TRAVEL_DATA = TRAVEL_DATA;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { TRAVEL_DATA };
+}
